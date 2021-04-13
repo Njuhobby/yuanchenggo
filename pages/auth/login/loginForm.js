@@ -7,13 +7,13 @@ import eyeOffFill from "@iconify-icons/eva/eye-off-fill";
 import { passwordError, emailError } from "../../../src/utils/helpError";
 import {
   Box,
-  Link,
   Checkbox,
   TextField,
   IconButton,
   InputAdornment,
   FormControlLabel,
 } from "@material-ui/core";
+import Link from "next/link";
 import { LoadingButton } from "@material-ui/lab";
 
 // ---------------------------------------------------------------------
@@ -96,13 +96,7 @@ function LoginForm({ formik }) {
             label="Remember me"
           />
 
-          <Link
-            component={RouterLink}
-            variant="subtitle2"
-            to={PATH_PAGE.auth.resetPassword}
-          >
-            Forgot password?
-          </Link>
+          <Link href="/auth/resetPassword">Forgot password?</Link>
         </Box>
 
         <LoadingButton
