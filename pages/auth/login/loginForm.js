@@ -43,7 +43,7 @@ function LoginForm({ formik }) {
         <TextField
           fullWidth
           type="email"
-          label="Email address"
+          label="电子邮件"
           {...getFieldProps("email")}
           error={
             Boolean(touched.email && errors.email) ||
@@ -58,7 +58,7 @@ function LoginForm({ formik }) {
         <TextField
           fullWidth
           type={showPassword ? "text" : "password"}
-          label="Password"
+          label="密码"
           {...getFieldProps("password")}
           InputProps={{
             endAdornment: (
@@ -93,7 +93,7 @@ function LoginForm({ formik }) {
                 checked={values.remember}
               />
             }
-            label="Remember me"
+            label="记住我"
           />
 
           <Link href="/auth/resetPassword">Forgot password?</Link>
