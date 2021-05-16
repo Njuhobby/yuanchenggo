@@ -1,83 +1,83 @@
-import clsx from 'clsx';
-import React from 'react';
-import faker from 'faker';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import Scrollbars from 'src/components/Scrollbars';
-import { fShortenNumber } from 'src/utils/formatNumber';
-import appleFilled from '@iconify-icons/ant-design/apple-filled';
-import windowsFilled from '@iconify-icons/ant-design/windows-filled';
-import androidFilled from '@iconify-icons/ant-design/android-filled';
-import { makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import React from "react";
+import faker from "faker";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import Scrollbars from "../../src/components/Scrollbars";
+import { fShortenNumber } from "../../src/utils/formatNumber";
+import appleFilled from "@iconify-icons/ant-design/apple-filled";
+import windowsFilled from "@iconify-icons/ant-design/windows-filled";
+import androidFilled from "@iconify-icons/ant-design/android-filled";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
   Card,
   CardHeader,
   Typography,
-  CardContent
-} from '@material-ui/core';
+  CardContent,
+} from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
 const INSTALLED = [
   {
-    name: 'Germany',
+    name: "Germany",
     android: faker.random.number(),
     windows: faker.random.number(),
     apple: faker.random.number(),
-    flag: '/static/icons/ic_flag_de.svg'
+    flag: "/static/icons/ic_flag_de.svg",
   },
   {
-    name: 'England',
+    name: "England",
     android: faker.random.number(),
     windows: faker.random.number(),
     apple: faker.random.number(),
-    flag: '/static/icons/ic_flag_en.svg'
+    flag: "/static/icons/ic_flag_en.svg",
   },
   {
-    name: 'France',
+    name: "France",
     android: faker.random.number(),
     windows: faker.random.number(),
     apple: faker.random.number(),
-    flag: '/static/icons/ic_flag_fr.svg'
+    flag: "/static/icons/ic_flag_fr.svg",
   },
   {
-    name: 'Korean',
+    name: "Korean",
     android: faker.random.number(),
     windows: faker.random.number(),
     apple: faker.random.number(),
-    flag: '/static/icons/ic_flags_kr.svg'
+    flag: "/static/icons/ic_flags_kr.svg",
   },
   {
-    name: 'USA',
+    name: "USA",
     android: faker.random.number(),
     windows: faker.random.number(),
     apple: faker.random.number(),
-    flag: '/static/icons/ic_flags_us.svg'
-  }
+    flag: "/static/icons/ic_flags_us.svg",
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   listItem: {
-    display: 'flex',
-    alignItems: 'center',
-    '&:not(:first-child)': { marginTop: theme.spacing(3) }
+    display: "flex",
+    alignItems: "center",
+    "&:not(:first-child)": { marginTop: theme.spacing(3) },
   },
   listItemBlock: {
-    flex: '1 1',
+    flex: "1 1",
     minWidth: 72,
-    display: 'flex',
-    alignItems: 'center',
-    '&:not(:first-child)': { marginLeft: theme.spacing(2) },
-    '&:first-child': { minWidth: 120 }
+    display: "flex",
+    alignItems: "center",
+    "&:not(:first-child)": { marginLeft: theme.spacing(2) },
+    "&:first-child": { minWidth: 120 },
   },
   listItemIcon: {
     width: 16,
     height: 16,
     marginRight: theme.spacing(0.5),
-    color: theme.palette.text.disabled
-  }
+    color: theme.palette.text.disabled,
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -119,7 +119,7 @@ function CountryItem({ country }) {
 }
 
 TopInstalledCountries.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function TopInstalledCountries({ className, ...other }) {

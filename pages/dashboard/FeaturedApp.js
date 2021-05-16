@@ -4,16 +4,16 @@ import Slider from "react-slick";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import React, { useState, useRef } from "react";
-import { getImgFeed } from "src/utils/getImages";
+import { getImgFeed } from "../../src/utils/getImages";
 import {
   CarouselArrowsBasic1,
   CarouselCustomPaging1,
-} from "src/components/Carousel";
+} from "../../src/components/Carousel";
 import {
   varFadeInLeft,
   varFadeInRight,
   MotionContainer,
-} from "src/components/Animate";
+} from "../../src/components/Animate";
 import { alpha, makeStyles, useTheme } from "@material-ui/core/styles";
 import { CardContent, Box, Card, Typography } from "@material-ui/core";
 

@@ -4,9 +4,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
 import { sentenceCase } from "change-case";
-import { fCurrency } from "src/utils/formatNumber";
-import Scrollbars from "src/components/Scrollbars";
-import MoreButton from "src/components/MoreButton";
+import { fCurrency } from "../../src/utils/formatNumber";
+import Scrollbars from "../../src/components/Scrollbars";
+import MoreButton from "../../src/components/MoreButton";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
 import arrowIosForwardFill from "@iconify-icons/eva/arrow-ios-forward-fill";
 import {
@@ -22,7 +22,7 @@ import {
   CardHeader,
   TableContainer,
 } from "@material-ui/core";
-import { MLabel } from "src/theme";
+import { MLabel } from "../../src/theme";
 
 // ----------------------------------------------------------------------
 

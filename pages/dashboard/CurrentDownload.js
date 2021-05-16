@@ -1,12 +1,12 @@
-import { merge } from 'lodash';
-import clsx from 'clsx';
-import React from 'react';
-import PropTypes from 'prop-types';
-import ReactApexChart from 'react-apexcharts';
-import { fNumber } from 'src/utils/formatNumber';
-import { ApexChartsOption } from 'src/components/Charts/Apexcharts';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Card, CardHeader } from '@material-ui/core';
+import { merge } from "lodash";
+import clsx from "clsx";
+import React from "react";
+import PropTypes from "prop-types";
+import ReactApexChart from "react-apexcharts";
+import { fNumber } from "../../src/utils/formatNumber";
+import { ApexChartsOption } from "../../src/components/Charts/Apexcharts";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { Card, CardHeader } from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
@@ -18,24 +18,24 @@ const useStyles = makeStyles((theme) => ({
   chart: {
     height: CHART_HEIGHT,
     marginTop: theme.spacing(5),
-    '& .apexcharts-canvas svg': { height: CHART_HEIGHT },
-    '& .apexcharts-canvas svg,.apexcharts-canvas foreignObject': {
-      overflow: 'visible'
+    "& .apexcharts-canvas svg": { height: CHART_HEIGHT },
+    "& .apexcharts-canvas svg,.apexcharts-canvas foreignObject": {
+      overflow: "visible",
     },
-    '& .apexcharts-legend': {
+    "& .apexcharts-legend": {
       height: LEGEND_HEIGHT,
-      alignContent: 'center',
-      position: 'relative !important',
+      alignContent: "center",
+      position: "relative !important",
       borderTop: `solid 1px ${theme.palette.divider}`,
-      top: `calc(${CHART_HEIGHT - LEGEND_HEIGHT}px) !important`
-    }
-  }
+      top: `calc(${CHART_HEIGHT - LEGEND_HEIGHT}px) !important`,
+    },
+  },
 }));
 
 // ----------------------------------------------------------------------
 
 CurrentDownload.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function CurrentDownload({ className, ...other }) {
@@ -48,31 +48,31 @@ function CurrentDownload({ className, ...other }) {
       theme.palette.primary.lighter,
       theme.palette.primary.light,
       theme.palette.primary.main,
-      theme.palette.primary.dark
+      theme.palette.primary.dark,
     ],
-    labels: ['Mac', 'Window', 'iOS', 'Android'],
+    labels: ["Mac", "Window", "iOS", "Android"],
     stroke: { colors: [theme.palette.background.paper] },
-    legend: { floating: true, horizontalAlign: 'center' },
+    legend: { floating: true, horizontalAlign: "center" },
     tooltip: {
       fillSeriesColor: false,
       y: {
         formatter: (seriesName) => fNumber(seriesName),
         title: {
           formatter: function (seriesName) {
-            return '';
-          }
-        }
-      }
+            return "";
+          },
+        },
+      },
     },
     plotOptions: {
       pie: {
         donut: {
-          size: '90%',
+          size: "90%",
           labels: {
             value: {
               formatter: function (val) {
                 return fNumber(val);
-              }
+              },
             },
             total: {
               formatter: function (w) {
@@ -80,12 +80,12 @@ function CurrentDownload({ className, ...other }) {
                   return a + b;
                 }, 0);
                 return fNumber(sum);
-              }
-            }
-          }
-        }
-      }
-    }
+              },
+            },
+          },
+        },
+      },
+    },
   });
 
   return (
