@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeConfig } from "../src/theme";
+import { ThemeConfig } from "src/theme";
 import { Provider } from "react-redux";
 import { store, persistor } from "src/redux/store";
 import ScrollToTop from "src/components/ScrollToTop";

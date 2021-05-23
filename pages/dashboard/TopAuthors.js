@@ -4,9 +4,9 @@ import faker from "faker";
 import { orderBy } from "lodash";
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
-import heartFill from "@iconify-icons/eva/heart-fill";
+import heartFill from "@iconify/icons-eva/heart-fill";
 import { fShortenNumber } from "../../src/utils/formatNumber";
-import trophyFilled from "@iconify-icons/ant-design/trophy-filled";
+import trophyFilled from "@iconify/icons-ant-design/trophy-filled";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import {
   Box,

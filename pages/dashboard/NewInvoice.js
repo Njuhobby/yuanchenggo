@@ -8,7 +8,7 @@ import { fCurrency } from "../../src/utils/formatNumber";
 import Scrollbars from "../../src/components/Scrollbars";
 import MoreButton from "../../src/components/MoreButton";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
-import arrowIosForwardFill from "@iconify-icons/eva/arrow-ios-forward-fill";
+import arrowIosForwardFill from "@iconify/icons-eva/arrow-ios-forward-fill";
 import {
   Box,
   Card,

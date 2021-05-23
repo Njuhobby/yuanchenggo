@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
 import Scrollbars from "../../src/components/Scrollbars";
 import { fShortenNumber } from "../../src/utils/formatNumber";
-import appleFilled from "@iconify-icons/ant-design/apple-filled";
-import windowsFilled from "@iconify-icons/ant-design/windows-filled";
-import androidFilled from "@iconify-icons/ant-design/android-filled";
+import appleFilled from "@iconify/icons-ant-design/apple-filled";
+import windowsFilled from "@iconify/icons-ant-design/windows-filled";
+import androidFilled from "@iconify/icons-ant-design/android-filled";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,

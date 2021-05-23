@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
 import ReactApexChart from "react-apexcharts";
 import { fNumber } from "../../src/utils/formatNumber";
-import personFill from "@iconify-icons/eva/person-fill";
+import personFill from "@iconify/icons-eva/person-fill";
 import { ApexChartsOption } from "../../src/components/Charts/Apexcharts";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Card, Typography, Box } from "@material-ui/core";

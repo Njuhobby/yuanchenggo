@@ -3,9 +3,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
 import ReactApexChart from "react-apexcharts";
-import { fNumber, fPercent } from "../../src/utils/formatNumber";
-import trendingUpFill from "@iconify-icons/eva/trending-up-fill";
-import trendingDownFill from "@iconify-icons/eva/trending-down-fill";
+import { fNumber, fPercent } from "src/utils/formatNumber";
+import trendingUpFill from "@iconify/icons-eva/trending-up-fill";
+import trendingDownFill from "@iconify/icons-eva/trending-down-fill";
 import { useTheme, alpha, makeStyles } from "@material-ui/core/styles";
 import { Box, Card, Typography } from "@material-ui/core";
 

@@ -1,29 +1,29 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import { useSnackbar } from 'notistack';
-import React, { useState } from 'react';
-import copyFill from '@iconify-icons/eva/copy-fill';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import { useSnackbar } from "notistack";
+import React, { useState } from "react";
+import copyFill from "@iconify/icons-eva/copy-fill";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Tooltip,
   TextField,
   IconButton,
-  InputAdornment
-} from '@material-ui/core';
+  InputAdornment,
+} from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
-  root: {}
+  root: {},
 }));
 
 // ----------------------------------------------------------------------
 
 CopyClipboard.propTypes = {
   value: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function CopyClipboard({ value, className }) {
@@ -31,7 +31,7 @@ function CopyClipboard({ value, className }) {
   const { enqueueSnackbar } = useSnackbar();
   const [state, setState] = useState({
     value: value,
-    copied: false
+    copied: false,
   });
 
   const handleChange = (event) => {
@@ -41,7 +41,7 @@ function CopyClipboard({ value, className }) {
   const onCopy = () => {
     setState({ ...state, copied: true });
     if (state.value) {
-      enqueueSnackbar('Copied', { variant: 'success' });
+      enqueueSnackbar("Copied", { variant: "success" });
     }
   };
 
@@ -62,7 +62,7 @@ function CopyClipboard({ value, className }) {
               </Tooltip>
             </CopyToClipboard>
           </InputAdornment>
-        )
+        ),
       }}
     />
   );

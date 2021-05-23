@@ -16,7 +16,8 @@ import React, { useMemo, useEffect } from "react";
 import {
   jssPreset,
   ThemeProvider,
-  createTheme, StylesProvider
+  createMuiTheme,
+  StylesProvider,
 } from "@material-ui/core/styles";
 import { CssBaseline } from "@material-ui/core";
 
@@ -81,7 +82,7 @@ function ThemeConfig({ children }) {
     [isLight, themeDirection]
   );
 
-  const theme = createTheme(themeOptions);
+  const theme = createMuiTheme(themeOptions);
 
   return (
     <ThemeProvider theme={theme}>

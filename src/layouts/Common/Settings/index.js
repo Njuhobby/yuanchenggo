@@ -1,14 +1,14 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import ThemeMode from './ThemeMode';
-import { Icon } from '@iconify/react';
-import React, { useState } from 'react';
-import ThemeDirection from './ThemeDirection';
-import closeFill from '@iconify-icons/eva/close-fill';
-import settings2Fill from '@iconify-icons/eva/settings-2-fill';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Drawer, Divider, Typography } from '@material-ui/core';
-import { MIconButton } from 'src/theme';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import ThemeMode from "./ThemeMode";
+import { Icon } from "@iconify/react";
+import React, { useState } from "react";
+import ThemeDirection from "./ThemeDirection";
+import closeFill from "@iconify/icons-eva/close-fill";
+import settings2Fill from "@iconify/icons-eva/settings-2-fill";
+import { makeStyles } from "@material-ui/core/styles";
+import { Box, Drawer, Divider, Typography } from "@material-ui/core";
+import { MIconButton } from "src/theme";
 
 // ----------------------------------------------------------------------
 
@@ -17,17 +17,17 @@ const DRAWER_WIDTH = 260;
 const useStyles = makeStyles((theme) => ({
   root: {},
   drawer: {
-    zIndex: '1999 !important'
+    zIndex: "1999 !important",
   },
   drawerPaper: {
-    width: DRAWER_WIDTH
-  }
+    width: DRAWER_WIDTH,
+  },
 }));
 
 // ----------------------------------------------------------------------
 
 Settings.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function Settings({ className }) {
@@ -54,7 +54,7 @@ function Settings({ className }) {
         onClose={handleCloseSettings}
         classes={{
           root: classes.drawer,
-          paper: classes.drawerPaper
+          paper: classes.drawerPaper,
         }}
       >
         <Box
@@ -62,9 +62,9 @@ function Settings({ className }) {
             py: 2,
             pr: 1,
             pl: 2.5,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between'
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
           <Typography variant="subtitle1">Settings</Typography>

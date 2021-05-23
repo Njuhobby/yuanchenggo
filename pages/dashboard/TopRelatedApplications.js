@@ -4,9 +4,9 @@ import faker from "faker";
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
 import Scrollbars from "../../src/components/Scrollbars";
-import appleFilled from "@iconify-icons/ant-design/apple-filled";
+import appleFilled from "@iconify/icons-ant-design/apple-filled";
 import { fCurrency, fShortenNumber } from "../../src/utils/formatNumber";
-import windowsFilled from "@iconify-icons/ant-design/windows-filled";
+import windowsFilled from "@iconify/icons-ant-design/windows-filled";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
 import {
   Box,

@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Form, FormikProvider } from "formik";
-import eyeFill from "@iconify-icons/eva/eye-fill";
-import eyeOffFill from "@iconify-icons/eva/eye-off-fill";
+import eyeFill from "@iconify/icons-eva/eye-fill";
+import eyeOffFill from "@iconify/icons-eva/eye-off-fill";
 import { passwordError, emailError } from "../../../src/utils/helpError";
 import {
   Box,

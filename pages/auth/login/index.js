@@ -9,7 +9,7 @@ import Logo from "src/components/Logo";
 import SocialLogin from "./SocialLogin";
 import useAuth from "src/hooks/useAuth";
 import { useSnackbar } from "notistack";
-import closeFill from "@iconify-icons/eva/close-fill";
+import closeFill from "@iconify/icons-eva/close-fill";
 import NextjsLink from "next/link";
 import useIsMountedRef from "src/hooks/useIsMountedRef";
 import { makeStyles } from "@material-ui/core/styles";

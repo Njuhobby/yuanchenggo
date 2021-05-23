@@ -1,18 +1,18 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import React, { useState } from 'react';
-import { NavLink as RouterLink } from 'react-router-dom';
-import arrowIosForwardFill from '@iconify-icons/eva/arrow-ios-forward-fill';
-import arrowIosDownwardFill from '@iconify-icons/eva/arrow-ios-downward-fill';
-import { alpha, makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import React, { useState } from "react";
+import { NavLink as RouterLink } from "react-router-dom";
+import arrowIosForwardFill from "@iconify/icons-eva/arrow-ios-forward-fill";
+import arrowIosDownwardFill from "@iconify/icons-eva/arrow-ios-downward-fill";
+import { alpha, makeStyles } from "@material-ui/core/styles";
 import {
   Box,
   Collapse,
   ListItem,
   ListItemIcon,
-  ListItemText
-} from '@material-ui/core';
+  ListItemText,
+} from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
@@ -21,26 +21,26 @@ const useStyles = makeStyles((theme) => ({
   listItem: {
     ...theme.typography.body2,
     height: 48,
-    textTransform: 'capitalize',
+    textTransform: "capitalize",
     paddingLeft: theme.spacing(5),
     paddingRight: theme.spacing(2.5),
-    color: theme.palette.text.secondary
+    color: theme.palette.text.secondary,
   },
   subIcon: {
     width: 24,
     height: 24,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    '&:before': {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    "&:before": {
       width: 4,
       height: 4,
       content: "''",
-      display: 'block',
-      borderRadius: '50%',
+      display: "block",
+      borderRadius: "50%",
       backgroundColor: theme.palette.text.disabled,
-      transition: theme.transitions.create('transform')
-    }
+      transition: theme.transitions.create("transform"),
+    },
   },
   isActiveListItem: {
     color: theme.palette.primary.main,
@@ -49,24 +49,24 @@ const useStyles = makeStyles((theme) => ({
       theme.palette.primary.main,
       theme.palette.action.selectedOpacity
     ),
-    '&:before': {
+    "&:before": {
       top: 0,
       right: 0,
       width: 3,
       bottom: 0,
       content: "''",
-      position: 'absolute',
-      backgroundColor: theme.palette.primary.main
-    }
+      position: "absolute",
+      backgroundColor: theme.palette.primary.main,
+    },
   },
   isActiveListItemSub: {
     color: theme.palette.text.primary,
     fontWeight: theme.typography.fontWeightMedium,
-    '& $subIcon:before': {
-      transform: 'scale(2)',
-      backgroundColor: theme.palette.primary.main
-    }
-  }
+    "& $subIcon:before": {
+      transform: "scale(2)",
+      backgroundColor: theme.palette.primary.main,
+    },
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -79,7 +79,7 @@ NavItem.propTypes = {
   icon: PropTypes.element,
   open: PropTypes.bool,
   children: PropTypes.node,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function NavItem({
@@ -111,7 +111,7 @@ function NavItem({
           className={clsx(
             classes.listItem,
             {
-              [classes.isActiveListItem]: open
+              [classes.isActiveListItem]: open,
             },
             className
           )}

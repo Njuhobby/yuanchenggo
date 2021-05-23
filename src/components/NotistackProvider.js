@@ -1,55 +1,55 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import { SnackbarProvider } from 'notistack';
-import infoFill from '@iconify-icons/eva/info-fill';
-import alertCircleFill from '@iconify-icons/eva/alert-circle-fill';
-import alertTriangleFill from '@iconify-icons/eva/alert-triangle-fill';
-import checkmarkCircle2Fill from '@iconify-icons/eva/checkmark-circle-2-fill';
-import { alpha, makeStyles } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
+import React from "react";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import { SnackbarProvider } from "notistack";
+import infoFill from "@iconify/icons-eva/info-fill";
+import alertCircleFill from "@iconify/icons-eva/alert-circle-fill";
+import alertTriangleFill from "@iconify/icons-eva/alert-triangle-fill";
+import checkmarkCircle2Fill from "@iconify/icons-eva/checkmark-circle-2-fill";
+import { alpha, makeStyles } from "@material-ui/core/styles";
+import { Box } from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => {
-  const isLight = theme.palette.mode === 'light';
+  const isLight = theme.palette.mode === "light";
 
   const createStyle = {
     color: `${theme.palette.text.primary} !important`,
-    backgroundColor: `${theme.palette.background.paper} !important`
+    backgroundColor: `${theme.palette.background.paper} !important`,
   };
 
   return {
     containerRoot: {
-      '& .MuiCollapse-wrapperInner': {
-        width: '100%'
-      }
+      "& .MuiCollapse-wrapperInner": {
+        width: "100%",
+      },
     },
     contentRoot: {
-      width: '100%',
+      width: "100%",
       padding: theme.spacing(1.5),
       boxShadow: theme.shadows[25].z8,
       borderRadius: theme.shape.borderRadius,
       color: theme.palette.grey[isLight ? 0 : 800],
-      backgroundColor: theme.palette.grey[isLight ? 900 : 0]
+      backgroundColor: theme.palette.grey[isLight ? 900 : 0],
     },
     message: {
       padding: 0,
-      fontWeight: theme.typography.fontWeightMedium
+      fontWeight: theme.typography.fontWeightMedium,
     },
     action: {
       marginRight: -4,
-      '& svg': {
+      "& svg": {
         width: 20,
         height: 20,
         opacity: 0.48,
-        '&:hover': { opacity: 1 }
-      }
+        "&:hover": { opacity: 1 },
+      },
     },
     info: { ...createStyle },
     success: { ...createStyle },
     warning: { ...createStyle },
-    error: { ...createStyle }
+    error: { ...createStyle },
   };
 });
 
@@ -63,12 +63,12 @@ function SnackbarIcon({ icon, color }) {
         mr: 1.5,
         width: 40,
         height: 40,
-        display: 'flex',
+        display: "flex",
         borderRadius: 1.5,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
         color: `${color}.main`,
-        bgcolor: (theme) => alpha(theme.palette[color].main, 0.16)
+        bgcolor: (theme) => alpha(theme.palette[color].main, 0.16),
       }}
     >
       <Icon icon={icon} width={24} height={24} />
@@ -77,7 +77,7 @@ function SnackbarIcon({ icon, color }) {
 }
 
 NotistackProvider.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 function NotistackProvider({ children }) {
@@ -90,14 +90,14 @@ function NotistackProvider({ children }) {
       preventDuplicate
       autoHideDuration={3000}
       anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right'
+        vertical: "top",
+        horizontal: "right",
       }}
       iconVariant={{
         success: <SnackbarIcon icon={checkmarkCircle2Fill} color="success" />,
         error: <SnackbarIcon icon={infoFill} color="error" />,
         warning: <SnackbarIcon icon={alertTriangleFill} color="warning" />,
-        info: <SnackbarIcon icon={alertCircleFill} color="info" />
+        info: <SnackbarIcon icon={alertCircleFill} color="info" />,
       }}
       classes={{
         containerRoot: classes.containerRoot,
@@ -107,7 +107,7 @@ function NotistackProvider({ children }) {
         variantInfo: classes.info,
         variantSuccess: classes.success,
         variantWarning: classes.warning,
-        variantError: classes.error
+        variantError: classes.error,
       }}
     >
       {children}

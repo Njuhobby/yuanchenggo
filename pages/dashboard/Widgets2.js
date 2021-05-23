@@ -4,9 +4,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
 import ReactApexChart from "react-apexcharts";
-import { fNumber } from "../../src/utils/formatNumber";
-import emailFill from "@iconify-icons/eva/email-fill";
-import { ApexChartsOption } from "../../src/components/Charts/Apexcharts";
+import { fNumber } from "src/utils/formatNumber";
+import emailFill from "@iconify/icons-eva/email-fill";
+import { ApexChartsOption } from "src/components/Charts/Apexcharts";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
 import { Card, Box, Typography } from "@material-ui/core";
 

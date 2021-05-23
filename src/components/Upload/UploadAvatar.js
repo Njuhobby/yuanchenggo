@@ -1,20 +1,20 @@
-import clsx from 'clsx';
-import axios from 'axios';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import { cloudinaryConfig } from 'src/config';
-import { useDropzone } from 'react-dropzone';
-import { fData } from 'src/utils/formatNumber';
-import React, { useCallback, useState } from 'react';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
-import roundAddAPhoto from '@iconify-icons/ic/round-add-a-photo';
-import { alpha, makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import axios from "axios";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import { cloudinaryConfig } from "src/config";
+import { useDropzone } from "react-dropzone";
+import { fData } from "src/utils/formatNumber";
+import React, { useCallback, useState } from "react";
+import useIsMountedRef from "src/hooks/useIsMountedRef";
+import roundAddAPhoto from "@iconify/icons-ic/round-add-a-photo";
+import { alpha, makeStyles } from "@material-ui/core/styles";
 import {
   Box,
   Typography,
   FormHelperText,
-  CircularProgress
-} from '@material-ui/core';
+  CircularProgress,
+} from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
@@ -23,66 +23,66 @@ const CLOUDINARY_PRESET = cloudinaryConfig.cloudinaryPreset;
 const CLOUDINARY_URL = cloudinaryConfig.cloudinaryUrl;
 
 const PHOTO_SIZE = 3145728; // bytes
-const FILE_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
+const FILE_FORMATS = ["image/jpg", "image/jpeg", "image/gif", "image/png"];
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 144,
     height: 144,
-    margin: 'auto',
-    borderRadius: '50%',
+    margin: "auto",
+    borderRadius: "50%",
     padding: theme.spacing(1),
-    border: `1px dashed ${theme.palette.grey[500_32]}`
+    border: `1px dashed ${theme.palette.grey[500_32]}`,
   },
   dropZone: {
     zIndex: 0,
-    width: '100%',
-    height: '100%',
-    outline: 'none',
-    display: 'flex',
-    overflow: 'hidden',
-    borderRadius: '50%',
-    position: 'relative',
-    alignItems: 'center',
-    justifyContent: 'center',
-    '& > *': { width: '100%', height: '100%' },
-    '&:hover': { cursor: 'pointer', '& $placeholder': { zIndex: 9 } }
+    width: "100%",
+    height: "100%",
+    outline: "none",
+    display: "flex",
+    overflow: "hidden",
+    borderRadius: "50%",
+    position: "relative",
+    alignItems: "center",
+    justifyContent: "center",
+    "& > *": { width: "100%", height: "100%" },
+    "&:hover": { cursor: "pointer", "& $placeholder": { zIndex: 9 } },
   },
   loading: {
     zIndex: 99,
-    display: 'flex',
-    alignItems: 'center',
-    position: 'absolute',
-    justifyContent: 'center',
-    backgroundColor: alpha(theme.palette.grey[900], 0.72)
+    display: "flex",
+    alignItems: "center",
+    position: "absolute",
+    justifyContent: "center",
+    backgroundColor: alpha(theme.palette.grey[900], 0.72),
   },
   placeholder: {
-    display: 'flex',
-    position: 'absolute',
-    alignItems: 'center',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    display: "flex",
+    position: "absolute",
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "center",
     color: theme.palette.text.secondary,
     backgroundColor: theme.palette.background.neutral,
-    transition: theme.transitions.create('opacity', {
+    transition: theme.transitions.create("opacity", {
       easing: theme.transitions.easing.easeInOut,
-      duration: theme.transitions.duration.shorter
+      duration: theme.transitions.duration.shorter,
     }),
-    '&:hover': { opacity: 0.72 }
+    "&:hover": { opacity: 0.72 },
   },
   hover: {
     opacity: 0,
     color: theme.palette.common.white,
     backgroundColor: theme.palette.grey[900],
-    '&:hover': { opacity: 0.8 }
+    "&:hover": { opacity: 0.8 },
   },
   isDragActive: { opacity: 0.72 },
   isDragReject: {
     color: theme.palette.error.main,
     borderColor: theme.palette.error.light,
-    backgroundColor: theme.palette.error.lighter
+    backgroundColor: theme.palette.error.lighter,
   },
-  isDragAccept: {}
+  isDragAccept: {},
 }));
 
 // ----------------------------------------------------------------------
@@ -93,7 +93,7 @@ UploadAvatar.propTypes = {
   error: PropTypes.bool,
   file: PropTypes.object,
   setFile: PropTypes.func,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function UploadAvatar({
@@ -118,24 +118,24 @@ function UploadAvatar({
       const checkType = FILE_FORMATS.includes(file.type);
 
       if (!checkSize) {
-        setIsError('size-invalid');
+        setIsError("size-invalid");
       }
 
       if (!checkType) {
-        setIsError('type-invalid');
+        setIsError("type-invalid");
       }
 
       try {
         if (checkSize && checkType) {
           setIsLoading(true);
           const formData = new FormData();
-          formData.append('file', file);
-          formData.append('folder', 'upload_minimal/avatar');
-          formData.append('upload_preset', CLOUDINARY_PRESET);
-          formData.append('api_key', CLOUDINARY_KEY);
+          formData.append("file", file);
+          formData.append("folder", "upload_minimal/avatar");
+          formData.append("upload_preset", CLOUDINARY_PRESET);
+          formData.append("api_key", CLOUDINARY_KEY);
           return axios
             .post(CLOUDINARY_URL, formData, {
-              headers: { 'X-Requested-With': 'XMLHttpRequest' }
+              headers: { "X-Requested-With": "XMLHttpRequest" },
             })
             .then((response) => {
               const data = response.data;
@@ -158,11 +158,11 @@ function UploadAvatar({
     getInputProps,
     isDragActive,
     isDragReject,
-    isDragAccept
+    isDragAccept,
   } = useDropzone({
     onDrop: handleDrop,
     multiple: false,
-    disabled: disabled
+    disabled: disabled,
   });
 
   return (
@@ -172,7 +172,7 @@ function UploadAvatar({
           className={clsx(classes.dropZone, {
             [classes.isDragActive]: isDragActive,
             [classes.isDragAccept]: isDragAccept,
-            [classes.isDragReject]: isDragReject || error
+            [classes.isDragReject]: isDragReject || error,
           })}
           {...getRootProps()}
         >
@@ -189,7 +189,7 @@ function UploadAvatar({
               component="img"
               alt="avatar"
               src={file}
-              sx={{ zIndex: 8, objectFit: 'cover' }}
+              sx={{ zIndex: 8, objectFit: "cover" }}
             />
           )}
 
@@ -200,20 +200,20 @@ function UploadAvatar({
               sx={{ width: 24, height: 24, mb: 1 }}
             />
             <Typography variant="caption">
-              {file ? 'Update photo' : 'Upload photo'}
+              {file ? "Update photo" : "Upload photo"}
             </Typography>
           </div>
         </div>
       </div>
 
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        {isError === 'size-invalid' && (
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        {isError === "size-invalid" && (
           <FormHelperText error>{`File is larger than ${fData(
             PHOTO_SIZE
           )}`}</FormHelperText>
         )}
 
-        {isError === 'type-invalid' && (
+        {isError === "type-invalid" && (
           <FormHelperText error>
             File type must be *.jpeg, *.jpg, *.png, *.gif
           </FormHelperText>
@@ -225,10 +225,10 @@ function UploadAvatar({
         sx={{
           mt: 2,
           mb: 5,
-          mx: 'auto',
-          display: 'block',
-          textAlign: 'center',
-          color: 'text.secondary'
+          mx: "auto",
+          display: "block",
+          textAlign: "center",
+          color: "text.secondary",
         }}
       >
         {caption ? (

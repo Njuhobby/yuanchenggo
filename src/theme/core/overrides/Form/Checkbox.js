@@ -1,8 +1,8 @@
-import React from 'react';
-import { Icon } from '@iconify/react';
-import squareFill from '@iconify-icons/eva/square-fill';
-import minusSquareFill from '@iconify-icons/eva/minus-square-fill';
-import checkmarkSquare2Fill from '@iconify-icons/eva/checkmark-square-2-fill';
+import React from "react";
+import { Icon } from "@iconify/react";
+import squareFill from "@iconify/icons-eva/square-fill";
+import minusSquareFill from "@iconify/icons-eva/minus-square-fill";
+import checkmarkSquare2Fill from "@iconify/icons-eva/checkmark-square-2-fill";
 
 // ----------------------------------------------------------------------
 
@@ -13,21 +13,21 @@ export default function Checkbox({ theme }) {
   return {
     MuiCheckbox: {
       defaultProps: {
-        color: 'primary',
+        color: "primary",
         icon: <Icon icon={squareFill} {...ICON_MEDIUM} />,
         checkedIcon: <Icon icon={checkmarkSquare2Fill} {...ICON_MEDIUM} />,
-        indeterminateIcon: <Icon icon={minusSquareFill} {...ICON_MEDIUM} />
+        indeterminateIcon: <Icon icon={minusSquareFill} {...ICON_MEDIUM} />,
       },
 
       styleOverrides: {
         root: {
           padding: 8,
           '& svg[font-size="small"]': { ...ICON_SMALL },
-          '&.Mui-checked.Mui-disabled, &.Mui-disabled': {
-            color: theme.palette.action.disabled
-          }
-        }
-      }
-    }
+          "&.Mui-checked.Mui-disabled, &.Mui-disabled": {
+            color: theme.palette.action.disabled,
+          },
+        },
+      },
+    },
   };
 }
