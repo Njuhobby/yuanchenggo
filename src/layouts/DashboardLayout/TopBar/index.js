@@ -1,15 +1,15 @@
-import clsx from "clsx";
-import React from "react";
-import Search from "./Search";
-import Account from "./Account";
-import PropTypes from "prop-types";
-import Languages from "./Languages";
-import { Icon } from "@iconify/react";
-import Notifications from "./Notifications";
-import Settings from "src/layouts/Common/Settings";
-import menu2Fill from "@iconify/icons-eva/menu-2-fill";
-import { alpha, makeStyles } from "@material-ui/core/styles";
-import { Box, AppBar, Hidden, Toolbar, IconButton } from "@material-ui/core";
+import clsx from 'clsx';
+import React from 'react';
+import Search from './Search';
+import Account from './Account';
+import PropTypes from 'prop-types';
+import Languages from './Languages';
+import { Icon } from '@iconify/react';
+import Notifications from './Notifications';
+import Settings from 'src/layouts/Common/Settings';
+import menu2Fill from '@iconify-icons/eva/menu-2-fill';
+import { alpha, makeStyles } from '@material-ui/core/styles';
+import { Box, AppBar, Hidden, Toolbar, IconButton } from '@material-ui/core';
 
 // ----------------------------------------------------------------------
 
@@ -19,29 +19,29 @@ const APPBAR_DESKTOP = 92;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    boxShadow: "none",
-    backdropFilter: "blur(8px)",
+    boxShadow: 'none',
+    backdropFilter: 'blur(8px)',
     backgroundColor: alpha(theme.palette.background.default, 0.72),
-    [theme.breakpoints.up("lg")]: {
-      paddingLeft: DRAWER_WIDTH,
-    },
+    [theme.breakpoints.up('lg')]: {
+      paddingLeft: DRAWER_WIDTH
+    }
   },
   toolbar: {
     minHeight: APPBAR_MOBILE,
-    [theme.breakpoints.up("md")]: {
-      padding: theme.spacing(0, 5),
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(0, 5)
     },
-    [theme.breakpoints.up("lg")]: {
-      minHeight: APPBAR_DESKTOP,
-    },
-  },
+    [theme.breakpoints.up('lg')]: {
+      minHeight: APPBAR_DESKTOP
+    }
+  }
 }));
 
 // ----------------------------------------------------------------------
 
 TopBar.propTypes = {
   onOpenNav: PropTypes.func,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 function TopBar({ onOpenNav, className }) {
@@ -55,7 +55,7 @@ function TopBar({ onOpenNav, className }) {
             onClick={onOpenNav}
             sx={{
               mr: 1,
-              color: "text.primary",
+              color: 'text.primary'
             }}
           >
             <Icon icon={menu2Fill} />
@@ -67,15 +67,15 @@ function TopBar({ onOpenNav, className }) {
 
         <Box
           sx={{
-            display: "flex",
-            alignItems: "center",
-            "& > *:not(:first-of-type)": {
+            display: 'flex',
+            alignItems: 'center',
+            '& > *:not(:first-of-type)': {
               ml: {
                 xs: 0.5,
                 sm: 2,
-                lg: 3,
-              },
-            },
+                lg: 3
+              }
+            }
           }}
         >
           <Languages />

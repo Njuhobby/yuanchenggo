@@ -1,33 +1,33 @@
-import clsx from "clsx";
-import React from "react";
-import PropTypes from "prop-types";
-import { noCase } from "change-case";
-import { Icon } from "@iconify/react";
-import { formatDistanceToNow } from "date-fns";
-import clockFill from "@iconify/icons-eva/clock-fill";
-import { Link as RouterLink } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import clsx from 'clsx';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { noCase } from 'change-case';
+import { Icon } from '@iconify/react';
+import { formatDistanceToNow } from 'date-fns';
+import clockFill from '@iconify-icons/eva/clock-fill';
+import { Link as RouterLink } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 import {
   Box,
   Avatar,
   ListItem,
   Typography,
   ListItemText,
-  ListItemAvatar,
-} from "@material-ui/core";
+  ListItemAvatar
+} from '@material-ui/core';
 
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(1.5, 2.5),
-    "&:not(:last-child)": {
-      marginBottom: 1,
-    },
+    '&:not(:last-child)': {
+      marginBottom: 1
+    }
   },
   isUnRead: {
-    backgroundColor: theme.palette.action.selected,
-  },
+    backgroundColor: theme.palette.action.selected
+  }
 }));
 
 // ----------------------------------------------------------------------
@@ -39,14 +39,14 @@ function renderContent(notification) {
       <Typography
         component="span"
         variant="body2"
-        sx={{ color: "text.secondary" }}
+        sx={{ color: 'text.secondary' }}
       >
         &nbsp; {noCase(notification.description)}
       </Typography>
     </Typography>
   );
 
-  if (notification.type === "order_placed") {
+  if (notification.type === 'order_placed') {
     return {
       avatar: (
         <img
@@ -54,10 +54,10 @@ function renderContent(notification) {
           src="/static/icons/ic_notification_package.svg"
         />
       ),
-      title: title,
+      title: title
     };
   }
-  if (notification.type === "order_shipped") {
+  if (notification.type === 'order_shipped') {
     return {
       avatar: (
         <img
@@ -65,10 +65,10 @@ function renderContent(notification) {
           src="/static/icons/ic_notification_shipping.svg"
         />
       ),
-      title: title,
+      title: title
     };
   }
-  if (notification.type === "mail") {
+  if (notification.type === 'mail') {
     return {
       avatar: (
         <img
@@ -76,10 +76,10 @@ function renderContent(notification) {
           src="/static/icons/ic_notification_mail.svg"
         />
       ),
-      title: title,
+      title: title
     };
   }
-  if (notification.type === "chat_message") {
+  if (notification.type === 'chat_message') {
     return {
       avatar: (
         <img
@@ -87,18 +87,18 @@ function renderContent(notification) {
           src="/static/icons/ic_notification_chat.svg"
         />
       ),
-      title: title,
+      title: title
     };
   }
   return {
     avatar: <img alt={notification.title} src={notification.avatar} />,
-    title: title,
+    title: title
   };
 }
 
 NotificationItem.propTypes = {
   notification: PropTypes.object.isRequired,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 function NotificationItem({ notification, className }) {
@@ -116,13 +116,13 @@ function NotificationItem({ notification, className }) {
       className={clsx(
         classes.root,
         {
-          [classes.isUnRead]: notification.isUnRead,
+          [classes.isUnRead]: notification.isUnRead
         },
         className
       )}
     >
       <ListItemAvatar>
-        <Avatar sx={{ bgcolor: "background.neutral" }}>{avatar}</Avatar>
+        <Avatar sx={{ bgcolor: 'background.neutral' }}>{avatar}</Avatar>
       </ListItemAvatar>
       <ListItemText
         primary={title}
@@ -131,9 +131,9 @@ function NotificationItem({ notification, className }) {
             variant="caption"
             sx={{
               mt: 0.5,
-              display: "flex",
-              alignItems: "center",
-              color: "text.disabled",
+              display: 'flex',
+              alignItems: 'center',
+              color: 'text.disabled'
             }}
           >
             <Box

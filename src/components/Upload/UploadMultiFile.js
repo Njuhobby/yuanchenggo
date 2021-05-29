@@ -1,14 +1,14 @@
-import clsx from "clsx";
-import PropTypes from "prop-types";
-import { Icon } from "@iconify/react";
-import React, { useCallback } from "react";
-import { useDropzone } from "react-dropzone";
-import { fData } from "src/utils/formatNumber";
-import fileFill from "@iconify/icons-eva/file-fill";
-import closeFill from "@iconify/icons-eva/close-fill";
-import { motion, AnimatePresence } from "framer-motion";
-import { varFadeInRight } from "src/components/Animate";
-import { makeStyles } from "@material-ui/core/styles";
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import { Icon } from '@iconify/react';
+import React, { useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
+import { fData } from 'src/utils/formatNumber';
+import fileFill from '@iconify-icons/eva/file-fill';
+import closeFill from '@iconify-icons/eva/close-fill';
+import { motion, AnimatePresence } from 'framer-motion';
+import { varFadeInRight } from 'src/components/Animate';
+import { makeStyles } from '@material-ui/core/styles';
 import {
   Box,
   List,
@@ -18,53 +18,53 @@ import {
   Typography,
   ListItemIcon,
   ListItemText,
-  ListItemSecondaryAction,
-} from "@material-ui/core";
-import { MIconButton } from "src/theme";
+  ListItemSecondaryAction
+} from '@material-ui/core';
+import { MIconButton } from 'src/theme';
 
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
-  root: { width: "100%" },
+  root: { width: '100%' },
   dropZone: {
-    outline: "none",
-    display: "flex",
-    textAlign: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    justifyContent: "center",
+    outline: 'none',
+    display: 'flex',
+    textAlign: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
     padding: theme.spacing(5, 1),
     borderRadius: theme.shape.borderRadius,
     backgroundColor: theme.palette.background.neutral,
     border: `1px dashed ${theme.palette.grey[500_32]}`,
-    "&:hover": {
+    '&:hover': {
       opacity: 0.72,
-      cursor: "pointer",
+      cursor: 'pointer'
     },
-    [theme.breakpoints.up("md")]: {
-      textAlign: "left",
-      flexDirection: "row",
-    },
+    [theme.breakpoints.up('md')]: {
+      textAlign: 'left',
+      flexDirection: 'row'
+    }
   },
   list: {
-    margin: theme.spacing(5, 0),
+    margin: theme.spacing(5, 0)
   },
   listItem: {
     margin: theme.spacing(1, 0),
     padding: theme.spacing(0.5, 2),
     borderRadius: theme.shape.borderRadius,
     border: `solid 1px ${theme.palette.divider}`,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
   },
   dragActive: {
-    opacity: 0.72,
+    opacity: 0.72
   },
   isDragReject: {
     color: theme.palette.error.main,
     borderColor: theme.palette.error.light,
-    backgroundColor: theme.palette.error.lighter,
+    backgroundColor: theme.palette.error.lighter
   },
-  isDragAccept: {},
+  isDragAccept: {}
 }));
 
 // ----------------------------------------------------------------------
@@ -74,7 +74,7 @@ UploadMultiFile.propTypes = {
   error: PropTypes.bool,
   files: PropTypes.object,
   setFiles: PropTypes.func,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 function UploadMultiFile({
@@ -110,9 +110,9 @@ function UploadMultiFile({
     getInputProps,
     isDragActive,
     isDragReject,
-    isDragAccept,
+    isDragAccept
   } = useDropzone({
-    onDrop: handleDrop,
+    onDrop: handleDrop
   });
 
   return (
@@ -121,7 +121,7 @@ function UploadMultiFile({
         className={clsx(classes.dropZone, {
           [classes.isDragActive]: isDragActive,
           [classes.isDragAccept]: isDragAccept,
-          [classes.isDragReject]: isDragReject || error,
+          [classes.isDragReject]: isDragReject || error
         })}
         {...getRootProps()}
       >
@@ -140,11 +140,11 @@ function UploadMultiFile({
           </Typography>
 
           {caption ? (
-            <Typography variant="body2" sx={{ color: "text.secondary" }}>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               {caption}
             </Typography>
           ) : (
-            <Typography variant="body2" sx={{ color: "text.secondary" }}>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               Drop files here or click&nbsp;
               <Link underline="always">browse</Link>&nbsp;thorough your machine
             </Typography>
@@ -167,7 +167,7 @@ function UploadMultiFile({
               <ListItemText
                 primary={file.name}
                 secondary={fData(file.size)}
-                primaryTypographyProps={{ variant: "subtitle2" }}
+                primaryTypographyProps={{ variant: 'subtitle2' }}
               />
               <ListItemSecondaryAction>
                 <MIconButton
@@ -186,9 +186,9 @@ function UploadMultiFile({
       {hasFile && (
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            "& > *": { ml: 1.5 },
+            display: 'flex',
+            justifyContent: 'flex-end',
+            '& > *': { ml: 1.5 }
           }}
         >
           <Button onClick={handleRemoveAll} sx={{ ml: 1.5 }}>
