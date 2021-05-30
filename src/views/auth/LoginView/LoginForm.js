@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import React, { useState } from 'react';
-import { PATH_PAGE } from 'src/routes/paths';
-import { Form, FormikProvider } from 'formik';
-import eyeFill from '@iconify-icons/eva/eye-fill';
-import { Link as RouterLink } from 'react-router-dom';
-import eyeOffFill from '@iconify-icons/eva/eye-off-fill';
-import { passwordError, emailError } from 'src/utils/helpError';
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import React, { useState } from "react";
+import { PATH_PAGE } from "src/routes/paths";
+import { Form, FormikProvider } from "formik";
+import eyeFill from "@iconify-icons/eva/eye-fill";
+import { Link as RouterLink } from "react-router-dom";
+import eyeOffFill from "@iconify-icons/eva/eye-off-fill";
+import { passwordError, emailError } from "src/utils/helpError";
 import {
   Box,
   Link,
@@ -14,26 +14,20 @@ import {
   TextField,
   IconButton,
   InputAdornment,
-  FormControlLabel
-} from '@material-ui/core';
-import { LoadingButton } from '@material-ui/lab';
+  FormControlLabel,
+} from "@material-ui/core";
+import { LoadingButton } from "@material-ui/lab";
 
 // ----------------------------------------------------------------------
 
 LoginForm.propTypes = {
-  formik: PropTypes.object.isRequired
+  formik: PropTypes.object.isRequired,
 };
 
 function LoginForm({ formik }) {
   const [showPassword, setShowPassword] = useState(false);
-  const {
-    errors,
-    touched,
-    values,
-    isSubmitting,
-    handleSubmit,
-    getFieldProps
-  } = formik;
+  const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } =
+    formik;
 
   const handleShowPassword = () => {
     setShowPassword((show) => !show);
@@ -45,8 +39,8 @@ function LoginForm({ formik }) {
         <TextField
           fullWidth
           type="email"
-          label="Email address"
-          {...getFieldProps('email')}
+          label="电子邮箱"
+          {...getFieldProps("email")}
           error={
             Boolean(touched.email && errors.email) ||
             emailError(errors.afterSubmit).error
@@ -59,9 +53,9 @@ function LoginForm({ formik }) {
         <Box sx={{ mb: 3 }} />
         <TextField
           fullWidth
-          type={showPassword ? 'text' : 'password'}
-          label="Password"
-          {...getFieldProps('password')}
+          type={showPassword ? "text" : "password"}
+          label="密码"
+          {...getFieldProps("password")}
           InputProps={{
             endAdornment: (
               <InputAdornment>
@@ -69,7 +63,7 @@ function LoginForm({ formik }) {
                   <Icon icon={showPassword ? eyeFill : eyeOffFill} />
                 </IconButton>
               </InputAdornment>
-            )
+            ),
           }}
           error={
             Boolean(touched.password && errors.password) ||
@@ -83,19 +77,19 @@ function LoginForm({ formik }) {
         <Box
           sx={{
             my: 2,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between'
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
           <FormControlLabel
             control={
               <Checkbox
-                {...getFieldProps('remember')}
+                {...getFieldProps("remember")}
                 checked={values.remember}
               />
             }
-            label="Remember me"
+            label="记住我"
           />
 
           <Link
@@ -103,7 +97,7 @@ function LoginForm({ formik }) {
             variant="subtitle2"
             to={PATH_PAGE.auth.resetPassword}
           >
-            Forgot password?
+            忘记密码了?
           </Link>
         </Box>
 
@@ -114,7 +108,7 @@ function LoginForm({ formik }) {
           variant="contained"
           pending={isSubmitting}
         >
-          Login
+          登录
         </LoadingButton>
       </Form>
     </FormikProvider>

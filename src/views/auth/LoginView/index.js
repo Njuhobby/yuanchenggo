@@ -72,9 +72,9 @@ function LoginView() {
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
-      .email("Email must be a valid email address")
-      .required("Email is required"),
-    password: Yup.string().required("Password is required"),
+      .email("电子邮件必须是一个合法的电邮地址")
+      .required("电子邮件地址是必填项"),
+    password: Yup.string().required("密码是必填项"),
   });
 
   const formik = useFormik({
@@ -90,7 +90,7 @@ function LoginView() {
           email: values.email,
           password: values.password,
         });
-        enqueueSnackbar("Login success", {
+        enqueueSnackbar("登录成功！", {
           variant: "success",
           action: (key) => (
             <MIconButton size="small" onClick={() => closeSnackbar(key)}>
@@ -125,14 +125,14 @@ function LoginView() {
               mt: { md: -2 },
             }}
           >
-            Don’t have an account? &nbsp;
+            还没有账号? &nbsp;
             <Link
               underline="none"
               variant="subtitle2"
               component={RouterLink}
               to={PATH_PAGE.auth.register}
             >
-              Get started
+              现在就注册
             </Link>
           </Typography>
         )}
@@ -145,10 +145,10 @@ function LoginView() {
           <Box sx={{ mb: 5, display: "flex", alignItems: "center" }}>
             <Box sx={{ flexGrow: 1 }}>
               <Typography variant="h4" gutterBottom>
-                Sign in to Minimal
+                登录远程狗
               </Typography>
               <Typography sx={{ color: "text.secondary" }}>
-                Enter your details below.
+                请在下面的表格中输入您的登录信息
               </Typography>
             </Box>
             <Tooltip title={method === "firebase" ? "Firebase" : "JWT"}>
@@ -165,20 +165,20 @@ function LoginView() {
           {method === "firebase" && <SocialLogin />}
 
           <Alert severity="info" sx={{ mb: 5 }}>
-            Use email : <strong>demo@minimals.cc</strong> / password :
+            用户名 : <strong>demo@minimals.cc</strong> / 密码 :
             <strong>&nbsp;demo1234</strong>
           </Alert>
 
           <LoginForm formik={formik} />
           {smUp ? null : (
             <Typography variant="body2" align="center" sx={{ mt: 3 }}>
-              Don’t have an account?&nbsp;
+              还没有账号?&nbsp;
               <Link
                 variant="subtitle2"
                 component={RouterLink}
                 to={PATH_PAGE.auth.register}
               >
-                Get started
+                现在就注册
               </Link>
             </Typography>
           )}
