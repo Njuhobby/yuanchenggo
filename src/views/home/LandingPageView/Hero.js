@@ -1,93 +1,93 @@
-import clsx from 'clsx';
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import { motion } from 'framer-motion';
-import LazySize from 'src/components/LazySize';
-import { BASE_IMG } from 'src/utils/getImages';
-import flashFill from '@iconify-icons/eva/flash-fill';
-import { Link as RouterLink } from 'react-router-dom';
-import { PATH_APP, PATH_HOME } from 'src/routes/paths';
+import clsx from "clsx";
+import React from "react";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import { motion } from "framer-motion";
+import LazySize from "src/components/LazySize";
+import { BASE_IMG } from "src/utils/getImages";
+import flashFill from "@iconify-icons/eva/flash-fill";
+import { Link as RouterLink } from "react-router-dom";
+import { PATH_APP, PATH_HOME } from "src/routes/paths";
 import {
   varFadeIn,
   varWrapEnter,
   varFadeInUp,
-  varFadeInRight
-} from 'src/components/Animate';
-import { makeStyles } from '@material-ui/core/styles';
-import { Button, Box, Link, Container, Typography } from '@material-ui/core';
+  varFadeInRight,
+} from "src/components/Animate";
+import { makeStyles } from "@material-ui/core/styles";
+import { Button, Box, Link, Container, Typography } from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: 'relative',
-    backgroundColor: '#F2F3F5',
-    [theme.breakpoints.up('md')]: {
+    position: "relative",
+    backgroundColor: "#F2F3F5",
+    [theme.breakpoints.up("md")]: {
       top: 0,
       left: 0,
-      width: '100%',
-      height: '100vh',
-      display: 'flex',
-      position: 'fixed',
-      alignItems: 'center'
-    }
+      width: "100%",
+      height: "100vh",
+      display: "flex",
+      position: "fixed",
+      alignItems: "center",
+    },
   },
   content: {
     zIndex: 10,
     maxWidth: 520,
-    margin: 'auto',
-    textAlign: 'center',
-    position: 'relative',
+    margin: "auto",
+    textAlign: "center",
+    position: "relative",
     paddingTop: theme.spacing(15),
     paddingBottom: theme.spacing(15),
-    [theme.breakpoints.up('md')]: {
-      margin: 'unset',
-      textAlign: 'left'
-    }
+    [theme.breakpoints.up("md")]: {
+      margin: "unset",
+      textAlign: "left",
+    },
   },
   heroOverlay: {
     zIndex: 9,
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    position: 'absolute'
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    position: "absolute",
   },
   heroImg: {
     top: 0,
     right: 0,
     bottom: 0,
     zIndex: 8,
-    width: '100%',
-    margin: 'auto',
-    position: 'absolute',
-    [theme.breakpoints.up('lg')]: {
-      right: '8%',
-      width: 'auto',
-      height: '72vh'
-    }
+    width: "100%",
+    margin: "auto",
+    position: "absolute",
+    [theme.breakpoints.up("lg")]: {
+      right: "8%",
+      width: "auto",
+      height: "72vh",
+    },
   },
   link: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     marginBottom: theme.spacing(5),
     color: theme.palette.common.white,
-    [theme.breakpoints.up('md')]: {
-      justifyContent: 'flex-start'
-    }
+    [theme.breakpoints.up("md")]: {
+      justifyContent: "flex-start",
+    },
   },
   listIcon: {
-    display: 'flex',
+    display: "flex",
     marginTop: theme.spacing(5),
-    justifyContent: 'center',
-    [theme.breakpoints.up('md')]: {
-      justifyContent: 'flex-start'
+    justifyContent: "center",
+    [theme.breakpoints.up("md")]: {
+      justifyContent: "flex-start",
     },
-    '& > :not(:last-of-type)': {
-      marginRight: theme.spacing(1.5)
-    }
-  }
+    "& > :not(:last-of-type)": {
+      marginRight: theme.spacing(1.5),
+    },
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -96,7 +96,7 @@ const getImg = (width) =>
   `${BASE_IMG}w_${width}/v1611472901/upload_minimal/home/hero.png`;
 
 Hero.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function Hero({ className }) {
@@ -131,21 +131,22 @@ function Hero({ className }) {
         <Container maxWidth="lg">
           <div className={classes.content}>
             <motion.div variants={varFadeInRight}>
-              <Typography variant="h1" sx={{ color: 'common.white' }}>
-                开启 <br />
-                您下一个项目 <br /> 和
+              <Typography variant="h1" sx={{ color: "common.white" }}>
+                中国 <br />
+                远程工作者的
+                <br /> 专属
                 <Typography
                   component="span"
                   variant="h1"
-                  sx={{ color: 'primary.main' }}
+                  sx={{ color: "primary.main" }}
                 >
-                  &nbsp;Minimal
+                  &nbsp;社区
                 </Typography>
               </Typography>
             </motion.div>
 
             <motion.div variants={varFadeInRight}>
-              <Box component="p" sx={{ color: 'common.white', py: 5 }}>
+              <Box component="p" sx={{ color: "common.white", py: 5 }}>
                 易用且支持定制化的 Material-UI©将帮助您更好更快地开发下一个项目
                 让其成为您的开发利器
               </Box>
@@ -205,7 +206,7 @@ function Hero({ className }) {
           </div>
         </Container>
       </motion.div>
-      <Box sx={{ height: { md: '100vh' } }} />
+      <Box sx={{ height: { md: "100vh" } }} />
     </>
   );
 }
