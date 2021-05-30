@@ -1,50 +1,50 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import React, { useState } from 'react';
-import NewCreditCardForm from './NewCreditCardForm';
-import plusFill from '@iconify-icons/eva/plus-fill';
-import checkmarkCircle2Fill from '@iconify-icons/eva/checkmark-circle-2-fill';
-import { makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import React, { useState } from "react";
+import NewCreditCardForm from "./NewCreditCardForm";
+import plusFill from "@iconify-icons/eva/plus-fill";
+import checkmarkCircle2Fill from "@iconify-icons/eva/checkmark-circle-2-fill";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
   Grid,
   Radio,
-  Hidden,
   Button,
   Collapse,
   TextField,
   Typography,
   RadioGroup,
-  FormControlLabel
-} from '@material-ui/core';
+  FormControlLabel,
+  useMediaQuery,
+} from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(3),
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up("md")]: {
       padding: 0,
-      paddingTop: theme.spacing(5)
-    }
+      paddingTop: theme.spacing(5),
+    },
   },
   option: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     padding: theme.spacing(0, 2.5),
     marginBottom: theme.spacing(1),
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     borderRadius: theme.shape.borderRadius,
-    transition: theme.transitions.create('all'),
-    border: `solid 1px ${theme.palette.grey[500_32]}`
+    transition: theme.transitions.create("all"),
+    border: `solid 1px ${theme.palette.grey[500_32]}`,
   },
   hasChildren: {
-    flexWrap: 'wrap'
+    flexWrap: "wrap",
   },
   isSelected: {
-    boxShadow: theme.shadows[25].z8
-  }
+    boxShadow: theme.shadows[25].z8,
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -53,13 +53,14 @@ PaymentMethods.propTypes = {
   paymentOptions: PropTypes.array,
   cardOptions: PropTypes.array,
   formik: PropTypes.object,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function PaymentMethods({ paymentOptions, cardOptions, formik, className }) {
   const classes = useStyles();
   const [show, setShow] = useState(false);
   const { values, getFieldProps } = formik;
+  const smDown = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const handleCollapseIn = () => {
     setShow((prev) => !prev);
@@ -75,18 +76,18 @@ function PaymentMethods({ paymentOptions, cardOptions, formik, className }) {
         Payment Method
       </Typography>
 
-      <RadioGroup {...getFieldProps('method')}>
+      <RadioGroup {...getFieldProps("method")}>
         <Grid container spacing={2}>
           {paymentOptions.map((method) => {
             const { value, title, icons } = method;
-            const hasChildren = value === 'credit_card';
+            const hasChildren = value === "credit_card";
 
             return (
               <Grid key={title} item xs={12}>
                 <div
                   className={clsx(classes.option, {
                     [classes.isSelected]: values.method === value,
-                    [classes.hasChildren]: hasChildren
+                    [classes.hasChildren]: hasChildren,
                   })}
                 >
                   <FormControlLabel
@@ -104,12 +105,12 @@ function PaymentMethods({ paymentOptions, cardOptions, formik, className }) {
                     sx={{ py: 3, marginRight: 0 }}
                   />
 
-                  <Hidden smDown>
+                  {smDown ? null : (
                     <Box
                       sx={{
                         flexShrink: 0,
-                        display: 'flex',
-                        alignItems: 'center'
+                        display: "flex",
+                        alignItems: "center",
                       }}
                     >
                       {icons.map((icon) => (
@@ -118,19 +119,19 @@ function PaymentMethods({ paymentOptions, cardOptions, formik, className }) {
                           component="img"
                           alt="logo card"
                           src={icon}
-                          sx={{ '&:last-child': { ml: 1 } }}
+                          sx={{ "&:last-child": { ml: 1 } }}
                         />
                       ))}
                     </Box>
-                  </Hidden>
+                  )}
 
                   {hasChildren && (
-                    <Collapse in={values.method === 'credit_card'}>
+                    <Collapse in={values.method === "credit_card"}>
                       <TextField
                         select
                         fullWidth
                         label="Card"
-                        {...getFieldProps('card')}
+                        {...getFieldProps("card")}
                         SelectProps={{ native: true }}
                       >
                         {cardOptions.map((option) => (

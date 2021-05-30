@@ -1,54 +1,60 @@
-import React from 'react';
-import * as Yup from 'yup';
-import Section from './Section';
-import { useFormik } from 'formik';
-import { Icon } from '@iconify/react';
-import Page from 'src/components/Page';
-import Logo from 'src/components/Logo';
-import { useSnackbar } from 'notistack';
-import useAuth from 'src/hooks/useAuth';
-import RegisterForm from './RegisterForm';
-import { PATH_PAGE } from 'src/routes/paths';
-import closeFill from '@iconify-icons/eva/close-fill';
-import { Link as RouterLink } from 'react-router-dom';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
-import SocialLogin from 'src/views/auth/LoginView/SocialLogin';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Link, Hidden, Container, Typography } from '@material-ui/core';
-import { MIconButton } from 'src/theme';
+import React from "react";
+import * as Yup from "yup";
+import Section from "./Section";
+import { useFormik } from "formik";
+import { Icon } from "@iconify/react";
+import Page from "src/components/Page";
+import Logo from "src/components/Logo";
+import { useSnackbar } from "notistack";
+import useAuth from "src/hooks/useAuth";
+import RegisterForm from "./RegisterForm";
+import { PATH_PAGE } from "src/routes/paths";
+import closeFill from "@iconify-icons/eva/close-fill";
+import { Link as RouterLink } from "react-router-dom";
+import useIsMountedRef from "src/hooks/useIsMountedRef";
+import SocialLogin from "src/views/auth/LoginView/SocialLogin";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Box,
+  Link,
+  Container,
+  Typography,
+  useMediaQuery,
+} from "@material-ui/core";
+import { MIconButton } from "src/theme";
 
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    [theme.breakpoints.up('md')]: {
-      display: 'flex'
-    }
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+    },
   },
   header: {
     top: 0,
     zIndex: 9,
     lineHeight: 0,
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    position: 'absolute',
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    position: "absolute",
     padding: theme.spacing(3),
-    justifyContent: 'space-between',
-    [theme.breakpoints.up('md')]: {
-      alignItems: 'flex-start',
-      padding: theme.spacing(7, 5, 0, 7)
-    }
+    justifyContent: "space-between",
+    [theme.breakpoints.up("md")]: {
+      alignItems: "flex-start",
+      padding: theme.spacing(7, 5, 0, 7),
+    },
   },
   content: {
     maxWidth: 480,
-    margin: 'auto',
-    display: 'flex',
-    minHeight: '100vh',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    padding: theme.spacing(12, 0)
-  }
+    margin: "auto",
+    display: "flex",
+    minHeight: "100vh",
+    flexDirection: "column",
+    justifyContent: "center",
+    padding: theme.spacing(12, 0),
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -58,28 +64,31 @@ function RegisterView() {
   const { method, register } = useAuth();
   const isMountedRef = useIsMountedRef();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const smDown = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const smUp = useMediaQuery((theme) => theme.breakpoints.up("sm"));
+  const mdDown = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
   const RegisterSchema = Yup.object().shape({
     firstName: Yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('First name required'),
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("First name required"),
     lastName: Yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Last name required'),
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Last name required"),
     email: Yup.string()
-      .email('Email must be a valid email address')
-      .required('Email is required'),
-    password: Yup.string().required('Password is required')
+      .email("Email must be a valid email address")
+      .required("Email is required"),
+    password: Yup.string().required("Password is required"),
   });
 
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: ''
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
     },
     validationSchema: RegisterSchema,
     onSubmit: async (values, { setErrors, setSubmitting }) => {
@@ -88,15 +97,15 @@ function RegisterView() {
           email: values.email,
           password: values.password,
           firstName: values.firstName,
-          lastName: values.lastName
+          lastName: values.lastName,
         });
-        enqueueSnackbar('Login success', {
-          variant: 'success',
+        enqueueSnackbar("Login success", {
+          variant: "success",
           action: (key) => (
             <MIconButton size="small" onClick={() => closeSnackbar(key)}>
               <Icon icon={closeFill} />
             </MIconButton>
-          )
+          ),
         });
         if (isMountedRef.current) {
           setSubmitting(false);
@@ -108,7 +117,7 @@ function RegisterView() {
           setSubmitting(false);
         }
       }
-    }
+    },
   });
 
   return (
@@ -117,7 +126,7 @@ function RegisterView() {
         <RouterLink to="/">
           <Logo />
         </RouterLink>
-        <Hidden smDown>
+        {smDown ? null : (
           <Typography variant="body2" sx={{ mt: { md: -2 } }}>
             Already have an account? &nbsp;
             <Link
@@ -129,55 +138,53 @@ function RegisterView() {
               Login
             </Link>
           </Typography>
-        </Hidden>
+        )}
       </header>
 
-      <Hidden mdDown>
-        <Section />
-      </Hidden>
+      {mdDown ? null : <Section />}
 
       <Container>
         <div className={classes.content}>
-          <Box sx={{ mb: 5, display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ mb: 5, display: "flex", alignItems: "center" }}>
             <Box sx={{ flexGrow: 1 }}>
               <Typography variant="h4" gutterBottom>
                 Get started absolutely free.
               </Typography>
-              <Typography sx={{ color: 'text.secondary' }}>
+              <Typography sx={{ color: "text.secondary" }}>
                 Free forever. No credit card needed.
               </Typography>
             </Box>
             <Box
               component="img"
               src={`/static/icons/${
-                method === 'firebase' ? 'ic_firebase' : 'ic_jwt'
+                method === "firebase" ? "ic_firebase" : "ic_jwt"
               }.png`}
               sx={{ width: 32, height: 32 }}
             />
           </Box>
 
-          {method === 'firebase' && <SocialLogin />}
+          {method === "firebase" && <SocialLogin />}
 
           <RegisterForm formik={formik} />
 
           <Typography
             variant="body2"
             align="center"
-            sx={{ color: 'text.secondary', mt: 3 }}
+            sx={{ color: "text.secondary", mt: 3 }}
           >
             By register, I agree to Manimal&nbsp;
-            <Link underline="always" sx={{ color: 'text.primary' }}>
+            <Link underline="always" sx={{ color: "text.primary" }}>
               Terms of Service
             </Link>
             &nbsp;and&nbsp;
-            <Link underline="always" sx={{ color: 'text.primary' }}>
+            <Link underline="always" sx={{ color: "text.primary" }}>
               Privacy Policy
             </Link>
             .
           </Typography>
 
-          <Hidden smUp>
-            <Box sx={{ mt: 3, textAlign: 'center' }}>
+          {smUp ? null : (
+            <Box sx={{ mt: 3, textAlign: "center" }}>
               Already have an account?&nbsp;
               <Link
                 variant="subtitle2"
@@ -187,7 +194,7 @@ function RegisterView() {
                 Login
               </Link>
             </Box>
-          </Hidden>
+          )}
         </div>
       </Container>
     </Page>

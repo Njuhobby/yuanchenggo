@@ -1,26 +1,32 @@
-import clsx from 'clsx';
-import React from 'react';
-import PropTypes from 'prop-types';
-import MailAction from './MailAction';
-import { Icon } from '@iconify/react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { fDate } from 'src/utils/formatTime';
-import createAvatar from 'src/utils/createAvatar';
-import starFill from '@iconify-icons/eva/star-fill';
-import linkFill from '@iconify-icons/eva/link-fill';
-import { Link as RouterLink } from 'react-router-dom';
-import starOutline from '@iconify-icons/eva/star-outline';
-import roundLabelImportant from '@iconify-icons/ic/round-label-important';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Link, Hidden, Tooltip, Typography } from '@material-ui/core';
-import { MAvatar, MLabel, MCheckbox } from 'src/theme';
+import clsx from "clsx";
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import MailAction from "./MailAction";
+import { Icon } from "@iconify/react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { fDate } from "src/utils/formatTime";
+import createAvatar from "src/utils/createAvatar";
+import starFill from "@iconify-icons/eva/star-fill";
+import linkFill from "@iconify-icons/eva/link-fill";
+import { Link as RouterLink } from "react-router-dom";
+import starOutline from "@iconify-icons/eva/star-outline";
+import roundLabelImportant from "@iconify-icons/ic/round-label-important";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Box,
+  Link,
+  Tooltip,
+  Typography,
+  useMediaQuery,
+} from "@material-ui/core";
+import { MAvatar, MLabel, MCheckbox } from "src/theme";
 
 // ----------------------------------------------------------------------
 
 const linkTo = (params, mailId) => {
   const { systemLabel, customLabel } = params;
-  const baseUrl = '/app/mail';
+  const baseUrl = "/app/mail";
   if (systemLabel) {
     return `${baseUrl}/${systemLabel}/${mailId}`;
   }
@@ -32,50 +38,50 @@ const linkTo = (params, mailId) => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: 'relative',
+    position: "relative",
     padding: theme.spacing(0, 2),
     color: theme.palette.text.secondary,
     backgroundColor: theme.palette.background.neutral,
     borderBottom: `1px solid ${theme.palette.divider}`,
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-      alignItems: 'center'
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+      alignItems: "center",
     },
-    '&:hover': {
+    "&:hover": {
       zIndex: 999,
-      position: 'relative',
+      position: "relative",
       boxShadow: theme.shadows[25].z24,
-      '& $actions': { opacity: 1 }
-    }
+      "& $actions": { opacity: 1 },
+    },
   },
   wrap: {
     minWidth: 0,
-    display: 'flex',
+    display: "flex",
     padding: theme.spacing(2, 0),
-    transition: theme.transitions.create('padding')
+    transition: theme.transitions.create("padding"),
   },
   name: {
     minWidth: 200,
-    paddingRight: theme.spacing(2)
+    paddingRight: theme.spacing(2),
   },
   date: {
     flexShrink: 0,
     minWidth: 120,
-    textAlign: 'right'
+    textAlign: "right",
   },
   unread: {
     color: theme.palette.text.primary,
     backgroundColor: theme.palette.background.paper,
-    '& $name': { fontWeight: theme.typography.fontWeightBold },
-    '& $date': { fontWeight: theme.typography.fontWeightBold },
-    '& $subject': { fontWeight: theme.typography.fontWeightBold },
-    '& $message': { color: theme.palette.text.secondary }
+    "& $name": { fontWeight: theme.typography.fontWeightBold },
+    "& $date": { fontWeight: theme.typography.fontWeightBold },
+    "& $subject": { fontWeight: theme.typography.fontWeightBold },
+    "& $message": { color: theme.palette.text.secondary },
   },
   isSelected: { backgroundColor: theme.palette.action.selected },
   isDense: { padding: theme.spacing(1, 0) },
   subject: {},
   message: {},
-  actions: {}
+  actions: {},
 }));
 
 // ----------------------------------------------------------------------
@@ -86,7 +92,7 @@ MailItem.propTypes = {
   isSelected: PropTypes.bool.isRequired,
   onDeselect: PropTypes.func,
   onSelect: PropTypes.func,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function MailItem({
@@ -102,6 +108,7 @@ function MailItem({
   const params = useParams();
   const { labels } = useSelector((state) => state.mail);
   const isAttached = mail.files.length > 0;
+  const mdDown = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
   const handleChangeCheckbox = (event) =>
     event.target.checked ? onSelect() : onDeselect();
@@ -112,14 +119,14 @@ function MailItem({
         classes.root,
         {
           [classes.unread]: !mail.isUnread,
-          [classes.isSelected]: isSelected
+          [classes.isSelected]: isSelected,
         },
         className
       )}
       {...other}
     >
-      <Hidden mdDown>
-        <Box sx={{ mr: 2, display: 'flex' }}>
+      {mdDown ? null : (
+        <Box sx={{ mr: 2, display: "flex" }}>
           <MCheckbox checked={isSelected} onChange={handleChangeCheckbox} />
           <Tooltip title="Starred">
             <MCheckbox
@@ -138,14 +145,14 @@ function MailItem({
             />
           </Tooltip>
         </Box>
-      </Hidden>
+      )}
 
       <Link
         color="inherit"
         underline="none"
         component={RouterLink}
         className={clsx(classes.wrap, {
-          [classes.isDense]: isDense
+          [classes.isDense]: isDense,
         })}
         to={linkTo(params, mail.id)}
       >
@@ -162,8 +169,8 @@ function MailItem({
           sx={{
             ml: 2,
             minWidth: 0,
-            alignItems: 'center',
-            display: { md: 'flex' }
+            alignItems: "center",
+            display: { md: "flex" },
           }}
         >
           <Typography variant="body2" className={classes.name} noWrap>
@@ -176,43 +183,45 @@ function MailItem({
             <span className={classes.message}>{mail.message}</span>
           </Typography>
 
-          <Hidden mdDown>
-            <Box sx={{ display: 'flex' }}>
-              {mail.labelIds.map((labelId) => {
-                const label = labels.find((_label) => _label.id === labelId);
-                if (!label) return null;
-                return (
-                  <MLabel
-                    key={label.id}
-                    sx={{
-                      mx: 0.5,
-                      textTransform: 'capitalize',
-                      backgroundColor: `${label.color} !important`,
-                      color: (theme) =>
-                        `${theme.palette.getContrastText(
-                          label.color
-                        )} !important`
-                    }}
-                  >
-                    {label.name}
-                  </MLabel>
-                );
-              })}
-            </Box>
+          {mdDown ? null : (
+            <Fragment>
+              <Box sx={{ display: "flex" }}>
+                {mail.labelIds.map((labelId) => {
+                  const label = labels.find((_label) => _label.id === labelId);
+                  if (!label) return null;
+                  return (
+                    <MLabel
+                      key={label.id}
+                      sx={{
+                        mx: 0.5,
+                        textTransform: "capitalize",
+                        backgroundColor: `${label.color} !important`,
+                        color: (theme) =>
+                          `${theme.palette.getContrastText(
+                            label.color
+                          )} !important`,
+                      }}
+                    >
+                      {label.name}
+                    </MLabel>
+                  );
+                })}
+              </Box>
 
-            {isAttached && (
-              <Box
-                component={Icon}
-                icon={linkFill}
-                sx={{
-                  mx: 2,
-                  width: 20,
-                  height: 20,
-                  flexShrink: 0
-                }}
-              />
-            )}
-          </Hidden>
+              {isAttached && (
+                <Box
+                  component={Icon}
+                  icon={linkFill}
+                  sx={{
+                    mx: 2,
+                    width: 20,
+                    height: 20,
+                    flexShrink: 0,
+                  }}
+                />
+              )}
+            </Fragment>
+          )}
 
           <Typography variant="caption" className={classes.date}>
             {fDate(mail.createdAt)}

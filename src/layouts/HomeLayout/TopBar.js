@@ -1,39 +1,39 @@
-import clsx from 'clsx';
-import { Icon } from '@iconify/react';
-import Logo from 'src/components/Logo';
-import React, { useState, useRef } from 'react';
-import useOffSetTop from 'src/hooks/useOffSetTop';
-import homeFill from '@iconify-icons/eva/home-fill';
-import PopoverMenu from 'src/components/PopoverMenu';
-import roundSpeed from '@iconify-icons/ic/round-speed';
-import menu2Fill from '@iconify-icons/eva/menu-2-fill';
-import { PATH_HOME, PATH_DOCS } from 'src/routes/paths';
-import bookOpenFill from '@iconify-icons/eva/book-open-fill';
-import roundStreetview from '@iconify-icons/ic/round-streetview';
-import { NavLink as RouterLink, useLocation } from 'react-router-dom';
-import { makeStyles, alpha } from '@material-ui/core/styles';
+import clsx from "clsx";
+import { Icon } from "@iconify/react";
+import Logo from "src/components/Logo";
+import React, { useState, useRef, Fragment } from "react";
+import useOffSetTop from "src/hooks/useOffSetTop";
+import homeFill from "@iconify-icons/eva/home-fill";
+import PopoverMenu from "src/components/PopoverMenu";
+import roundSpeed from "@iconify-icons/ic/round-speed";
+import menu2Fill from "@iconify-icons/eva/menu-2-fill";
+import { PATH_HOME, PATH_DOCS } from "src/routes/paths";
+import bookOpenFill from "@iconify-icons/eva/book-open-fill";
+import roundStreetview from "@iconify-icons/ic/round-streetview";
+import { NavLink as RouterLink, useLocation } from "react-router-dom";
+import { makeStyles, alpha } from "@material-ui/core/styles";
 import {
   Box,
   List,
   Link,
   Button,
   AppBar,
-  Hidden,
   Toolbar,
   MenuItem,
   Container,
   ListItemIcon,
-  ListItemText
-} from '@material-ui/core';
-import { MIconButton } from 'src/theme';
+  ListItemText,
+  useMediaQuery,
+} from "@material-ui/core";
+import { MIconButton } from "src/theme";
 
 // ----------------------------------------------------------------------
 
 const MENU_LINKS = [
-  { title: '主页', icon: homeFill, href: '/' },
-  { title: '控件', icon: roundStreetview, href: PATH_HOME.components },
-  { title: '控制台', icon: roundSpeed, href: PATH_HOME.dashboard },
-  { title: '文档', icon: bookOpenFill, href: PATH_DOCS.root }
+  { title: "主页", icon: homeFill, href: "/" },
+  { title: "控件", icon: roundStreetview, href: PATH_HOME.components },
+  { title: "控制台", icon: roundSpeed, href: PATH_HOME.dashboard },
+  { title: "文档", icon: bookOpenFill, href: PATH_DOCS.root },
 ];
 
 const APP_BAR_MOBILE = 64;
@@ -43,19 +43,19 @@ const useStyles = makeStyles((theme) => ({
   root: {},
   toolbar: {
     height: APP_BAR_MOBILE,
-    transition: theme.transitions.create(['height', 'background-color'], {
+    transition: theme.transitions.create(["height", "background-color"], {
       easing: theme.transitions.easing.easeInOut,
-      duration: theme.transitions.duration.shorter
+      duration: theme.transitions.duration.shorter,
     }),
-    [theme.breakpoints.up('md')]: {
-      height: APP_BAR_DESKTOP
-    }
+    [theme.breakpoints.up("md")]: {
+      height: APP_BAR_DESKTOP,
+    },
   },
   isHome: {
-    color: theme.palette.common.white
+    color: theme.palette.common.white,
   },
   isDesktopActive: {
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
   },
   isMobileActive: {
     color: theme.palette.primary.main,
@@ -63,21 +63,21 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: alpha(
       theme.palette.primary.main,
       theme.palette.action.selectedOpacity
-    )
+    ),
   },
   onScroll: {
-    '& $toolbar': {
-      backgroundColor: theme.palette.background.default
+    "& $toolbar": {
+      backgroundColor: theme.palette.background.default,
     },
-    '& $isHome': {
-      color: theme.palette.text.primary
+    "& $isHome": {
+      color: theme.palette.text.primary,
     },
-    [theme.breakpoints.up('md')]: {
-      '& $toolbar': {
-        height: APP_BAR_DESKTOP - 20
-      }
-    }
-  }
+    [theme.breakpoints.up("md")]: {
+      "& $toolbar": {
+        height: APP_BAR_DESKTOP - 20,
+      },
+    },
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -88,7 +88,9 @@ function TopBar() {
   const { pathname } = useLocation();
   const offset = useOffSetTop(100);
   const [openMenu, setOpenMenu] = useState(false);
-  const isHome = pathname === '/';
+  const isHome = pathname === "/";
+  const mdUp = useMediaQuery((theme) => theme.breakpoints.up("md"));
+  const mdDown = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
   const renderMenuDesktop = (
     <div>
@@ -102,9 +104,9 @@ function TopBar() {
           component={RouterLink}
           activeClassName={classes.isDesktopActive}
           className={clsx({
-            [classes.isHome]: isHome
+            [classes.isHome]: isHome,
           })}
-          sx={{ mr: 5, color: 'text.primary' }}
+          sx={{ mr: 5, color: "text.primary" }}
         >
           {link.title}
         </Link>
@@ -128,7 +130,7 @@ function TopBar() {
             component={RouterLink}
             onClick={() => setOpenMenu(false)}
             activeClassName={classes.isMobileActive}
-            sx={{ color: 'text.secondary' }}
+            sx={{ color: "text.secondary" }}
           >
             <ListItemIcon>
               <Icon icon={link.icon} width={20} height={20} />
@@ -144,16 +146,16 @@ function TopBar() {
     <AppBar
       color="transparent"
       className={clsx(classes.root, { [classes.onScroll]: offset })}
-      sx={{ boxShadow: 'none' }}
+      sx={{ boxShadow: "none" }}
     >
       <Toolbar disableGutters className={classes.toolbar}>
         <Container
           maxWidth="lg"
           sx={{
             lineHeight: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between'
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
           <RouterLink to="/">
@@ -161,7 +163,7 @@ function TopBar() {
           </RouterLink>
           <Box sx={{ flexGrow: 1 }} />
 
-          <Hidden mdDown>{renderMenuDesktop}</Hidden>
+          {mdDown ? null : renderMenuDesktop}
 
           <Button
             underline="none"
@@ -173,18 +175,20 @@ function TopBar() {
             立即购买
           </Button>
 
-          <Hidden mdUp>
-            <MIconButton
-              ref={anchorRef}
-              onClick={() => setOpenMenu(true)}
-              className={clsx({
-                [classes.isHome]: isHome
-              })}
-            >
-              <Icon icon={menu2Fill} />
-            </MIconButton>
-            {renderMenuMobile}
-          </Hidden>
+          {mdUp ? null : (
+            <Fragment>
+              <MIconButton
+                ref={anchorRef}
+                onClick={() => setOpenMenu(true)}
+                className={clsx({
+                  [classes.isHome]: isHome,
+                })}
+              >
+                <Icon icon={menu2Fill} />
+              </MIconButton>
+              {renderMenuMobile}
+            </Fragment>
+          )}
         </Container>
       </Toolbar>
       {offset && (
@@ -195,11 +199,11 @@ function TopBar() {
             bottom: 0,
             height: 24,
             zIndex: -1,
-            margin: 'auto',
-            borderRadius: '50%',
-            position: 'absolute',
+            margin: "auto",
+            borderRadius: "50%",
+            position: "absolute",
             width: `calc(100% - 48px)`,
-            boxShadow: (theme) => theme.shadows[25].z8
+            boxShadow: (theme) => theme.shadows[25].z8,
           }}
         />
       )}

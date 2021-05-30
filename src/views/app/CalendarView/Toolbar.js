@@ -1,51 +1,51 @@
-import clsx from 'clsx';
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import { fDate } from 'src/utils/formatTime';
-import roundViewDay from '@iconify-icons/ic/round-view-day';
-import roundViewWeek from '@iconify-icons/ic/round-view-week';
-import roundViewAgenda from '@iconify-icons/ic/round-view-agenda';
-import roundViewModule from '@iconify-icons/ic/round-view-module';
-import arrowIosBackFill from '@iconify-icons/eva/arrow-ios-back-fill';
-import arrowIosForwardFill from '@iconify-icons/eva/arrow-ios-forward-fill';
-import { makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import React from "react";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import { fDate } from "src/utils/formatTime";
+import roundViewDay from "@iconify-icons/ic/round-view-day";
+import roundViewWeek from "@iconify-icons/ic/round-view-week";
+import roundViewAgenda from "@iconify-icons/ic/round-view-agenda";
+import roundViewModule from "@iconify-icons/ic/round-view-module";
+import arrowIosBackFill from "@iconify-icons/eva/arrow-ios-back-fill";
+import arrowIosForwardFill from "@iconify-icons/eva/arrow-ios-forward-fill";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
-  Hidden,
   Tooltip,
   Typography,
   IconButton,
-  ToggleButton
-} from '@material-ui/core';
-import { MButton } from 'src/theme';
+  ToggleButton,
+  useMediaQuery,
+} from "@material-ui/core";
+import { MButton } from "src/theme";
 
 // ----------------------------------------------------------------------
 
 const VIEW_OPTIONS = [
-  { value: 'dayGridMonth', label: 'Month', icon: roundViewModule },
-  { value: 'timeGridWeek', label: 'Week', icon: roundViewWeek },
-  { value: 'timeGridDay', label: 'Day', icon: roundViewDay },
-  { value: 'listWeek', label: 'Agenda', icon: roundViewAgenda }
+  { value: "dayGridMonth", label: "Month", icon: roundViewModule },
+  { value: "timeGridWeek", label: "Week", icon: roundViewWeek },
+  { value: "timeGridDay", label: "Day", icon: roundViewDay },
+  { value: "listWeek", label: "Agenda", icon: roundViewAgenda },
 ];
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
     padding: theme.spacing(3, 0),
-    [theme.breakpoints.up('sm')]: {
-      flexDirection: 'row',
+    [theme.breakpoints.up("sm")]: {
+      flexDirection: "row",
       padding: theme.spacing(1.75, 3),
-      justifyContent: 'space-between'
-    }
+      justifyContent: "space-between",
+    },
   },
   list: {
-    '& > *:not(:last-of-type)': {
-      marginRight: theme.spacing(1)
-    }
-  }
+    "& > *:not(:last-of-type)": {
+      marginRight: theme.spacing(1),
+    },
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -57,12 +57,12 @@ Toolbar.propTypes = {
   onPrevDate: PropTypes.func,
   onChangeView: PropTypes.func,
   view: PropTypes.oneOf([
-    'dayGridMonth',
-    'timeGridWeek',
-    'timeGridDay',
-    'listWeek'
+    "dayGridMonth",
+    "timeGridWeek",
+    "timeGridDay",
+    "listWeek",
   ]),
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function Toolbar({
@@ -76,10 +76,11 @@ function Toolbar({
   ...other
 }) {
   const classes = useStyles();
+  const smDown = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   return (
     <div className={clsx(classes.root, className)} {...other}>
-      <Hidden smDown>
+      {smDown ? null : (
         <div className={classes.list}>
           {VIEW_OPTIONS.map((viewOption) => (
             <Tooltip key={viewOption.value} title={viewOption.label}>
@@ -94,19 +95,19 @@ function Toolbar({
             </Tooltip>
           ))}
         </div>
-      </Hidden>
+      )}
 
       <Typography
         variant="h5"
         sx={{
-          my: { xs: 1, sm: 0 }
+          my: { xs: 1, sm: 0 },
         }}
       >
         {fDate(date)}
       </Typography>
 
       <div>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
           <IconButton onClick={onPrevDate}>
             <Icon icon={arrowIosBackFill} width={18} height={18} />
           </IconButton>

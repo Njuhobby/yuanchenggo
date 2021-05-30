@@ -1,10 +1,10 @@
-import clsx from 'clsx';
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import plusFill from '@iconify-icons/eva/plus-fill';
-import checkmarkCircle2Fill from '@iconify-icons/eva/checkmark-circle-2-fill';
-import { makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import React from "react";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import plusFill from "@iconify-icons/eva/plus-fill";
+import checkmarkCircle2Fill from "@iconify-icons/eva/checkmark-circle-2-fill";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
   Card,
@@ -19,28 +19,28 @@ import {
   CardHeader,
   CardContent,
   FormHelperText,
-  FormControlLabel
-} from '@material-ui/core';
+  FormControlLabel,
+} from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
   root: { margin: theme.spacing(3, 0) },
   option: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     padding: theme.spacing(0, 2.5),
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     borderRadius: theme.shape.borderRadius,
-    transition: theme.transitions.create('all'),
-    border: `solid 1px ${theme.palette.grey[500_32]}`
+    transition: theme.transitions.create("all"),
+    border: `solid 1px ${theme.palette.grey[500_32]}`,
   },
   hasChildren: {
-    flexWrap: 'wrap'
+    flexWrap: "wrap",
   },
   isSelected: {
-    boxShadow: theme.shadows[25].z8
-  }
+    boxShadow: theme.shadows[25].z8,
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -49,29 +49,30 @@ PaymentMethods.propTypes = {
   formik: PropTypes.object,
   paymentOptions: PropTypes.array,
   cardOptions: PropTypes.array,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function PaymentMethods({ paymentOptions, cardOptions, formik, className }) {
   const classes = useStyles();
   const { errors, touched, values, getFieldProps } = formik;
+  const smDown = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   return (
     <Card className={clsx(classes.root, className)}>
       <CardHeader title="Payment options" />
       <CardContent>
-        <RadioGroup row {...getFieldProps('payment')}>
+        <RadioGroup row {...getFieldProps("payment")}>
           <Grid container spacing={2}>
             {paymentOptions.map((method) => {
               const { value, title, icons, description } = method;
-              const hasChildren = value === 'credit_card';
+              const hasChildren = value === "credit_card";
 
               return (
                 <Grid key={title} item xs={12}>
                   <div
                     className={clsx(classes.option, {
                       [classes.isSelected]: values.payment === value,
-                      [classes.hasChildren]: hasChildren
+                      [classes.hasChildren]: hasChildren,
                     })}
                   >
                     <FormControlLabel
@@ -86,7 +87,7 @@ function PaymentMethods({ paymentOptions, cardOptions, formik, className }) {
                           <Typography variant="subtitle2">{title}</Typography>
                           <Typography
                             variant="body2"
-                            sx={{ color: 'text.secondary' }}
+                            sx={{ color: "text.secondary" }}
                           >
                             {description}
                           </Typography>
@@ -94,12 +95,12 @@ function PaymentMethods({ paymentOptions, cardOptions, formik, className }) {
                       }
                       sx={{ flexGrow: 1, py: 3 }}
                     />
-                    <Hidden smDown>
+                    {smDown ? null : (
                       <Box
                         sx={{
                           flexShrink: 0,
-                          display: 'flex',
-                          alignItems: 'center'
+                          display: "flex",
+                          alignItems: "center",
                         }}
                       >
                         {icons.map((icon) => (
@@ -108,22 +109,22 @@ function PaymentMethods({ paymentOptions, cardOptions, formik, className }) {
                             component="img"
                             alt="logo card"
                             src={icon}
-                            sx={{ '&:last-child': { ml: 1 } }}
+                            sx={{ "&:last-child": { ml: 1 } }}
                           />
                         ))}
                       </Box>
-                    </Hidden>
+                    )}
 
                     {hasChildren && (
                       <Collapse
-                        in={values.payment === 'credit_card'}
-                        sx={{ width: '100%' }}
+                        in={values.payment === "credit_card"}
+                        sx={{ width: "100%" }}
                       >
                         <TextField
                           select
                           fullWidth
                           label="Card"
-                          {...getFieldProps('card')}
+                          {...getFieldProps("card")}
                           SelectProps={{ native: true }}
                         >
                           {cardOptions.map((option) => (
