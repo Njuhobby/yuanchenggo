@@ -147,11 +147,7 @@ function NavBar({ isOpenNav, onCloseNav }) {
         </RouterLink>
       </Box>
 
-      <Link
-        underline="none"
-        component={RouterLink}
-        to={PATH_APP.management.user.account}
-      >
+      <Link underline="none" component={RouterLink} to={PATH_APP.account.root}>
         <div className={classes.account}>
           <MyAvatar />
           <Box sx={{ ml: 2 }}>

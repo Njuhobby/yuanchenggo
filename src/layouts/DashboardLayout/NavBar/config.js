@@ -1,6 +1,6 @@
 import React from "react";
 import { MLabel, MIcon } from "src/theme";
-import { PATH_APP, PATH_PAGE } from "src/routes/paths";
+import { PATH_APP, PATH_HOME, PATH_PAGE } from "src/routes/paths";
 
 // ----------------------------------------------------------------------
 
@@ -41,7 +41,7 @@ const navConfig = [
       },
     ],
   },
-  // MANAGEMENT
+  // User account
   // ----------------------------------------------------------------------
   {
     subheader: "账号",
@@ -49,85 +49,66 @@ const navConfig = [
       {
         title: "个人主页",
         icon: ICONS.user,
-        href: PATH_APP.management.user.profile,
+        href: PATH_APP.account.root,
       },
       {
         title: "账户设置",
         icon: ICONS.user,
-        href: PATH_APP.management.user.account,
+        href: PATH_APP.account.settings,
       },
-
-      // MANAGEMENT : E-COMMERCE
-      // ----------------------------------------------------------------------
       {
-        title: "e-commerce",
-        icon: ICONS.cart,
-        href: PATH_APP.management.eCommerce.root,
-        items: [
-          {
-            title: "shop",
-            href: PATH_APP.management.eCommerce.products,
-          },
-          {
-            title: "product",
-            href: PATH_APP.management.eCommerce.productById,
-          },
-          {
-            title: "list",
-            href: PATH_APP.management.eCommerce.list,
-          },
-          {
-            title: "checkout",
-            href: PATH_APP.management.eCommerce.checkout,
-          },
-          {
-            title: "invoice",
-            href: PATH_APP.management.eCommerce.invoice,
-          },
-        ],
-      },
-
-      // MANAGEMENT : BLOG
-      // ----------------------------------------------------------------------
-      {
-        title: "blog",
-        icon: ICONS.blog,
-        href: PATH_APP.management.blog.root,
-        items: [
-          {
-            title: "posts",
-            href: PATH_APP.management.blog.root,
-          },
-          {
-            title: "post",
-            href: PATH_APP.management.blog.postById,
-          },
-          {
-            title: "new post",
-            href: PATH_APP.management.blog.newPost,
-          },
-        ],
+        title: "通知",
+        href: PATH_APP.account.notifications,
+        icon: ICONS.mail,
       },
     ],
   },
-  // APP
-  // ----------------------------------------------------------------------
+
+  // Jobs
+  // ---------------------------------------------------------------------------
   {
-    subheader: "消息",
+    subheader: "工作信息",
     items: [
       {
-        title: "通知",
-        href: PATH_APP.app.mail.root,
-        icon: ICONS.mail,
+        title: "求职列表",
+        icon: ICONS.elements,
+        href: PATH_APP.jobs.root,
       },
       {
-        title: "对话框",
-        href: PATH_APP.app.chat.root,
+        title: "金主信息",
+        icon: ICONS.elements,
+        href: PATH_APP.jobs.companies,
+      },
+    ],
+  },
+
+  // ----------------------------------------------------------------------
+  {
+    subheader: "社区",
+    items: [
+      {
+        title: "约起来",
+        href: PATH_APP.community.meetups,
         icon: ICONS.chat,
       },
       {
-        title: "calendar",
-        href: PATH_APP.app.calendar,
+        title: "去哪里最棒",
+        href: PATH_APP.community.cities,
+        icon: ICONS.blog,
+      },
+      {
+        title: "其他小伙伴",
+        href: PATH_APP.community.root,
+        icon: ICONS.blog,
+      },
+      {
+        title: "大家的帖子",
+        href: PATH_APP.community.posts,
+        icon: ICONS.chat,
+      },
+      {
+        title: "我的计划",
+        href: PATH_APP.community.plans,
         icon: ICONS.calendar,
       },
     ],
