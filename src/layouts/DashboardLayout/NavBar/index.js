@@ -159,7 +159,7 @@ function NavBar({ isOpenNav, onCloseNav }) {
               {user.displayName}
             </Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              {user.role}
+              {user.displayRole}
             </Typography>
           </Box>
         </div>
@@ -170,13 +170,15 @@ function NavBar({ isOpenNav, onCloseNav }) {
           disablePadding
           key={list.subheader}
           subheader={
-            <ListSubheader
-              disableSticky
-              disableGutters
-              className={classes.subHeader}
-            >
-              {list.subheader}
-            </ListSubheader>
+            list.subheader && (
+              <ListSubheader
+                disableSticky
+                disableGutters
+                className={classes.subHeader}
+              >
+                {list.subheader}
+              </ListSubheader>
+            )
           }
         >
           {renderNavItems({
