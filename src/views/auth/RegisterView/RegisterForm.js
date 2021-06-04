@@ -1,23 +1,23 @@
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import React, { useState } from 'react';
-import { Form, FormikProvider } from 'formik';
-import eyeFill from '@iconify-icons/eva/eye-fill';
-import eyeOffFill from '@iconify-icons/eva/eye-off-fill';
-import { emailError, passwordError } from 'src/utils/helpError';
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import React, { useState } from "react";
+import { Form, FormikProvider } from "formik";
+import eyeFill from "@iconify-icons/eva/eye-fill";
+import eyeOffFill from "@iconify-icons/eva/eye-off-fill";
+import { emailError, passwordError } from "src/utils/helpError";
 import {
   Box,
   Grid,
   TextField,
   IconButton,
-  InputAdornment
-} from '@material-ui/core';
-import { LoadingButton } from '@material-ui/lab';
+  InputAdornment,
+} from "@material-ui/core";
+import { LoadingButton } from "@material-ui/lab";
 
 // ----------------------------------------------------------------------
 
 RegisterForm.propTypes = {
-  formik: PropTypes.object.isRequired
+  formik: PropTypes.object.isRequired,
 };
 
 function RegisterForm({ formik }) {
@@ -31,8 +31,8 @@ function RegisterForm({ formik }) {
           <Grid item xs={6}>
             <TextField
               fullWidth
-              label="First name"
-              {...getFieldProps('firstName')}
+              label="名字"
+              {...getFieldProps("firstName")}
               error={Boolean(touched.firstName && errors.firstName)}
               helperText={touched.firstName && errors.firstName}
             />
@@ -40,8 +40,8 @@ function RegisterForm({ formik }) {
           <Grid item xs={6}>
             <TextField
               fullWidth
-              label="Last name"
-              {...getFieldProps('lastName')}
+              label="姓"
+              {...getFieldProps("lastName")}
               error={Boolean(touched.lastName && errors.lastName)}
               helperText={touched.lastName && errors.lastName}
             />
@@ -53,8 +53,8 @@ function RegisterForm({ formik }) {
           fullWidth
           name="email"
           type="email"
-          label="Email address"
-          {...getFieldProps('email')}
+          label="电子邮箱"
+          {...getFieldProps("email")}
           error={
             Boolean(touched.email && errors.email) ||
             emailError(errors.afterSubmit).error
@@ -67,9 +67,9 @@ function RegisterForm({ formik }) {
         <Box sx={{ mb: 3 }} />
         <TextField
           fullWidth
-          type={showPassword ? 'text' : 'password'}
-          label="Password"
-          {...getFieldProps('password')}
+          type={showPassword ? "text" : "password"}
+          label="密码"
+          {...getFieldProps("password")}
           InputProps={{
             endAdornment: (
               <InputAdornment>
@@ -80,7 +80,7 @@ function RegisterForm({ formik }) {
                   <Icon icon={showPassword ? eyeFill : eyeOffFill} />
                 </IconButton>
               </InputAdornment>
-            )
+            ),
           }}
           error={
             Boolean(touched.password && errors.password) ||
@@ -99,7 +99,7 @@ function RegisterForm({ formik }) {
             variant="contained"
             pending={isSubmitting}
           >
-            Register
+            注册
           </LoadingButton>
         </Box>
       </Form>

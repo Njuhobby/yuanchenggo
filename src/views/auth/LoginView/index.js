@@ -145,7 +145,7 @@ function LoginView() {
           <Box sx={{ mb: 5, display: "flex", alignItems: "center" }}>
             <Box sx={{ flexGrow: 1 }}>
               <Typography variant="h4" gutterBottom>
-                登录远程狗
+                Hi，欢迎回来
               </Typography>
               <Typography sx={{ color: "text.secondary" }}>
                 请在下面的表格中输入您的登录信息
@@ -165,8 +165,8 @@ function LoginView() {
           {method === "firebase" && <SocialLogin />}
 
           <Alert severity="info" sx={{ mb: 5 }}>
-            用户名 : <strong>demo@minimals.cc</strong> / 密码 :
-            <strong>&nbsp;demo1234</strong>
+            用户名 : <strong>yihao@test.com</strong> / 密码 :
+            <strong>&nbsp;12345</strong>
           </Alert>
 
           <LoginForm formik={formik} />

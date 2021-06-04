@@ -70,17 +70,17 @@ function RegisterView() {
 
   const RegisterSchema = Yup.object().shape({
     firstName: Yup.string()
-      .min(2, "Too Short!")
-      .max(50, "Too Long!")
-      .required("First name required"),
+      .min(2, "太短了!")
+      .max(50, "太长了!")
+      .required("请输入您的名字"),
     lastName: Yup.string()
-      .min(2, "Too Short!")
-      .max(50, "Too Long!")
-      .required("Last name required"),
+      .min(2, "太短了!")
+      .max(50, "太长了!")
+      .required("请输入您的姓"),
     email: Yup.string()
-      .email("Email must be a valid email address")
-      .required("Email is required"),
-    password: Yup.string().required("Password is required"),
+      .email("请输入合法的电子邮箱地址")
+      .required("请输入您的电邮地址"),
+    password: Yup.string().required("请输入您的密码"),
   });
 
   const formik = useFormik({
@@ -99,8 +99,8 @@ function RegisterView() {
           firstName: values.firstName,
           lastName: values.lastName,
         });
-        enqueueSnackbar("Login success", {
-          variant: "success",
+        enqueueSnackbar("登录成功", {
+          variant: "成功",
           action: (key) => (
             <MIconButton size="small" onClick={() => closeSnackbar(key)}>
               <Icon icon={closeFill} />
@@ -121,21 +121,21 @@ function RegisterView() {
   });
 
   return (
-    <Page title="Register | Minimal-UI" className={classes.root}>
+    <Page title="注册 | 远程狗" className={classes.root}>
       <header className={classes.header}>
         <RouterLink to="/">
           <Logo />
         </RouterLink>
         {smDown ? null : (
           <Typography variant="body2" sx={{ mt: { md: -2 } }}>
-            Already have an account? &nbsp;
+            已经注册? &nbsp;
             <Link
               underline="none"
               variant="subtitle2"
               component={RouterLink}
               to={PATH_PAGE.auth.login}
             >
-              Login
+              立即登录
             </Link>
           </Typography>
         )}
@@ -148,10 +148,10 @@ function RegisterView() {
           <Box sx={{ mb: 5, display: "flex", alignItems: "center" }}>
             <Box sx={{ flexGrow: 1 }}>
               <Typography variant="h4" gutterBottom>
-                Get started absolutely free.
+                加入远程狗的大家庭
               </Typography>
               <Typography sx={{ color: "text.secondary" }}>
-                Free forever. No credit card needed.
+                只工作，不上班，随时随地遇到朋友
               </Typography>
             </Box>
             <Box
@@ -172,26 +172,26 @@ function RegisterView() {
             align="center"
             sx={{ color: "text.secondary", mt: 3 }}
           >
-            By register, I agree to Manimal&nbsp;
+            点击注册，意味着我同意遵守远程狗的&nbsp;
             <Link underline="always" sx={{ color: "text.primary" }}>
-              Terms of Service
+              社区规范
             </Link>
-            &nbsp;and&nbsp;
+            &nbsp;以及&nbsp;
             <Link underline="always" sx={{ color: "text.primary" }}>
-              Privacy Policy
+              隐私政策
             </Link>
             .
           </Typography>
 
           {smUp ? null : (
             <Box sx={{ mt: 3, textAlign: "center" }}>
-              Already have an account?&nbsp;
+              已经注册?&nbsp;
               <Link
                 variant="subtitle2"
                 to={PATH_PAGE.auth.login}
                 component={RouterLink}
               >
-                Login
+                立即登录
               </Link>
             </Box>
           )}

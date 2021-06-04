@@ -13,8 +13,8 @@ const users = [
   {
     id: "8864c717-587d-472a-929a-8e5f298024da-0",
     displayName: "蒋艺颢",
-    email: "demo@minimals.cc",
-    password: "demo1234",
+    email: "yihao@test.com",
+    password: "12345",
     photoURL: "/static/images/avatars/avatar_default.jpg",
     phoneNumber: "+40 777666555",
     country: "United States",

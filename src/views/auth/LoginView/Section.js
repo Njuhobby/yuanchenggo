@@ -28,9 +28,6 @@ function Section({ className }) {
 
   return (
     <Card className={clsx(classes.root, className)}>
-      <Typography variant="h3" sx={{ px: 5, mt: 5, mb: 15 }}>
-        Hi, 欢迎回来
-      </Typography>
       <img src="/static/illustrations/illustration_login.svg" alt="login" />
     </Card>
   );

@@ -1,57 +1,57 @@
-import clsx from 'clsx';
-import { Icon } from '@iconify/react';
-import { useSnackbar } from 'notistack';
-import useAuth from 'src/hooks/useAuth';
-import { PATH_APP } from 'src/routes/paths';
-import MyAvatar from 'src/components/MyAvatar';
-import React, { useRef, useState } from 'react';
-import homeFill from '@iconify-icons/eva/home-fill';
-import PopoverMenu from 'src/components/PopoverMenu';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
-import personFill from '@iconify-icons/eva/person-fill';
-import settings2Fill from '@iconify-icons/eva/settings-2-fill';
-import { Link as RouterLink, useHistory } from 'react-router-dom';
-import { alpha, makeStyles } from '@material-ui/core/styles';
-import { Button, Box, Divider, MenuItem, Typography } from '@material-ui/core';
-import { MIconButton } from 'src/theme';
+import clsx from "clsx";
+import { Icon } from "@iconify/react";
+import { useSnackbar } from "notistack";
+import useAuth from "src/hooks/useAuth";
+import { PATH_APP } from "src/routes/paths";
+import MyAvatar from "src/components/MyAvatar";
+import React, { useRef, useState } from "react";
+import homeFill from "@iconify-icons/eva/home-fill";
+import PopoverMenu from "src/components/PopoverMenu";
+import useIsMountedRef from "src/hooks/useIsMountedRef";
+import personFill from "@iconify-icons/eva/person-fill";
+import settings2Fill from "@iconify-icons/eva/settings-2-fill";
+import { Link as RouterLink, useHistory } from "react-router-dom";
+import { alpha, makeStyles } from "@material-ui/core/styles";
+import { Button, Box, Divider, MenuItem, Typography } from "@material-ui/core";
+import { MIconButton } from "src/theme";
 
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
   {
-    label: 'Home',
+    label: "Home",
     icon: homeFill,
-    linkTo: '/'
+    linkTo: "/",
   },
   {
-    label: 'Profile',
+    label: "Profile",
     icon: personFill,
-    linkTo: PATH_APP.management.user.profile
+    linkTo: PATH_APP.account.root,
   },
   {
-    label: 'Settings',
+    label: "Settings",
     icon: settings2Fill,
-    linkTo: PATH_APP.management.user.account
-  }
+    linkTo: PATH_APP.account.settings,
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
   btnAvatar: {
     padding: 0,
     width: 44,
-    height: 44
+    height: 44,
   },
   isSelected: {
-    '&:before': {
+    "&:before": {
       zIndex: 1,
       content: "''",
-      width: '100%',
-      height: '100%',
-      borderRadius: '50%',
-      position: 'absolute',
-      background: alpha(theme.palette.grey[900], 0.8)
-    }
-  }
+      width: "100%",
+      height: "100%",
+      borderRadius: "50%",
+      position: "absolute",
+      background: alpha(theme.palette.grey[900], 0.8),
+    },
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -76,12 +76,12 @@ function Account() {
     try {
       await logout();
       if (isMountedRef.current) {
-        history.push('/');
+        history.push("/");
         handleClose();
       }
     } catch (error) {
       console.error(error);
-      enqueueSnackbar('Unable to logout', { variant: 'error' });
+      enqueueSnackbar("Unable to logout", { variant: "error" });
     }
   };
 
@@ -105,7 +105,7 @@ function Account() {
           <Typography variant="subtitle1" noWrap>
             {user.displayName}
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
+          <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
             {user.email}
           </Typography>
         </Box>
@@ -118,7 +118,7 @@ function Account() {
             to={option.linkTo}
             component={RouterLink}
             onClick={handleClose}
-            sx={{ typography: 'body2', py: 1, px: 2.5 }}
+            sx={{ typography: "body2", py: 1, px: 2.5 }}
           >
             <Box
               component={Icon}
@@ -126,7 +126,7 @@ function Account() {
               sx={{
                 mr: 2,
                 width: 24,
-                height: 24
+                height: 24,
               }}
             />
 

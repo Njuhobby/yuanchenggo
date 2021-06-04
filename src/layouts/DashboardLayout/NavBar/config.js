@@ -52,7 +52,7 @@ const navConfig = [
         href: PATH_APP.account.root,
       },
       {
-        title: "账户设置",
+        title: "账号设置",
         icon: ICONS.user,
         href: PATH_APP.account.settings,
       },
@@ -75,7 +75,7 @@ const navConfig = [
         href: PATH_APP.jobs.root,
       },
       {
-        title: "金主信息",
+        title: "金主们",
         icon: ICONS.elements,
         href: PATH_APP.jobs.companies,
       },
