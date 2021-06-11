@@ -15,8 +15,13 @@ const AppRoutes = {
     // ----------------------------------------------------------------------
     {
       exact: true,
-      path: PATH_APP.general.root,
+      path: PATH_APP.general.dashboard,
       component: lazy(() => import("src/views/general/DashboardAppView")),
+    },
+    {
+      exact: true,
+      path: PATH_APP.general.root,
+      component: () => <Redirect to={PATH_APP.general.dashboard} />,
     },
     {
       exact: true,
@@ -24,7 +29,7 @@ const AppRoutes = {
       component: () => <Redirect to={PATH_APP.general.root} />,
     },
 
-    // MANAGEMENT : USER
+    // ACCOUNT
     // ----------------------------------------------------------------------
     {
       exact: true,
@@ -38,11 +43,23 @@ const AppRoutes = {
     },
     {
       exact: true,
-      path: PATH_APP.account.root,
+      path: PATH_APP.account.profile,
       component: lazy(() => import("src/views/user/ProfileView")),
     },
+    // JOBS
+    //---------------------------------------------------------------------
+    {
+      exact: true,
+      path: PATH_APP.jobs.companies,
+      component: lazy(() => import("src/views/jobs/CompaniesView")),
+    },
+    {
+      exact: true,
+      path: PATH_APP.jobs.list,
+      component: lazy(() => import("src/views/jobs/JobPostsView")),
+    },
 
-    // APP : CHAT
+    // COMMUNITY
     // ----------------------------------------------------------------------
     {
       exact: true,
@@ -66,7 +83,7 @@ const AppRoutes = {
     },
     {
       exact: true,
-      path: PATH_APP.community.root,
+      path: PATH_APP.community.people,
       component: lazy(() => import("src/views/pages/ComingSoonView")),
     },
 

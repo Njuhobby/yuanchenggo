@@ -36,13 +36,12 @@ export const PATH_HOME = {
 export const PATH_APP = {
   root: ROOTS.app,
   general: {
-    root: path(ROOTS.app, "/dashboard"),
-    dashboard: path(ROOTS.app, "/dashboard"),
-    ecommerce: path(ROOTS.app, "/dashboard/ecommerce"),
-    analytics: path(ROOTS.app, "/dashboard/analytics"),
+    root: path(ROOTS.app, "/general"),
+    dashboard: path(ROOTS.app, "/general/dashboard"),
   },
   community: {
     root: path(ROOTS.app, "/community"),
+    people: path(ROOTS.app, "/community/people"),
     meetups: path(ROOTS.app, "/community/meetups"),
     cities: path(ROOTS.app, "/community/cities"),
     posts: path(ROOTS.app, "/community/posts"),
@@ -50,10 +49,12 @@ export const PATH_APP = {
   },
   jobs: {
     root: path(ROOTS.app, "/jobs"),
+    list: path(ROOTS.app, "/jobs/list"),
     companies: path(ROOTS.app, "/jobs/companies"),
   },
   account: {
     root: path(ROOTS.app, "/account"),
+    profile: path(ROOTS.app, "/account/profile"),
     settings: path(ROOTS.app, "/account/settings"),
     notifications: path(ROOTS.app, "/account/notifications"),
   },

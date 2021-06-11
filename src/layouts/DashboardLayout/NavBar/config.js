@@ -37,7 +37,7 @@ const navConfig = [
       {
         title: "控制台",
         icon: ICONS.dashboard,
-        href: PATH_APP.general.root,
+        href: PATH_APP.general.dashboard,
       },
     ],
   },
@@ -49,7 +49,7 @@ const navConfig = [
       {
         title: "个人主页",
         icon: ICONS.user,
-        href: PATH_APP.account.root,
+        href: PATH_APP.account.profile,
       },
       {
         title: "账号设置",
@@ -72,7 +72,7 @@ const navConfig = [
       {
         title: "求职列表",
         icon: ICONS.elements,
-        href: PATH_APP.jobs.root,
+        href: PATH_APP.jobs.list,
       },
       {
         title: "金主们",
@@ -98,7 +98,7 @@ const navConfig = [
       },
       {
         title: "其他小伙伴",
-        href: PATH_APP.community.root,
+        href: PATH_APP.community.people,
         icon: ICONS.blog,
       },
       {
