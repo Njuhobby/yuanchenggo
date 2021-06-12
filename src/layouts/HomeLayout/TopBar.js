@@ -32,7 +32,7 @@ import { MIconButton } from "src/theme";
 const MENU_LINKS = [
   { title: "主页", icon: homeFill, href: "/" },
   { title: "控件", icon: roundStreetview, href: PATH_HOME.components },
-  { title: "控制台", icon: roundSpeed, href: PATH_HOME.dashboard },
+  { title: "登录", icon: roundSpeed, href: PATH_HOME.dashboard },
   { title: "文档", icon: bookOpenFill, href: PATH_DOCS.root },
 ];
 

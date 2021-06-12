@@ -1,14 +1,14 @@
-import clsx from 'clsx';
-import React from 'react';
-import * as Yup from 'yup';
-import PropTypes from 'prop-types';
-import { countries } from './countries';
-import { useSnackbar } from 'notistack';
-import useAuth from 'src/hooks/useAuth';
-import { UploadAvatar } from 'src/components/Upload';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
-import { Form, FormikProvider, useFormik } from 'formik';
-import { makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import React from "react";
+import * as Yup from "yup";
+import PropTypes from "prop-types";
+import { countries } from "./countries";
+import { useSnackbar } from "notistack";
+import useAuth from "src/hooks/useAuth";
+import { UploadAvatar } from "src/components/Upload";
+import useIsMountedRef from "src/hooks/useIsMountedRef";
+import { Form, FormikProvider, useFormik } from "formik";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
   Grid,
@@ -16,20 +16,20 @@ import {
   Switch,
   TextField,
   CardContent,
-  FormControlLabel
-} from '@material-ui/core';
-import { LoadingButton } from '@material-ui/lab';
+  FormControlLabel,
+} from "@material-ui/core";
+import { LoadingButton } from "@material-ui/lab";
 
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
-  root: {}
+  root: {},
 }));
 
 // ----------------------------------------------------------------------
 
 General.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function General({ className }) {
@@ -39,7 +39,7 @@ function General({ className }) {
   const { user, updateProfile } = useAuth();
 
   const UpdateUserSchema = Yup.object().shape({
-    displayName: Yup.string().required('Name is required')
+    displayName: Yup.string().required("Name is required"),
   });
 
   const formik = useFormik({
@@ -55,14 +55,14 @@ function General({ className }) {
       city: user.city,
       zipCode: user.zipCode,
       about: user.about,
-      isPublic: user.isPublic
+      isPublic: user.isPublic,
     },
 
     validationSchema: UpdateUserSchema,
     onSubmit: async (values, { setErrors, setSubmitting }) => {
       try {
         await updateProfile({ ...values });
-        enqueueSnackbar('Update success', { variant: 'success' });
+        enqueueSnackbar("Update success", { variant: "success" });
         if (isMountedRef.current) {
           setSubmitting(false);
         }
@@ -72,7 +72,7 @@ function General({ className }) {
           setSubmitting(false);
         }
       }
-    }
+    },
   });
 
   const {
@@ -82,7 +82,7 @@ function General({ className }) {
     isSubmitting,
     handleSubmit,
     getFieldProps,
-    setFieldValue
+    setFieldValue,
   } = formik;
 
   return (
@@ -95,22 +95,22 @@ function General({ className }) {
                 <Box
                   sx={{
                     my: 10,
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexDirection: 'column'
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "column",
                   }}
                 >
                   <UploadAvatar
-                    disabled={user.email === 'demo@minimals.cc'} // You can remove this
+                    disabled={user.email === "demo@minimals.cc"} // You can remove this
                     value={values.photoURL}
-                    onChange={(value) => setFieldValue('photoURL', value)}
+                    onChange={(value) => setFieldValue("photoURL", value)}
                   />
                   <FormControlLabel
                     control={
-                      <Switch {...getFieldProps('isPublic')} color="primary" />
+                      <Switch {...getFieldProps("isPublic")} color="primary" />
                     }
                     labelPlacement="start"
-                    label="Public Profile"
+                    label="设置为公开可见"
                   />
                 </Box>
               </Card>
@@ -122,10 +122,10 @@ function General({ className }) {
                   <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                       <TextField
-                        disabled={user.email === 'demo@minimals.cc'} // You can remove this
+                        disabled={user.email === "demo@minimals.cc"} // You can remove this
                         fullWidth
-                        label="Name"
-                        {...getFieldProps('displayName')}
+                        label="姓名"
+                        {...getFieldProps("displayName")}
                       />
                     </Grid>
 
@@ -133,24 +133,24 @@ function General({ className }) {
                       <TextField
                         fullWidth
                         disabled
-                        label="Email Address"
-                        {...getFieldProps('email')}
+                        label="电子邮件"
+                        {...getFieldProps("email")}
                       />
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="Phone Number"
-                        {...getFieldProps('phoneNumber')}
+                        label="电话号码"
+                        {...getFieldProps("phoneNumber")}
                       />
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="Address"
-                        {...getFieldProps('address')}
+                        label="地址"
+                        {...getFieldProps("address")}
                       />
                     </Grid>
 
@@ -158,9 +158,9 @@ function General({ className }) {
                       <TextField
                         select
                         fullWidth
-                        label="Country"
-                        placeholder="Country"
-                        {...getFieldProps('country')}
+                        label="国家"
+                        placeholder="国家"
+                        {...getFieldProps("country")}
                         SelectProps={{ native: true }}
                         error={Boolean(touched.country && errors.country)}
                         helperText={touched.country && errors.country}
@@ -178,48 +178,48 @@ function General({ className }) {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="State/Region"
-                        {...getFieldProps('state')}
+                        label="省/自治区"
+                        {...getFieldProps("state")}
                       />
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="City"
-                        {...getFieldProps('city')}
+                        label="市"
+                        {...getFieldProps("city")}
                       />
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="Zip/Code"
-                        {...getFieldProps('zipCode')}
+                        label="邮政编码"
+                        {...getFieldProps("zipCode")}
                       />
                     </Grid>
 
                     <Grid item xs={12}>
                       <TextField
-                        {...getFieldProps('about')}
+                        {...getFieldProps("about")}
                         fullWidth
                         multiline
                         minRows={4}
                         maxRows={4}
-                        label="About"
+                        label="介绍下你自己"
                       />
                     </Grid>
                   </Grid>
 
                   <Box
-                    sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}
+                    sx={{ mt: 3, display: "flex", justifyContent: "flex-end" }}
                   >
                     <LoadingButton
                       type="submit"
                       variant="contained"
                       pending={isSubmitting}
                     >
-                      Save Changes
+                      保存修改
                     </LoadingButton>
                   </Box>
                 </CardContent>

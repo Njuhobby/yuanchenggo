@@ -85,7 +85,6 @@ function TopBar({ onOpenNav, className }) {
             },
           }}
         >
-          <Languages />
           <Notifications />
           <Settings />
           <Account />

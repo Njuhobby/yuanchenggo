@@ -19,17 +19,17 @@ import { MIconButton } from "src/theme";
 
 const MENU_OPTIONS = [
   {
-    label: "Home",
+    label: "控制台",
     icon: homeFill,
-    linkTo: "/",
+    linkTo: PATH_APP.general.dashboard,
   },
   {
-    label: "Profile",
+    label: "主页",
     icon: personFill,
-    linkTo: PATH_APP.account.root,
+    linkTo: PATH_APP.account.profile,
   },
   {
-    label: "Settings",
+    label: "设置",
     icon: settings2Fill,
     linkTo: PATH_APP.account.settings,
   },

@@ -1,8 +1,9 @@
-import './chat';
-import './mail';
-import './blog';
-import './user';
-import './account';
-import './calendar';
-import './products';
-import './notifications';
+import "./chat";
+import "./mail";
+import "./blog";
+import "./user";
+import "./account";
+import "./calendar";
+import "./products";
+import "./notifications";
+import "./jobs";
