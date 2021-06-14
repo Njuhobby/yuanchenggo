@@ -2,7 +2,9 @@ import clsx from "clsx";
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import { Card, Avatar, Grid, Typography } from "@material-ui/core";
+import { Card, Avatar, Grid, Typography, Box } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import { format } from "date-fns";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,6 +15,14 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     transform: "translate(-50%, -50%)",
     border: "solid 1px black",
+  },
+  rightmostBar: {
+    width: 5,
+    borderRadius: 20,
+    backgroundColor: theme.palette.primary.main,
+    position: "relative",
+    right: 5,
+    top: 10,
   },
 }));
 
@@ -25,6 +35,8 @@ JobPostCard.propTypes = {
 
 function JobPostCard({ job, className, height, avatarWidth }) {
   const classes = useStyles();
+  const theme = useTheme();
+
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -48,7 +60,27 @@ function JobPostCard({ job, className, height, avatarWidth }) {
             {job.location}
           </Typography>
         </Grid>
-        <Grid item></Grid>
+        <Grid item>
+          <Typography
+            variant="h6"
+            sx={{
+              color: theme.palette.text.secondary,
+              position: "absolute",
+              top: height / 2,
+              transform: "translate(0, -50%)",
+            }}
+          >
+            {format(Date.parse(job.createdAt), "yyyy-MM")}
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Box
+            className={classes.rightmostBar}
+            sx={{
+              height: height - 20,
+            }}
+          ></Box>
+        </Grid>
       </Grid>
     </Card>
   );

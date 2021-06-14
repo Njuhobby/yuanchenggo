@@ -1,6 +1,5 @@
 import faker from "faker";
 import mock from "src/utils/mock";
-import { set, sub } from "date-fns";
 import { orderBy } from "lodash";
 import { getCompanyAvatar } from "src/utils/getImages";
 
@@ -15,7 +14,7 @@ let jobs = [
       name: "BitPay",
       avatar: getCompanyAvatar("company_avatar.jpg"),
     },
-    createdAt: set(new Date(), { hours: 10, minutes: 20 }),
+    createdAt: new Date("2021-3-1 18:00:00"),
     location: "全国范围",
   },
   {
@@ -26,7 +25,7 @@ let jobs = [
       name: "微软苏州",
       avatar: getCompanyAvatar("company_avatar_2.jpg"),
     },
-    createdAt: set(new Date(), { hours: 10, minutes: 30 }),
+    createdAt: new Date("2021-4-1 18:00:00"),
     location: "北京及周边",
   },
 ];
