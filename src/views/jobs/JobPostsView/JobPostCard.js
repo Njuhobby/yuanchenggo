@@ -1,10 +1,12 @@
 import clsx from "clsx";
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
+import { alpha, makeStyles } from "@material-ui/core/styles";
 import { Card, Avatar, Grid, Typography, Box } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { format } from "date-fns";
+import { InlineIcon } from "@iconify/react";
+import glowingStar from "@iconify-icons/emojione/glowing-star";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +25,11 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     right: 5,
     top: 10,
+  },
+  companyStar: {
+    fontSize: "1.3em",
+    position: "relative",
+    left: 5,
   },
 }));
 
@@ -49,10 +56,17 @@ function JobPostCard({ job, className, height, avatarWidth }) {
         sx={{ top: height / 2, width: avatarWidth, height: avatarWidth }}
       />
       <Grid container sx={{ justifyContent: "space-between", width: "100%" }}>
-        <Grid item>
-          <Typography variant="body2" sx={{ mt: "15px" }}>
-            {job.company.name}
-          </Typography>
+        <Grid item xs={6}>
+          {job.company.isStar ? (
+            <Typography variant="body2" sx={{ mt: "15px" }}>
+              {job.company.name}
+              <InlineIcon icon={glowingStar} className={classes.companyStar} />
+            </Typography>
+          ) : (
+            <Typography variant="body2" sx={{ mt: "15px" }}>
+              {job.company.name}
+            </Typography>
+          )}
           <Typography variant="h6" sx={{ mt: "10px" }}>
             {job.title}
           </Typography>
@@ -60,7 +74,7 @@ function JobPostCard({ job, className, height, avatarWidth }) {
             {job.location}
           </Typography>
         </Grid>
-        <Grid item>
+        <Grid item xs={3}>
           <Typography
             variant="h6"
             sx={{
