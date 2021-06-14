@@ -2,7 +2,7 @@ import faker from "faker";
 import mock from "src/utils/mock";
 import { set, sub } from "date-fns";
 import { orderBy } from "lodash";
-import { getImgAvatar } from "src/utils/getImages";
+import { getCompanyAvatar } from "src/utils/getImages";
 
 // -------------------------------------------
 
@@ -13,7 +13,7 @@ let jobs = [
     company: {
       id: faker.random.uuid(),
       name: "BitPay",
-      avatar: getImgAvatar("company_avatar.png"),
+      avatar: getCompanyAvatar("company_avatar.jpg"),
     },
     createdAt: set(new Date(), { hours: 10, minutes: 20 }),
     location: "全国范围",
@@ -24,7 +24,7 @@ let jobs = [
     company: {
       id: faker.random.uuid(),
       name: "微软苏州",
-      avatar: getImgAvatar("company_avatar_2.png"),
+      avatar: getCompanyAvatar("company_avatar_2.jpg"),
     },
     createdAt: set(new Date(), { hours: 10, minutes: 30 }),
     location: "北京及周边",
