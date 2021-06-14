@@ -5,7 +5,7 @@ import Page from "src/components/Page";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import JobPostCard from "./JobPostCard";
-import { getJobPosts } from "../../../redux/slices/jobs";
+import { getJobPosts } from "src/redux/slices/jobs";
 
 //----------------------------------------------------------
 
@@ -46,7 +46,7 @@ function JobPostsView() {
               <JobPostCard
                 job={item}
                 className={clsx(classes.jobPostCard)}
-                height={100}
+                height={120}
                 avatarWidth={50}
               />
             </Grid>
