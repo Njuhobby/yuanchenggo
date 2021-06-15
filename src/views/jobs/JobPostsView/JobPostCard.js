@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import React from "react";
 import PropTypes from "prop-types";
-import { alpha, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { Card, Avatar, Grid, Typography, Box } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import { format } from "date-fns";
+import { format, differenceInDays } from "date-fns";
 import { InlineIcon } from "@iconify/react";
 import glowingStar from "@iconify-icons/emojione/glowing-star";
 
@@ -87,6 +87,24 @@ function JobPostCard({ job, className, height, avatarWidth }) {
             {format(Date.parse(job.createdAt), "yyyy-MM")}
           </Typography>
         </Grid>
+        {differenceInDays(new Date(), Date.parse(job.createdAt)) <= 3 && (
+          <Grid item xs={2}>
+            <Box
+              sx={{
+                position: "absolute",
+                top: height / 2,
+                transform: "translate(0, -50%)",
+                bgcolor: theme.palette.warning.main,
+                textAlign: "center",
+                borderRadius: "3px",
+                padding: "6px 8px 3px 8px",
+                color: "#4d5154",
+              }}
+            >
+              <Typography variant="subtitle2">NEW</Typography>
+            </Box>
+          </Grid>
+        )}
         <Grid item>
           <Box
             className={classes.rightmostBar}
