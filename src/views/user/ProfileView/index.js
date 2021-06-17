@@ -86,6 +86,7 @@ function ProfileView() {
   const PROFILE_TABS = [
     {
       value: "profile",
+      name: "主页",
       icon: <Icon icon={roundAccountBox} width={20} height={20} />,
       component: (
         <Profile myProfile={myProfile} posts={posts} authUser={user} />
@@ -93,6 +94,7 @@ function ProfileView() {
     },
     {
       value: "followers",
+      name: "粉丝",
       icon: <Icon icon={heartFill} width={20} height={20} />,
       component: (
         <Follower followers={followers} onToggleFollow={handleToggleFollow} />
@@ -100,6 +102,7 @@ function ProfileView() {
     },
     {
       value: "friends",
+      name: "关注",
       icon: <Icon icon={peopleFill} width={20} height={20} />,
       component: (
         <Friend
@@ -111,6 +114,7 @@ function ProfileView() {
     },
     {
       value: "gallery",
+      name: "相册",
       icon: <Icon icon={roundPermMedia} width={20} height={20} />,
       component: <Gallery gallery={gallery} />,
     },
@@ -149,7 +153,7 @@ function ProfileView() {
                   key={tab.value}
                   value={tab.value}
                   icon={tab.icon}
-                  label={capitalCase(tab.value)}
+                  label={tab.name}
                 />
               ))}
             </Tabs>
