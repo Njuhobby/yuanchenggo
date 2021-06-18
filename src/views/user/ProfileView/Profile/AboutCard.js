@@ -42,14 +42,16 @@ AboutCard.propTypes = {
 
 function AboutCard({ profile, className }) {
   const classes = useStyles();
-  const { quote, country, email, role, company, school } = profile;
+  const { quote, country, email, position, company, school } = profile;
 
   return (
     <Card className={clsx(classes.root, className)}>
       <CardHeader title="简介" />
 
       <CardContent>
-        <Typography variant="body2">{quote}</Typography>
+        <Typography variant="body2" color="text.secondary">
+          {quote}
+        </Typography>
 
         <div className={classes.line}>
           <Icon icon={pinFill} className={classes.icon} />
@@ -74,7 +76,7 @@ function AboutCard({ profile, className }) {
             是一名 &nbsp;
           </Typography>
           <Typography variant="subtitle2" color="text.primary">
-            {role}
+            {position}
           </Typography>
         </div>
 

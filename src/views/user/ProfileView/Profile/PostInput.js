@@ -1,35 +1,35 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
-import { Icon } from '@iconify/react';
-import attach2Fill from '@iconify-icons/eva/attach-2-fill';
-import roundAddPhotoAlternate from '@iconify-icons/ic/round-add-photo-alternate';
-import { makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React, { useRef } from "react";
+import { Icon } from "@iconify/react";
+import attach2Fill from "@iconify-icons/eva/attach-2-fill";
+import roundAddPhotoAlternate from "@iconify-icons/ic/round-add-photo-alternate";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
   Card,
   Button,
   TextField,
   IconButton,
-  CardContent
-} from '@material-ui/core';
+  CardContent,
+} from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   textarea: {
-    '& fieldset': {
+    "& fieldset": {
       borderWidth: `1px !important`,
-      borderColor: `${theme.palette.grey[500_32]} !important`
-    }
-  }
+      borderColor: `${theme.palette.grey[500_32]} !important`,
+    },
+  },
 }));
 
 // ----------------------------------------------------------------------
 
 PostInput.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function PostInput({ className }) {
@@ -47,19 +47,19 @@ function PostInput({ className }) {
           multiline
           fullWidth
           rows={4}
-          placeholder="Share what you are thinking here..."
+          placeholder="发布你的下一个帖子...."
           className={classes.textarea}
         />
 
         <Box
           sx={{
             mt: 3,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between'
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          <Box sx={{ display: 'flex' }}>
+          <Box sx={{ display: "flex" }}>
             <IconButton size="small" onClick={handleAttach} sx={{ mr: 1 }}>
               <Icon icon={roundAddPhotoAlternate} width={24} height={24} />
             </IconButton>
@@ -67,10 +67,10 @@ function PostInput({ className }) {
               <Icon icon={attach2Fill} width={24} height={24} />
             </IconButton>
           </Box>
-          <Button variant="contained">Post</Button>
+          <Button variant="contained">发布</Button>
         </Box>
       </CardContent>
-      <input ref={fileInputRef} type="file" style={{ display: 'none' }} />
+      <input ref={fileInputRef} type="file" style={{ display: "none" }} />
     </Card>
   );
 }

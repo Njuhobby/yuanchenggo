@@ -12,6 +12,9 @@ export const getImgFeed = (width, index) =>
 export const getImgProduct = (width, index) =>
   `${BASE_IMG}w_${width}/v1611420989/upload_minimal/products/shose_${index}.jpg`;
 
+export const getProfileCover = (width, index) =>
+  `/static/images/profileCovers/profile_cover_${index}_${width}.jpg`;
+
 export const getImgAvatar = (index) =>
   `/static/images/avatars/avatar_${index}.jpg`;
 
