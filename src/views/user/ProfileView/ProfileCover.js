@@ -63,17 +63,6 @@ function ProfileCover({ myProfile, authUser, className }) {
             height: { xs: 80, md: 128 },
           }}
         />
-        <Box
-          sx={{
-            ml: { md: 3 },
-            mt: { xs: 1, md: 0 },
-            color: "common.white",
-            textAlign: { xs: "center", md: "left" },
-          }}
-        >
-          <Typography variant="h4">{displayName}</Typography>
-          <Typography sx={{ opacity: 0.72 }}>{position}</Typography>
-        </Box>
       </div>
       <LazySize
         alt="profile cover"

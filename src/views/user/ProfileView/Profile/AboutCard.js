@@ -40,15 +40,17 @@ AboutCard.propTypes = {
   className: PropTypes.string,
 };
 
-function AboutCard({ profile, className }) {
+function AboutCard({ profile, authUser, className }) {
   const classes = useStyles();
   const { quote, country, email, position, company, school } = profile;
 
   return (
     <Card className={clsx(classes.root, className)}>
-      <CardHeader title="简介" />
-
       <CardContent>
+        <Typography variant="h6" sx={{ mb: 2 }}>
+          {authUser.displayName}
+        </Typography>
+
         <Typography variant="body2" color="text.secondary">
           {quote}
         </Typography>

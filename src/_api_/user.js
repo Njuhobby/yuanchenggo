@@ -234,9 +234,8 @@ mock.onGet("/api/user/account/notifications-settings").reply(() => {
 // ----------------------------------------------------------------------
 
 mock.onGet("/api/user/posts").reply(() => {
-  const posts = [...Array(3)].map((post, index) => {
-    const setIndex = index + 1;
-    return {
+  const posts = [
+    {
       id: faker.random.uuid(),
       author: {
         id: createId(1),
@@ -245,41 +244,136 @@ mock.onGet("/api/user/posts").reply(() => {
       },
       isLiked: true,
       createdAt: faker.date.past(),
-      media: {
-        small: getImgFeed(720, setIndex),
-        medium: getImgFeed(960, setIndex),
-      },
-      message: faker.lorem.sentence(),
+      location: "苏州昆山",
+      media: "/static/images/posts/coffee_sf.jpg",
+      message:
+        "刚刚在法国接受了一个月高温洗礼的我，回国后第一件事就是“找地方避暑”，约上闺蜜溜到安顺待了四日。\n" +
+        "安顺,就是著名的黄果树瀑布所在地，距离贵阳坐动车只需要半小时。这里的气候以凉爽、湿润、清新、太阳辐射低和舒适期长，适宜居住、避暑和旅游为主要特点，全年舒适期长达9个月，夏季7月平均气温只有21℃，且多云多雨，紫外线也不强，是极佳的避暑度假胜地，获评“中国最佳避暑旅游城市”。可能很多人对这里了解不多，其实安顺除了黄果树瀑布还有很多人少舒适的景点可以去，先po一段vlog预告，还有我镜头里捕捉的山山水水。",
       personLikes: [...Array(50)].map((person, index) => {
         return {
           name: faker.name.findName(),
           avatarUrl: getImgAvatar(index + 2),
         };
       }),
-      comments: (setIndex === 2 && []) || [
+      comments: [
         {
           id: faker.random.uuid(),
           author: {
             id: createId(2),
             avatarUrl: getImgAvatar(sample([2, 3, 4, 5, 6])),
-            name: faker.name.findName(),
+            name: "杨旭游记",
           },
           createdAt: faker.date.past(),
-          message: faker.lorem.sentence(),
+          message: "为这种生活方式点赞！下次再来SF请一定来找我",
         },
         {
           id: faker.random.uuid(),
           author: {
             id: createId(3),
             avatarUrl: getImgAvatar(sample([7, 8, 9, 10, 11])),
-            name: faker.name.findName(),
+            name: "Craig Tomas",
           },
           createdAt: faker.date.past(),
-          message: faker.lorem.sentence(),
+          message:
+            "very cool article man! hope we can talk to each other in person someday in the future!",
         },
       ],
-    };
-  });
+    },
+    {
+      id: faker.random.uuid(),
+      author: {
+        id: createId(1),
+        avatarUrl: getImgAvatar(1),
+        name: "Caitlyn Kerluke",
+      },
+      isLiked: true,
+      createdAt: faker.date.past(),
+      location: "杭州手语咖啡",
+      media: "/static/images/posts/lv.jpg",
+      message:
+        "来新疆20日有余，捡起了久违的青旅住宿，但大部分的时间还是自己一个人在路上。有在三个国家相邻的边境线上自驾遇到过塔吉族的姑娘搭车；也有被军哥哥请到军队去检查；有在沙漠里陷车；也有顶着正午的大太阳在路边换胎。逛过景区也热衷于寻找不要门票的野景点，但这些都不是我这篇游记想主要写的。\n" +
+        "\n" +
+        "情绪这个东西，有点道不清，它好像一种很柔软又飘忽不定的东西，经常因为自然界的风花雪月或人世间的阴晴冷暖，剧烈波动着，蛛丝般震颤飘荡，无所寻迹……在路上的这么多天，情绪这个朋友可是变着花样的来看我。\n" +
+        "\n" +
+        "有看到了惊艳的场景，忍不住肆意的奔跑；\n" +
+        "有眼望八方，感到四处无助；\n" +
+        "有在车上开着开着就突然的泪流；\n" +
+        "有突然的很想回家也有突然的很想TA…",
+      personLikes: [...Array(50)].map((person, index) => {
+        return {
+          name: faker.name.findName(),
+          avatarUrl: getImgAvatar(index + 2),
+        };
+      }),
+      comments: [
+        {
+          id: faker.random.uuid(),
+          author: {
+            id: createId(2),
+            avatarUrl: getImgAvatar(sample([2, 3, 4, 5, 6])),
+            name: "朱亚伟",
+          },
+          createdAt: faker.date.past(),
+          message: "新疆天山南北，纵马奔驰，何其快哉",
+        },
+        {
+          id: faker.random.uuid(),
+          author: {
+            id: createId(3),
+            avatarUrl: getImgAvatar(sample([7, 8, 9, 10, 11])),
+            name: "彭建霖",
+          },
+          createdAt: faker.date.past(),
+          message: "新疆远程工作安全吗，wifi怎么样",
+        },
+      ],
+    },
+    {
+      id: faker.random.uuid(),
+      author: {
+        id: createId(1),
+        avatarUrl: getImgAvatar(1),
+        name: "Caitlyn Kerluke",
+      },
+      isLiked: true,
+      createdAt: faker.date.past(),
+      location: "长沙IFS",
+      media: "/static/images/posts/xinjiang.jpeg",
+      message:
+        "我想，你也许或多或少会跟我一样，在旅途中也会和某种情绪不期而遇，这在我看来反倒是一件特别珍贵的经历，毕竟在职场或日常里，生活这个老师已经把人弄的越发的麻木。\n" +
+        "\n" +
+        "我可不希望自己成为那种看似波澜不惊，实则已经对生活失去了感知，希望自己一直都能做个哭笑不打折的人。",
+      personLikes: [...Array(50)].map((person, index) => {
+        return {
+          name: faker.name.findName(),
+          avatarUrl: getImgAvatar(index + 2),
+        };
+      }),
+      comments: [
+        {
+          id: faker.random.uuid(),
+          author: {
+            id: createId(2),
+            avatarUrl: getImgAvatar(sample([2, 3, 4, 5, 6])),
+            name: "远程鸭亲友会",
+          },
+          createdAt: faker.date.past(),
+          message: "为这种生活方式点赞！下次一起组织一波",
+        },
+        {
+          id: faker.random.uuid(),
+          author: {
+            id: createId(3),
+            avatarUrl: getImgAvatar(sample([7, 8, 9, 10, 11])),
+            name: "OHO2",
+          },
+          createdAt: faker.date.past(),
+          message:
+            "very cool article man! hope we can talk to each other in person someday in the future!",
+        },
+      ],
+    },
+  ];
 
   return [200, { posts }];
 });

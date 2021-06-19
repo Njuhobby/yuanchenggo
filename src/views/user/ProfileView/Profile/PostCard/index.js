@@ -1,16 +1,17 @@
-import clsx from 'clsx';
-import Comments from './Comments';
-import PropTypes from 'prop-types';
-import ActionBar from './ActionBar';
-import { Icon } from '@iconify/react';
-import CommentInput from './CommentInput';
-import { fDate } from 'src/utils/formatTime';
-import LazySize from 'src/components/LazySize';
-import MyAvatar from 'src/components/MyAvatar';
-import React, { useState, useRef } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import moreVerticalFill from '@iconify-icons/eva/more-vertical-fill';
-import { makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import Comments from "./Comments";
+import PropTypes from "prop-types";
+import ActionBar from "./ActionBar";
+import { Icon, InlineIcon } from "@iconify/react";
+import CommentInput from "./CommentInput";
+import { fDate } from "src/utils/formatTime";
+import LazySize from "src/components/LazySize";
+import MyAvatar from "src/components/MyAvatar";
+import React, { useState, useRef } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import moreVerticalFill from "@iconify-icons/eva/more-vertical-fill";
+import roundPushpin from "@iconify-icons/noto/round-pushpin";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
   Link,
@@ -18,15 +19,20 @@ import {
   Typography,
   CardHeader,
   IconButton,
-  CardContent
-} from '@material-ui/core';
+  CardContent,
+} from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginBottom: theme.spacing(3)
-  }
+    marginBottom: theme.spacing(3),
+  },
+  locationIcon: {
+    fontSize: "1rem",
+    position: "relative",
+    top: 2,
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -34,16 +40,16 @@ const useStyles = makeStyles((theme) => ({
 PostCard.propTypes = {
   post: PropTypes.object,
   authUser: PropTypes.object,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
-function PostCard({ post, authUser, className }) {
+function PostCard({ post, className }) {
   const classes = useStyles();
   const commentInputRef = useRef(null);
   const fileInputRef = useRef(null);
   const [isLiked, setLiked] = useState(post.isLiked);
   const [likes, setLikes] = useState(post.personLikes.length);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const hasComments = post.comments.length > 0;
 
   const handleLike = () => {
@@ -80,15 +86,16 @@ function PostCard({ post, authUser, className }) {
             color="text.primary"
             component={RouterLink}
           >
-            {authUser.displayName}
+            <InlineIcon icon={roundPushpin} className={classes.locationIcon} />
+            {post.location}
           </Link>
         }
         subheader={
           <Typography
             variant="caption"
             sx={{
-              display: 'block',
-              color: 'text.secondary'
+              display: "block",
+              color: "text.secondary",
             }}
           >
             {fDate(post.createdAt)}
@@ -106,20 +113,19 @@ function PostCard({ post, authUser, className }) {
         <Box
           sx={{
             mt: 3,
-            position: 'relative',
-            pt: 'calc(100% / 16 * 9)'
+            position: "relative",
+            pt: "calc(100% / 16 * 9)",
           }}
         >
           <LazySize
             alt="post media"
-            src={post.media.small}
-            size={`${post.media.small} 600w, ${post.media.medium} 960w`}
+            src={post.media}
             sx={{
               top: 0,
-              width: '100%',
-              height: '100%',
+              width: "100%",
+              height: "100%",
               borderRadius: 1,
-              position: 'absolute'
+              position: "absolute",
             }}
           />
         </Box>
