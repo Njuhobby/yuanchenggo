@@ -2,6 +2,7 @@ import clsx from "clsx";
 import Comments from "./Comments";
 import PropTypes from "prop-types";
 import ActionBar from "./ActionBar";
+import { map } from "lodash";
 import { Icon, InlineIcon } from "@iconify/react";
 import CommentInput from "./CommentInput";
 import { fDate } from "src/utils/formatTime";
@@ -74,6 +75,17 @@ function PostCard({ post, className }) {
     commentInputRef.current.focus();
   };
 
+  const paragraphs = [];
+  let startIndex = 0;
+  let foundIndex = -1;
+  while ((foundIndex = post.message.indexOf("\n", startIndex)) >= 0) {
+    paragraphs.push(post.message.substring(startIndex, foundIndex));
+    startIndex = foundIndex + 1;
+  }
+  if (startIndex < post.message.length) {
+    paragraphs.push(post.message.substring(startIndex));
+  }
+
   return (
     <Card className={clsx(classes.root, className)}>
       <CardHeader
@@ -109,7 +121,13 @@ function PostCard({ post, className }) {
       />
 
       <CardContent>
-        <Typography variant="body1">{post.message}</Typography>
+        {map(paragraphs, function (paragraph, index) {
+          return (
+            <Typography key={`paragraph_${index}`} variant="body1">
+              {paragraph}
+            </Typography>
+          );
+        })}
         <Box
           sx={{
             mt: 3,
