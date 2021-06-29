@@ -9,6 +9,7 @@ import { Icon, InlineIcon } from "@iconify/react";
 import glowingStar from "@iconify-icons/emojione/glowing-star";
 import heartOutlined from "@iconify-icons/ant-design/heart-outlined";
 import heartFilled from "@iconify-icons/ant-design/heart-filled";
+import { MIconButton } from "src/theme";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,13 +21,10 @@ const useStyles = makeStyles((theme) => ({
     transform: "translate(-50%, -50%)",
     border: "solid 1px black",
   },
-  heart: {
+  heartButton: {
     position: "absolute",
-    fontSize: "2em",
   },
   filledHeart: {
-    position: "absolute",
-    fontSize: "2em",
     color: theme.palette.error.main,
   },
   rightmostBar: {
@@ -90,19 +88,19 @@ function JobPostCard({ job, className, height, avatarWidth }) {
             </Typography>
           </Grid>
           <Grid item xs={2}>
-            {job.saved ? (
-              <Icon
-                className={clsx(classes.filledHeart)}
-                style={{ top: height / 2, transform: "translate(0, -50%)" }}
-                icon={heartFilled}
-              />
-            ) : (
-              <Icon
-                className={clsx(classes.heart)}
-                style={{ top: height / 2, transform: "translate(0, -50%)" }}
-                icon={heartOutlined}
-              />
-            )}
+            <MIconButton
+              sx={{ top: height / 2, transform: "translate(0, -50%)" }}
+              color={job.saved ? "error" : "default"}
+            >
+              {job.saved ? (
+                <Icon
+                  className={clsx(classes.filledHeart)}
+                  icon={heartFilled}
+                />
+              ) : (
+                <Icon icon={heartOutlined} />
+              )}
+            </MIconButton>
           </Grid>
           <Grid item xs={2}>
             <Typography
