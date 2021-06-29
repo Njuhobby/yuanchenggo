@@ -66,11 +66,13 @@ function AccountView() {
   const ACCOUNT_TABS = [
     {
       value: "general",
+      label: "通用",
       icon: <Icon icon={roundAccountBox} width={20} height={20} />,
       component: <General />,
     },
     {
       value: "billing",
+      label: "账号",
       icon: <Icon icon={roundReceipt} width={20} height={20} />,
       component: (
         <Billing cards={cards} addressBook={addressBook} invoices={invoices} />
@@ -78,16 +80,19 @@ function AccountView() {
     },
     {
       value: "notifications",
+      label: "通知",
       icon: <Icon icon={bellFill} width={20} height={20} />,
       component: <Notifications notifications={notifications} />,
     },
     {
       value: "social_links",
+      label: "社交账号",
       icon: <Icon icon={shareFill} width={20} height={20} />,
       component: <SocialLinks myProfile={myProfile} />,
     },
     {
       value: "change_password",
+      label: "修改密码",
       icon: <Icon icon={roundVpnKey} width={20} height={20} />,
       component: <ChangePassword />,
     },
@@ -120,7 +125,7 @@ function AccountView() {
             <Tab
               disableRipple
               key={tab.value}
-              label={capitalCase(tab.value)}
+              label={tab.label}
               icon={tab.icon}
               value={tab.value}
             />

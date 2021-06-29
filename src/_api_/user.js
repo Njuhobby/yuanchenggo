@@ -7,6 +7,7 @@ import {
   getImgAvatar,
   getProfileCover,
 } from "src/utils/getImages";
+import _ from "lodash";
 
 // ----------------------------------------------------------------------
 
@@ -373,5 +374,6 @@ mock.onGet("/api/user/posts").reply(() => {
     },
   ];
 
-  return [200, { posts }];
+  const orderedPosts = _.orderBy(posts, ["createdAt"], ["desc"]);
+  return [200, { posts: orderedPosts }];
 });

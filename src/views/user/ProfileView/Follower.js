@@ -1,23 +1,23 @@
-import clsx from 'clsx';
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import pinFill from '@iconify-icons/eva/pin-fill';
-import checkmarkFill from '@iconify-icons/eva/checkmark-fill';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Grid, Card, Button, Avatar, Typography } from '@material-ui/core';
+import clsx from "clsx";
+import React from "react";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import pinFill from "@iconify-icons/eva/pin-fill";
+import checkmarkFill from "@iconify-icons/eva/checkmark-fill";
+import { makeStyles } from "@material-ui/core/styles";
+import { Box, Grid, Card, Button, Avatar, Typography } from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(5),
   },
   card: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(3)
-  }
+    display: "flex",
+    alignItems: "center",
+    padding: theme.spacing(3),
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -33,13 +33,13 @@ function FollowerCard({ follower, onToggle }) {
         <Typography variant="subtitle2" noWrap>
           {name}
         </Typography>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
           <Box
             component={Icon}
             icon={pinFill}
             sx={{ width: 16, height: 16, mr: 0.5, flexShrink: 0 }}
           />
-          <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
+          <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
             {country}
           </Typography>
         </Box>
@@ -47,11 +47,11 @@ function FollowerCard({ follower, onToggle }) {
       <Button
         size="small"
         onClick={onToggle}
-        variant={isFollowed ? 'text' : 'outlined'}
-        color={isFollowed ? 'primary' : 'inherit'}
+        variant={isFollowed ? "text" : "outlined"}
+        color={isFollowed ? "primary" : "inherit"}
         startIcon={isFollowed && <Icon icon={checkmarkFill} />}
       >
-        {isFollowed ? 'Followed' : 'Follow'}
+        {isFollowed ? "已关注" : "关注"}
       </Button>
     </Card>
   );
@@ -60,7 +60,7 @@ function FollowerCard({ follower, onToggle }) {
 FollowerCards.propTypes = {
   followers: PropTypes.array.isRequired,
   onToggleFollow: PropTypes.func,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function FollowerCards({ followers, onToggleFollow, className }) {
@@ -68,10 +68,6 @@ function FollowerCards({ followers, onToggleFollow, className }) {
 
   return (
     <div className={clsx(classes.root, className)}>
-      <Typography variant="h4" sx={{ mb: 3 }}>
-        Followers
-      </Typography>
-
       <Grid container spacing={3}>
         {followers.map((follower) => (
           <Grid key={follower.id} item xs={12} md={4}>

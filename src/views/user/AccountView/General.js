@@ -49,11 +49,9 @@ function General({ className }) {
       email: user.email,
       photoURL: user.photoURL,
       phoneNumber: user.phoneNumber,
-      country: user.country,
       address: user.address,
-      state: user.state,
-      city: user.city,
-      zipCode: user.zipCode,
+      position: user.position,
+      company: user.company,
       about: user.about,
       isPublic: user.isPublic,
     },
@@ -149,53 +147,24 @@ function General({ className }) {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="地址"
+                        label="常驻地"
                         {...getFieldProps("address")}
                       />
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
                       <TextField
-                        select
                         fullWidth
-                        label="国家"
-                        placeholder="国家"
-                        {...getFieldProps("country")}
-                        SelectProps={{ native: true }}
-                        error={Boolean(touched.country && errors.country)}
-                        helperText={touched.country && errors.country}
-                        className={classes.margin}
-                      >
-                        <option value="" />
-                        {countries.map((option) => (
-                          <option key={option.code} value={option.label}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </TextField>
-                    </Grid>
-
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="省/自治区"
-                        {...getFieldProps("state")}
+                        label="工作职位"
+                        {...getFieldProps("position")}
                       />
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="市"
-                        {...getFieldProps("city")}
-                      />
-                    </Grid>
-
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="邮政编码"
-                        {...getFieldProps("zipCode")}
+                        label="当前公司"
+                        {...getFieldProps("company")}
                       />
                     </Grid>
 
