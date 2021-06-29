@@ -1,9 +1,8 @@
 import clsx from "clsx";
 import React from "react";
 import Search from "./Search";
-import Account from "./Account";
+import Logout from "./Logout";
 import PropTypes from "prop-types";
-import Languages from "./Languages";
 import { Icon } from "@iconify/react";
 import Notifications from "./Notifications";
 import Settings from "src/layouts/Common/Settings";
@@ -87,7 +86,7 @@ function TopBar({ onOpenNav, className }) {
         >
           <Notifications />
           <Settings />
-          <Account />
+          <Logout />
         </Box>
       </Toolbar>
     </AppBar>
