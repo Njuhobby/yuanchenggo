@@ -2,7 +2,6 @@ import clsx from "clsx";
 import Comments from "./Comments";
 import PropTypes from "prop-types";
 import ActionBar from "./ActionBar";
-import { map } from "lodash";
 import { Icon, InlineIcon } from "@iconify/react";
 import CommentInput from "./CommentInput";
 import { fDate } from "src/utils/formatTime";
@@ -13,6 +12,7 @@ import { Link as RouterLink } from "react-router-dom";
 import moreVerticalFill from "@iconify-icons/eva/more-vertical-fill";
 import roundPushpin from "@iconify-icons/noto/round-pushpin";
 import { makeStyles } from "@material-ui/core/styles";
+import parse, { domToReact } from "html-react-parser";
 import {
   Box,
   Link,
@@ -75,16 +75,45 @@ function PostCard({ post, className }) {
     commentInputRef.current.focus();
   };
 
-  const paragraphs = [];
-  let startIndex = 0;
-  let foundIndex = -1;
-  while ((foundIndex = post.message.indexOf("\n", startIndex)) >= 0) {
-    paragraphs.push(post.message.substring(startIndex, foundIndex));
-    startIndex = foundIndex + 1;
-  }
-  if (startIndex < post.message.length) {
-    paragraphs.push(post.message.substring(startIndex));
-  }
+  const parsePostOptions = {
+    replace: ({ name, attribs, children }) => {
+      if (!attribs) {
+        return;
+      }
+
+      if (name === "p") {
+        return (
+          <Typography variant="body1">
+            {domToReact(children, parsePostOptions)}
+          </Typography>
+        );
+      }
+
+      if (name === "img") {
+        return (
+          <Box
+            sx={{
+              mt: 3,
+              position: "relative",
+              pt: "calc(100% / 16 * 9)",
+            }}
+          >
+            <LazySize
+              alt="post media"
+              src={attribs.src}
+              sx={{
+                top: 0,
+                width: "100%",
+                height: "100%",
+                borderRadius: 1,
+                position: "absolute",
+              }}
+            />
+          </Box>
+        );
+      }
+    },
+  };
 
   return (
     <Card className={clsx(classes.root, className)}>
@@ -121,32 +150,7 @@ function PostCard({ post, className }) {
       />
 
       <CardContent>
-        {map(paragraphs, function (paragraph, index) {
-          return (
-            <Typography key={`paragraph_${index}`} variant="body1">
-              {paragraph}
-            </Typography>
-          );
-        })}
-        <Box
-          sx={{
-            mt: 3,
-            position: "relative",
-            pt: "calc(100% / 16 * 9)",
-          }}
-        >
-          <LazySize
-            alt="post media"
-            src={post.media}
-            sx={{
-              top: 0,
-              width: "100%",
-              height: "100%",
-              borderRadius: 1,
-              position: "absolute",
-            }}
-          />
-        </Box>
+        {parse(post.message, parsePostOptions)}
 
         <ActionBar
           post={post}

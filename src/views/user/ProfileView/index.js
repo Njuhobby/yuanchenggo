@@ -6,7 +6,6 @@ import { Icon } from "@iconify/react";
 import Page from "src/components/Page";
 import useAuth from "src/hooks/useAuth";
 import ProfileCover from "./ProfileCover";
-import { capitalCase } from "change-case";
 import { PATH_APP } from "src/routes/paths";
 import React, { useEffect, useState } from "react";
 import { HeaderDashboard } from "src/layouts/Common";
