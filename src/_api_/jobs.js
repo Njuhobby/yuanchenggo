@@ -15,6 +15,7 @@ let jobs = [
       avatar: getCompanyAvatar("company_avatar_1.jpg"),
       isStar: true,
     },
+    saved: true,
     createdAt: new Date("2021-6-28 18:00:00"),
     location: "南京及周边",
   },
