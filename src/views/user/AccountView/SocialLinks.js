@@ -1,49 +1,50 @@
-import clsx from 'clsx';
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import { useSnackbar } from 'notistack';
-import fakeRequest from 'src/utils/fakeRequest';
-import { useFormik, Form, FormikProvider } from 'formik';
-import twitterFill from '@iconify-icons/eva/twitter-fill';
-import linkedinFill from '@iconify-icons/eva/linkedin-fill';
-import facebookFill from '@iconify-icons/eva/facebook-fill';
-import instagramFilled from '@iconify-icons/ant-design/instagram-filled';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Card, TextField, InputAdornment } from '@material-ui/core';
-import { LoadingButton } from '@material-ui/lab';
+import clsx from "clsx";
+import React from "react";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import { useSnackbar } from "notistack";
+import fakeRequest from "src/utils/fakeRequest";
+import { useFormik, Form, FormikProvider } from "formik";
+import doubanFill from "@iconify-icons/ri/douban-fill";
+import zhihuFill from "@iconify-icons/ri/zhihu-fill";
+import linkedinFill from "@iconify-icons/eva/linkedin-fill";
+import weiboLine from "@iconify-icons/ri/weibo-line";
+import { makeStyles } from "@material-ui/core/styles";
+import { Box, Card, TextField, InputAdornment } from "@material-ui/core";
+import { LoadingButton } from "@material-ui/lab";
 
 // ----------------------------------------------------------------------
 
 const SOCIAL_LINKS_OPTIONS = [
   {
-    value: 'facebookLink',
-    icon: <Icon icon={facebookFill} height={24} />
+    value: "linkedinLink",
+    icon: <Icon icon={linkedinFill} height={24} />,
   },
   {
-    value: 'instagramLink',
-    icon: <Icon icon={instagramFilled} height={24} />
+    value: "doubanLink",
+    icon: <Icon icon={doubanFill} height={24} />,
+  },
+
+  {
+    value: "weiboLink",
+    icon: <Icon icon={weiboLine} height={24} />,
   },
   {
-    value: 'linkedinLink',
-    icon: <Icon icon={linkedinFill} height={24} />
+    value: "zhihuLink",
+    icon: <Icon icon={zhihuFill} height={24} />,
   },
-  {
-    value: 'twitterLink',
-    icon: <Icon icon={twitterFill} height={24} />
-  }
 ];
 
 const useStyles = makeStyles((theme) => ({
   root: { padding: theme.spacing(3) },
-  margin: { marginBottom: theme.spacing(3) }
+  margin: { marginBottom: theme.spacing(3) },
 }));
 
 // ----------------------------------------------------------------------
 
 SocialLinks.propTypes = {
   myProfile: PropTypes.object,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function SocialLinks({ myProfile, className }) {
@@ -53,17 +54,17 @@ function SocialLinks({ myProfile, className }) {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      facebookLink: myProfile.facebookLink,
-      instagramLink: myProfile.instagramLink,
+      weiboLink: myProfile.weiboLink,
+      doubanLink: myProfile.doubanLink,
       linkedinLink: myProfile.linkedinLink,
-      twitterLink: myProfile.twitterLink
+      zhihuLink: myProfile.zhihuLink,
     },
     onSubmit: async (values, { setSubmitting }) => {
       await fakeRequest(500);
       setSubmitting(false);
       alert(JSON.stringify(values, null, 2));
-      enqueueSnackbar('Save success', { variant: 'success' });
-    }
+      enqueueSnackbar("保存修改成功", { variant: "success" });
+    },
   });
 
   const { handleSubmit, isSubmitting, getFieldProps } = formik;
@@ -80,19 +81,19 @@ function SocialLinks({ myProfile, className }) {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">{link.icon}</InputAdornment>
-                )
+                ),
               }}
               className={classes.margin}
             />
           ))}
 
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
             <LoadingButton
               type="submit"
               variant="contained"
               pending={isSubmitting}
             >
-              Save Changes
+              保存修改
             </LoadingButton>
           </Box>
         </Form>

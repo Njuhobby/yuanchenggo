@@ -121,6 +121,7 @@
     "@iconify-icons/eva": "^1.1.0",
     "@iconify-icons/ic": "^1.1.4",
     "@iconify-icons/noto": "^1.1.2",
+    "@iconify-icons/ri": "^1.1.0",
     "@iconify-icons/vscode-icons": "^1.1.4",
     "@iconify/react": "^1.1.4",
     "@types/autosuggest-highlight": "^3.1.1",

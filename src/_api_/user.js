@@ -31,10 +31,10 @@ mock.onGet("/api/user/profile").reply(() => {
     email: faker.internet.email(),
     company: faker.company.companyName(),
     school: faker.company.companyName(),
-    facebookLink: `https://www.facebook.com/caitlyn.kerluke`,
-    instagramLink: `https://www.instagram.com/caitlyn.kerluke`,
+    weiboLink: `https://www.facebook.com/caitlyn.kerluke`,
+    zhihuLink: `https://www.instagram.com/caitlyn.kerluke`,
     linkedinLink: `https://www.linkedin.com/in/caitlyn.kerluke`,
-    twitterLink: `https://www.twitter.com/caitlyn.kerluke`,
+    doubanLink: `https://www.twitter.com/caitlyn.kerluke`,
   };
 
   return [200, { profile }];

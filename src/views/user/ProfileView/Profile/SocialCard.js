@@ -2,10 +2,10 @@ import clsx from "clsx";
 import React from "react";
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
-import twitterFill from "@iconify-icons/eva/twitter-fill";
-import facebookFill from "@iconify-icons/eva/facebook-fill";
+import doubanFill from "@iconify-icons/ri/douban-fill";
+import zhihuFill from "@iconify-icons/ri/zhihu-fill";
 import linkedinFill from "@iconify-icons/eva/linkedin-fill";
-import instagramFilled from "@iconify-icons/ant-design/instagram-filled";
+import weiboLine from "@iconify-icons/ri/weibo-line";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link, Card, CardHeader, CardContent } from "@material-ui/core";
 
@@ -37,7 +37,7 @@ SocialCard.propTypes = {
 
 function SocialCard({ profile, className }) {
   const classes = useStyles();
-  const { facebookLink, instagramLink, linkedinLink, twitterLink } = profile;
+  const { doubanLink, zhihuLink, weiboLink, linkedinLink } = profile;
 
   const SOCIALS = [
     {
@@ -48,25 +48,19 @@ function SocialCard({ profile, className }) {
       href: linkedinLink,
     },
     {
-      name: "Twitter",
-      icon: (
-        <Icon icon={twitterFill} className={classes.icon} color="#1C9CEA" />
-      ),
-      href: twitterLink,
+      name: "Douban",
+      icon: <Icon icon={doubanFill} className={classes.icon} color="#00B51D" />,
+      href: doubanLink,
     },
     {
-      name: "Instagram",
-      icon: (
-        <Icon icon={instagramFilled} className={classes.icon} color="#D7336D" />
-      ),
-      href: instagramLink,
+      name: "Weibo",
+      icon: <Icon icon={weiboLine} className={classes.icon} color="#fa2f2f" />,
+      href: weiboLink,
     },
     {
-      name: "Facebook",
-      icon: (
-        <Icon icon={facebookFill} className={classes.icon} color="#1877F2" />
-      ),
-      href: facebookLink,
+      name: "Zhihu",
+      icon: <Icon icon={zhihuFill} className={classes.icon} color="#06f" />,
+      href: zhihuLink,
     },
   ];
 

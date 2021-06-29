@@ -1,17 +1,17 @@
-import clsx from 'clsx';
-import React from 'react';
-import { filter } from 'lodash';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import { Link as RouterLink } from 'react-router-dom';
-import searchFill from '@iconify-icons/eva/search-fill';
-import twitterFill from '@iconify-icons/eva/twitter-fill';
-import SearchNotFound from 'src/components/SearchNotFound';
-import linkedinFill from '@iconify-icons/eva/linkedin-fill';
-import facebookFill from '@iconify-icons/eva/facebook-fill';
-import moreVerticalFill from '@iconify-icons/eva/more-vertical-fill';
-import instagramFilled from '@iconify-icons/ant-design/instagram-filled';
-import { makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import React from "react";
+import { filter } from "lodash";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import { Link as RouterLink } from "react-router-dom";
+import searchFill from "@iconify-icons/eva/search-fill";
+import SearchNotFound from "src/components/SearchNotFound";
+import moreVerticalFill from "@iconify-icons/eva/more-vertical-fill";
+import doubanFill from "@iconify-icons/ri/douban-fill";
+import zhihuFill from "@iconify-icons/ri/zhihu-fill";
+import linkedinFill from "@iconify-icons/eva/linkedin-fill";
+import weiboLine from "@iconify-icons/ri/weibo-line";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
   Grid,
@@ -22,57 +22,57 @@ import {
   IconButton,
   Typography,
   OutlinedInput,
-  InputAdornment
-} from '@material-ui/core';
+  InputAdornment,
+} from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
 const SOCIALS = [
   {
-    name: 'Facebook',
-    icon: <Icon icon={facebookFill} width={20} height={20} color="#1877F2" />
+    name: "Linkedin",
+    icon: <Icon icon={linkedinFill} width={20} height={20} color="#006097" />,
   },
   {
-    name: 'Instagram',
-    icon: <Icon icon={instagramFilled} width={20} height={20} color="#D7336D" />
+    name: "Douban",
+    icon: <Icon icon={doubanFill} width={20} height={20} color="#00B51D" />,
   },
   {
-    name: 'Linkedin',
-    icon: <Icon icon={linkedinFill} width={20} height={20} color="#006097" />
+    name: "Weibo",
+    icon: <Icon icon={weiboLine} width={20} height={20} color="#fa2f2f" />,
   },
   {
-    name: 'Twitter',
-    icon: <Icon icon={twitterFill} width={20} height={20} color="#1C9CEA" />
-  }
+    name: "Zhihu",
+    icon: <Icon icon={zhihuFill} width={20} height={20} color="#06f" />,
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(5),
   },
   card: {
-    display: 'flex',
-    position: 'relative',
-    alignItems: 'center',
-    flexDirection: 'column',
-    padding: theme.spacing(5, 0)
+    display: "flex",
+    position: "relative",
+    alignItems: "center",
+    flexDirection: "column",
+    padding: theme.spacing(5, 0),
   },
   search: {
     width: 240,
     marginBottom: theme.spacing(5),
-    transition: theme.transitions.create(['box-shadow', 'width'], {
+    transition: theme.transitions.create(["box-shadow", "width"], {
       easing: theme.transitions.easing.easeInOut,
-      duration: theme.transitions.duration.shorter
+      duration: theme.transitions.duration.shorter,
     }),
-    '&.Mui-focused': {
+    "&.Mui-focused": {
       width: 320,
-      boxShadow: theme.shadows[25].z8
+      boxShadow: theme.shadows[25].z8,
     },
-    '& fieldset': {
+    "& fieldset": {
       borderWidth: `1px !important`,
-      borderColor: `${theme.palette.grey[500_32]} !important`
-    }
-  }
+      borderColor: `${theme.palette.grey[500_32]} !important`,
+    },
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -87,7 +87,7 @@ function applyFilter(array, query) {
 }
 
 FriendCards.propTypes = {
-  follower: PropTypes.object
+  follower: PropTypes.object,
 };
 
 function FriendCard({ follower }) {
@@ -109,10 +109,10 @@ function FriendCard({ follower }) {
       >
         {name}
       </Link>
-      <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+      <Typography variant="body2" sx={{ color: "text.secondary" }}>
         {role}
       </Typography>
-      <Box sx={{ display: 'flex', mt: 1 }}>
+      <Box sx={{ display: "flex", mt: 1 }}>
         {SOCIALS.map((social) => (
           <Tooltip key={social.name} title={social.name}>
             <IconButton>{social.icon}</IconButton>
@@ -123,7 +123,7 @@ function FriendCard({ follower }) {
         sx={{
           top: 8,
           right: 8,
-          position: 'absolute'
+          position: "absolute",
         }}
       >
         <Icon icon={moreVerticalFill} width={20} height={20} />
@@ -136,7 +136,7 @@ FriendCards.propTypes = {
   friends: PropTypes.array,
   findFriends: PropTypes.string,
   onFindFriends: PropTypes.func,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function FriendCards({ friends, findFriends, onFindFriends, className }) {
@@ -159,7 +159,7 @@ function FriendCards({ friends, findFriends, onFindFriends, className }) {
             <Box
               component={Icon}
               icon={searchFill}
-              sx={{ color: 'text.disabled' }}
+              sx={{ color: "text.disabled" }}
             />
           </InputAdornment>
         }

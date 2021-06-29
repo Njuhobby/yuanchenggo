@@ -136,7 +136,7 @@ function ProfileView() {
             position: "relative",
           }}
         >
-          <ProfileCover myProfile={myProfile} authUser={user} />
+          <ProfileCover myProfile={myProfile} />
 
           <div className={classes.tabBar}>
             <Tabs

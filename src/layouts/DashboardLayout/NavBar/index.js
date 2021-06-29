@@ -200,8 +200,8 @@ function NavBar({ isOpenNav, onCloseNav }) {
             Hi, {user.displayName}
           </Typography>
           <Typography variant="body2" sx={{ mb: 2, color: "grey.600" }}>
-            Need help?
-            <br /> Please check our docs
+            需要帮助吗?
+            <br /> 请移步我们的社区指南
           </Typography>
 
           <Button
@@ -210,7 +210,7 @@ function NavBar({ isOpenNav, onCloseNav }) {
             variant="contained"
             component={RouterLink}
           >
-            Documentation
+            远程狗指南
           </Button>
         </div>
       </Box>

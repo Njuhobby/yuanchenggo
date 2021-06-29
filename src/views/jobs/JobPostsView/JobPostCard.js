@@ -62,7 +62,7 @@ function JobPostCard({ job, className, height, avatarWidth }) {
         alt={job.company.name}
         src={job.company.avatar}
         className={clsx(classes.companyAvatar)}
-        sx={{ top: height / 2, width: avatarWidth }}
+        sx={{ top: height / 2, width: avatarWidth, height: avatarWidth }}
       />
       <Grid container sx={{ width: "100%" }}>
         <Grid item xs={8} sx={{ display: "flex" }}>

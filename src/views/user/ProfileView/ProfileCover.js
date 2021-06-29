@@ -3,8 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import LazySize from "src/components/LazySize";
 import MyAvatar from "src/components/MyAvatar";
-import { alpha, makeStyles } from "@material-ui/core/styles";
-import { Box, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 // ----------------------------------------------------------------------
 
@@ -45,10 +44,9 @@ ProfileCover.propTypes = {
   className: PropTypes.string,
 };
 
-function ProfileCover({ myProfile, authUser, className }) {
+function ProfileCover({ myProfile, className }) {
   const classes = useStyles();
-  const { position, cover } = myProfile;
-  const { displayName } = authUser;
+  const { cover } = myProfile;
 
   return (
     <div className={clsx(classes.root, className)}>
