@@ -18,6 +18,7 @@ let jobs = [
     saved: true,
     createdAt: new Date("2021-6-28 18:00:00"),
     location: "南京及周边",
+    type: "全职",
   },
   {
     id: faker.random.uuid(),
@@ -30,6 +31,7 @@ let jobs = [
     },
     createdAt: new Date("2021-6-28 18:10:00"),
     location: "北京及周边",
+    type: "兼职",
   },
   {
     id: faker.random.uuid(),
@@ -42,6 +44,7 @@ let jobs = [
     },
     createdAt: new Date("2021-6-4 18:00:00"),
     location: "全国范围",
+    type: "全职兼职皆可",
   },
   {
     id: faker.random.uuid(),
@@ -54,6 +57,7 @@ let jobs = [
     },
     createdAt: new Date("2021-4-1 18:00:00"),
     location: "江浙沪/安徽",
+    type: "兼职",
   },
   {
     id: faker.random.uuid(),
@@ -66,6 +70,7 @@ let jobs = [
     },
     createdAt: new Date("2021-6-4 18:00:00"),
     location: "全国范围",
+    type: "全职",
   },
   {
     id: faker.random.uuid(),
@@ -78,6 +83,7 @@ let jobs = [
     },
     createdAt: new Date("2021-6-10 18:00:00"),
     location: "全国范围",
+    type: "全职",
   },
   {
     id: faker.random.uuid(),
@@ -90,6 +96,7 @@ let jobs = [
     },
     createdAt: new Date("2021-3-1 18:00:00"),
     location: "北京及周边",
+    type: "兼职",
   },
 ];
 

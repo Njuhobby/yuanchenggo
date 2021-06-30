@@ -84,7 +84,7 @@ function JobPostCard({ job, className, height, avatarWidth }) {
               {job.title}
             </Typography>
             <Typography variant="body2" sx={{ mt: "10px" }}>
-              {job.location}
+              {job.location} / {job.type}
             </Typography>
           </Grid>
           <Grid item xs={2}>

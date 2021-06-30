@@ -12,7 +12,7 @@ import authJwtReducer from "./slices/authJwt";
 import settingsReducer from "./slices/settings";
 import calendarReducer from "./slices/calendar";
 import notificationsReducer from "./slices/notifications";
-import jobsReducer from "./slices/jobs";
+import jobReducer from "./slices/job";
 
 // ----------------------------------------------------------------------
 
@@ -47,7 +47,7 @@ const rootReducer = combineReducers({
   settings: settingsReducer,
   calendar: calendarReducer,
   notifications: notificationsReducer,
-  jobs: jobsReducer,
+  job: jobReducer,
   product: persistReducer(productPersistConfig, productReducer),
   authJwt: persistReducer(authPersistConfig, authJwtReducer),
 });

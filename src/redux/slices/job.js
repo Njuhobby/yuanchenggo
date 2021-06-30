@@ -5,10 +5,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   jobs: [],
+  job: {},
 };
 
 const slice = createSlice({
-  name: "jobs",
+  name: "job",
   initialState,
   reducers: {
     // START LOADING
@@ -24,8 +25,7 @@ const slice = createSlice({
 
     // GET JOB POSTS
     getJobPosts(state, action) {
-      const jobs = action.payload;
-      state.jobs = jobs;
+      state.jobs = action.payload;
     },
   },
 });

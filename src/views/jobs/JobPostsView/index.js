@@ -5,7 +5,7 @@ import Page from "src/components/Page";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import JobPostCard from "./JobPostCard";
-import { getJobPosts } from "src/redux/slices/jobs";
+import { getJobPosts } from "src/redux/slices/job";
 import _ from "lodash";
 import { isThisWeek, isThisMonth } from "date-fns";
 import { InlineIcon } from "@iconify/react";
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 function JobPostsView() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { jobs } = useSelector((state) => state.jobs);
+  const { jobs } = useSelector((state) => state.job);
   const jobsPostedThisWeek = [];
   const jobsPostedThisMonth = [];
   const jobsPostedEarlier = [];
