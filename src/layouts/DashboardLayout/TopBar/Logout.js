@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import useAuth from "src/hooks/useAuth";
 import { MIconButton } from "src/theme";
-import { alpha, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { useSnackbar } from "notistack";
 import useIsMountedRef from "src/hooks/useIsMountedRef";
 import { useHistory } from "react-router-dom";

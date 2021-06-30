@@ -2,7 +2,6 @@ import clsx from "clsx";
 import React from "react";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
-import { countries } from "./countries";
 import { useSnackbar } from "notistack";
 import useAuth from "src/hooks/useAuth";
 import { UploadAvatar } from "src/components/Upload";
@@ -73,15 +72,8 @@ function General({ className }) {
     },
   });
 
-  const {
-    values,
-    errors,
-    touched,
-    isSubmitting,
-    handleSubmit,
-    getFieldProps,
-    setFieldValue,
-  } = formik;
+  const { values, isSubmitting, handleSubmit, getFieldProps, setFieldValue } =
+    formik;
 
   return (
     <div className={clsx(classes.root, className)}>

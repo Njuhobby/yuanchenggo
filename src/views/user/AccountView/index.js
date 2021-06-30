@@ -3,7 +3,6 @@ import Billing from "./Billing";
 import { Icon } from "@iconify/react";
 import Page from "src/components/Page";
 import SocialLinks from "./SocialLinks";
-import { capitalCase } from "change-case";
 import Notifications from "./Notifications";
 import { PATH_APP } from "src/routes/paths";
 import ChangePassword from "./ChangePassword";
