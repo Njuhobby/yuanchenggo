@@ -6,4 +6,4 @@ import "./account";
 import "./calendar";
 import "./products";
 import "./notifications";
-import "./jobs";
+import "./job";

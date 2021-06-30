@@ -25,7 +25,14 @@ const slice = createSlice({
 
     // GET JOB POSTS
     getJobPosts(state, action) {
+      state.isLoading = false;
       state.jobs = action.payload;
+    },
+
+    // GET JOB POST
+    getJobPost(state, action) {
+      state.isLoading = false;
+      state.job = action.payload;
     },
   },
 });
@@ -42,6 +49,20 @@ export function getJobPosts() {
     try {
       const response = await axios.get("/api/jobs");
       dispatch(slice.actions.getJobPosts(response.data.jobs));
+    } catch (error) {
+      dispatch(slice.actions.hasError(error));
+    }
+  };
+}
+
+export function getJobPost(id) {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const response = await axios.get("/api/jobs/jobDetail/", {
+        params: { id },
+      });
+      dispatch(slice.actions.getJobPost(response.data.jobDetail));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }
