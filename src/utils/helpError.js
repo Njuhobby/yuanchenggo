@@ -3,31 +3,31 @@
 export const codes = {
   // Email
   emailAlreadyinUse: {
-    code: 'auth/email-already-in-use',
-    text: 'There already exists an account with the given email address.'
+    code: "auth/email-already-in-use",
+    text: "该电子邮箱已经被注册，请使用另外一个电邮地址",
   },
   invalidEmail: {
-    code: 'auth/invalid-email',
-    text: 'The email address is not valid.'
+    code: "auth/invalid-email",
+    text: "不合规的电子邮箱地址",
   },
   userDisabled: {
-    code: 'auth/user-disabled',
-    text: 'The user corresponding to the given credential has been disabled.'
+    code: "auth/user-disabled",
+    text: "该用户已经被封禁",
   },
   userNotFound: {
-    code: 'auth/user-not-found',
-    text: 'There is no user corresponding to the email address.'
+    code: "auth/user-not-found",
+    text: "找不到使用这个电子邮箱的用户",
   },
 
   // Password
   wrongPassword: {
-    code: 'auth/wrong-password',
-    text: 'Wrong password'
+    code: "auth/wrong-password",
+    text: "密码错误",
   },
   weakPassword: {
-    code: 'auth/weak-password',
-    text: 'Password should be at least 6 characters'
-  }
+    code: "auth/weak-password",
+    text: "密码至少需要6位字符或数字",
+  },
 };
 
 const {
@@ -36,7 +36,7 @@ const {
   userDisabled,
   userNotFound,
   wrongPassword,
-  weakPassword
+  weakPassword,
 } = codes;
 
 export function emailError(errors) {
@@ -50,7 +50,7 @@ export function emailError(errors) {
       (errors === emailAlreadyinUse.code && emailAlreadyinUse.text) ||
       (errors === invalidEmail.code && invalidEmail.text) ||
       (errors === userDisabled.code && userDisabled.text) ||
-      (errors === userNotFound.code && userNotFound.text)
+      (errors === userNotFound.code && userNotFound.text),
   };
 }
 
@@ -59,6 +59,6 @@ export function passwordError(errors) {
     error: errors === wrongPassword.code || errors === weakPassword.code,
     helperText:
       (errors === wrongPassword.code && wrongPassword.text) ||
-      (errors === weakPassword.code && weakPassword.text)
+      (errors === weakPassword.code && weakPassword.text),
   };
 }
