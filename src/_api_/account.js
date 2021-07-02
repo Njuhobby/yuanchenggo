@@ -12,7 +12,7 @@ const JWT_EXPIRES_IN = "5 days";
 const users = [
   {
     id: "8864c717-587d-472a-929a-8e5f298024da-0",
-    displayName: "蒋艺颢",
+    userName: "蒋艺颢",
     email: "yihao@test.com",
     password: "12345",
     photoURL: "/static/images/avatars/avatar_default.jpg",
@@ -63,7 +63,7 @@ mock.onPost("/api/account/register").reply(async (config) => {
   try {
     await fakeRequest(1000);
 
-    const { email, password, firstName, lastName } = JSON.parse(config.data);
+    const { email, password, userName } = JSON.parse(config.data);
     let user = users.find((_user) => _user.email === email);
 
     if (user) {
@@ -72,7 +72,7 @@ mock.onPost("/api/account/register").reply(async (config) => {
 
     user = {
       id: faker.random.uuid(),
-      displayName: firstName + " " + lastName,
+      userName,
       email,
       password,
       photoURL: null,

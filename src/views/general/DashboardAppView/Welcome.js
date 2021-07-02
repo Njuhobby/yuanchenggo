@@ -27,11 +27,11 @@ const useStyles = makeStyles((theme) => ({
 // ----------------------------------------------------------------------
 
 Welcome.propTypes = {
-  displayName: PropTypes.string,
+  userName: PropTypes.string,
   className: PropTypes.string,
 };
 
-function Welcome({ displayName, className, ...other }) {
+function Welcome({ userName, className, ...other }) {
   const classes = useStyles();
 
   return (
@@ -44,7 +44,7 @@ function Welcome({ displayName, className, ...other }) {
       >
         <Typography gutterBottom variant="h4" sx={{ color: "grey.800" }}>
           欢迎回来，
-          <br /> {!displayName ? "..." : displayName}!
+          <br /> {!userName ? "..." : userName}!
         </Typography>
 
         <Typography

@@ -38,13 +38,13 @@ function General({ className }) {
   const { user, updateProfile } = useAuth();
 
   const UpdateUserSchema = Yup.object().shape({
-    displayName: Yup.string().required("Name is required"),
+    userName: Yup.string().required("Name is required"),
   });
 
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      displayName: user.displayName,
+      userName: user.userName,
       email: user.email,
       photoURL: user.photoURL,
       phoneNumber: user.phoneNumber,
@@ -115,7 +115,7 @@ function General({ className }) {
                         disabled={user.email === "demo@minimals.cc"} // You can remove this
                         fullWidth
                         label="姓名"
-                        {...getFieldProps("displayName")}
+                        {...getFieldProps("userName")}
                       />
                     </Grid>
 

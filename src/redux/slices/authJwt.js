@@ -1,17 +1,17 @@
-import jwtDecode from 'jwt-decode';
-import axios from 'src/utils/axios';
-import { createSlice } from '@reduxjs/toolkit';
+import jwtDecode from "jwt-decode";
+import axios from "src/utils/axios";
+import { createSlice } from "@reduxjs/toolkit";
 
 // ----------------------------------------------------------------------
 
 const initialState = {
   isLoading: false,
   isAuthenticated: false,
-  user: {}
+  user: {},
 };
 
 const slice = createSlice({
-  name: 'authJwt',
+  name: "authJwt",
   initialState,
   reducers: {
     // START LOADING
@@ -42,8 +42,8 @@ const slice = createSlice({
     logoutSuccess(state) {
       state.isAuthenticated = false;
       state.user = null;
-    }
-  }
+    },
+  },
 });
 
 // Reducer
@@ -63,10 +63,10 @@ const isValidToken = (accessToken) => {
 
 const setSession = (accessToken) => {
   if (accessToken) {
-    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem("accessToken", accessToken);
     axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   } else {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem("accessToken");
     delete axios.defaults.headers.common.Authorization;
   }
 };
@@ -75,9 +75,9 @@ const setSession = (accessToken) => {
 
 export function login({ email, password }) {
   return async (dispatch) => {
-    const response = await axios.post('/api/account/login', {
+    const response = await axios.post("/api/account/login", {
       email,
-      password
+      password,
     });
     const { accessToken, user } = response.data;
     setSession(accessToken);
@@ -87,17 +87,16 @@ export function login({ email, password }) {
 
 // ----------------------------------------------------------------------
 
-export function register({ email, password, firstName, lastName }) {
+export function register({ email, password, userName }) {
   return async (dispatch) => {
-    const response = await axios.post('/api/account/register', {
+    const response = await axios.post("/api/account/register", {
       email,
       password,
-      firstName,
-      lastName
+      userName,
     });
     const { accessToken, user } = response.data;
 
-    window.localStorage.setItem('accessToken', accessToken);
+    window.localStorage.setItem("accessToken", accessToken);
     dispatch(slice.actions.registerSuccess({ user }));
   };
 }
@@ -118,23 +117,23 @@ export function getInitialize() {
     dispatch(slice.actions.startLoading());
 
     try {
-      const accessToken = window.localStorage.getItem('accessToken');
+      const accessToken = window.localStorage.getItem("accessToken");
 
       if (accessToken && isValidToken(accessToken)) {
         setSession(accessToken);
 
-        const response = await axios.get('/api/account/my-account');
+        const response = await axios.get("/api/account/my-account");
         dispatch(
           slice.actions.getInitialize({
             isAuthenticated: true,
-            user: response.data.user
+            user: response.data.user,
           })
         );
       } else {
         dispatch(
           slice.actions.getInitialize({
             isAuthenticated: false,
-            user: null
+            user: null,
           })
         );
       }
@@ -143,7 +142,7 @@ export function getInitialize() {
       dispatch(
         slice.actions.getInitialize({
           isAuthenticated: false,
-          user: null
+          user: null,
         })
       );
     }

@@ -1,15 +1,15 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import React, { useState } from 'react';
-import useAuth from 'src/hooks/useAuth';
-import { capitalCase } from 'change-case';
-import MyAvatar from 'src/components/MyAvatar';
-import BadgeStatus from 'src/components/BadgeStatus';
-import settings2Fill from '@iconify-icons/eva/settings-2-fill';
-import roundAccountBox from '@iconify-icons/ic/round-account-box';
-import roundPowerSettingsNew from '@iconify-icons/ic/round-power-settings-new';
-import { makeStyles } from '@material-ui/core/styles';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import React, { useState } from "react";
+import useAuth from "src/hooks/useAuth";
+import { capitalCase } from "change-case";
+import MyAvatar from "src/components/MyAvatar";
+import BadgeStatus from "src/components/BadgeStatus";
+import settings2Fill from "@iconify-icons/eva/settings-2-fill";
+import roundAccountBox from "@iconify-icons/ic/round-account-box";
+import roundPowerSettingsNew from "@iconify-icons/ic/round-power-settings-new";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Box,
   List,
@@ -21,40 +21,40 @@ import {
   Typography,
   IconButton,
   ListItemIcon,
-  ListItemText
-} from '@material-ui/core';
+  ListItemText,
+} from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 
-const STATUS = ['online', 'invisible', 'away'];
+const STATUS = ["online", "invisible", "away"];
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   listItem: {
-    padding: theme.spacing(1, 2.5)
+    padding: theme.spacing(1, 2.5),
   },
   select: {
-    '& svg': { display: `none` },
-    '& fieldset': { border: `none !important` },
-    '& select': {
+    "& svg": { display: `none` },
+    "& fieldset": { border: `none !important` },
+    "& select": {
       padding: 0,
       ...theme.typography.body2,
-      '&:focus': { backgroundColor: 'transparent' }
-    }
-  }
+      "&:focus": { backgroundColor: "transparent" },
+    },
+  },
 }));
 
 // ----------------------------------------------------------------------
 
 Account.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function Account({ className }) {
   const classes = useStyles();
   const { user } = useAuth();
   const [open, setOpen] = useState(null);
-  const [status, setStatus] = useState('online');
+  const [status, setStatus] = useState("online");
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
@@ -70,14 +70,14 @@ function Account({ className }) {
 
   return (
     <div className={clsx(classes.root, className)}>
-      <Box sx={{ position: 'relative' }}>
+      <Box sx={{ position: "relative" }}>
         <MyAvatar
           onClick={handleOpen}
-          sx={{ cursor: 'pointer', width: 48, height: 48 }}
+          sx={{ cursor: "pointer", width: 48, height: 48 }}
         />
         <BadgeStatus
           status={status}
-          sx={{ position: 'absolute', bottom: 2, right: 2 }}
+          sx={{ position: "absolute", bottom: 2, right: 2 }}
         />
       </Box>
 
@@ -85,8 +85,8 @@ function Account({ className }) {
         open={Boolean(open)}
         anchorEl={open}
         onClose={handleClose}
-        anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+        anchorOrigin={{ vertical: "top", horizontal: "left" }}
+        transformOrigin={{ vertical: "top", horizontal: "left" }}
         classes={{ paper: classes.popover }}
       >
         <Box
@@ -94,17 +94,17 @@ function Account({ className }) {
             py: 2,
             pr: 1,
             pl: 2.5,
-            display: 'flex',
-            alignItems: 'center'
+            display: "flex",
+            alignItems: "center",
           }}
         >
           <MyAvatar />
 
           <Box sx={{ ml: 2, mr: 3 }}>
             <Typography noWrap variant="subtitle1">
-              {user.displayName}
+              {user.userName}
             </Typography>
-            <Typography noWrap variant="body2" sx={{ color: 'text.secondary' }}>
+            <Typography noWrap variant="body2" sx={{ color: "text.secondary" }}>
               {user.email}
             </Typography>
           </Box>
@@ -125,9 +125,9 @@ function Account({ className }) {
                 sx={{
                   width: 24,
                   height: 24,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <BadgeStatus status={status} />
@@ -159,7 +159,7 @@ function Account({ className }) {
             <ListItemText
               primary="Profile"
               primaryTypographyProps={{
-                variant: 'body2'
+                variant: "body2",
               }}
             />
           </ListItem>
@@ -171,7 +171,7 @@ function Account({ className }) {
             <ListItemText
               primary="Settings"
               primaryTypographyProps={{
-                variant: 'body2'
+                variant: "body2",
               }}
             />
           </ListItem>

@@ -69,14 +69,10 @@ function RegisterView() {
   const mdDown = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
   const RegisterSchema = Yup.object().shape({
-    firstName: Yup.string()
+    userName: Yup.string()
       .min(2, "太短了!")
       .max(50, "太长了!")
-      .required("请输入您的名字"),
-    lastName: Yup.string()
-      .min(2, "太短了!")
-      .max(50, "太长了!")
-      .required("请输入您的姓"),
+      .required("请输入您的称呼"),
     email: Yup.string()
       .email("请输入合法的电子邮箱地址")
       .required("请输入您的电邮地址"),
@@ -85,10 +81,10 @@ function RegisterView() {
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      userName: "",
       email: "",
       password: "",
+      role: "normal",
     },
     validationSchema: RegisterSchema,
     onSubmit: async (values, { setErrors, setSubmitting }) => {
@@ -96,8 +92,7 @@ function RegisterView() {
         await register({
           email: values.email,
           password: values.password,
-          firstName: values.firstName,
-          lastName: values.lastName,
+          userName: values.userName,
         });
         enqueueSnackbar("登录成功", {
           variant: "成功",

@@ -48,7 +48,7 @@ function AboutCard({ profile, authUser, className }) {
     <Card className={clsx(classes.root, className)}>
       <CardContent>
         <Typography variant="h6" sx={{ mb: 2 }}>
-          {authUser.displayName}
+          {authUser.userName}
         </Typography>
 
         <Typography variant="body2" color="text.secondary">

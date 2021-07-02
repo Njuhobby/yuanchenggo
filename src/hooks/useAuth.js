@@ -1,20 +1,20 @@
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import { login, register, logout } from 'src/redux/slices/authJwt';
+import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { login, register, logout } from "src/redux/slices/authJwt";
 import {
   isEmpty,
   isLoaded,
   useFirebase,
-  useFirestore
-} from 'react-redux-firebase';
+  useFirestore,
+} from "react-redux-firebase";
 
 // ----------------------------------------------------------------------
 
 useAuth.propTypes = {
-  method: PropTypes.oneOf(['jwt', 'firebase'])
+  method: PropTypes.oneOf(["jwt", "firebase"]),
 };
 
-export default function useAuth(method = 'jwt') {
+export default function useAuth(method = "jwt") {
   // Firebase Auth
   const firebase = useFirebase();
   const firestore = useFirestore();
@@ -27,9 +27,9 @@ export default function useAuth(method = 'jwt') {
   );
 
   // JWT Auth
-  if (method === 'jwt') {
+  if (method === "jwt") {
     return {
-      method: 'jwt',
+      method: "jwt",
       user: user,
       isLoading: isLoading,
       isAuthenticated: isAuthenticated,
@@ -38,17 +38,16 @@ export default function useAuth(method = 'jwt') {
         dispatch(
           login({
             email: email,
-            password: password
+            password: password,
           })
         ),
 
-      register: ({ email, password, firstName, lastName }) =>
+      register: ({ email, password, userName }) =>
         dispatch(
           register({
             email: email,
             password: password,
-            firstName: firstName,
-            lastName: lastName
+            userName: userName,
           })
         ),
 
@@ -56,26 +55,26 @@ export default function useAuth(method = 'jwt') {
 
       resetPassword: () => {},
 
-      updateProfile: () => {}
+      updateProfile: () => {},
     };
   }
 
   // Firebase Auth
   return {
-    method: 'firebase',
+    method: "firebase",
     user: {
-      displayName: auth.displayName || profile.displayName || '',
-      email: auth.email || '',
-      photoURL: auth.photoURL || profile.photoURL || '',
-      phoneNumber: auth.phoneNumber || profile.phoneNumber || '',
-      country: profile.country || '',
-      address: profile.address || '',
-      state: profile.state || '',
-      city: profile.city || '',
-      zipCode: profile.zipCode || '',
-      about: profile.about || '',
-      role: profile.role || '',
-      isPublic: profile.isPublic || false
+      userName: auth.userName || profile.userName || "",
+      email: auth.email || "",
+      photoURL: auth.photoURL || profile.photoURL || "",
+      phoneNumber: auth.phoneNumber || profile.phoneNumber || "",
+      country: profile.country || "",
+      address: profile.address || "",
+      state: profile.state || "",
+      city: profile.city || "",
+      zipCode: profile.zipCode || "",
+      about: profile.about || "",
+      role: profile.role || "",
+      isPublic: profile.isPublic || false,
     },
     isLoading: !isLoaded(auth),
     isAuthenticated: !isEmpty(auth),
@@ -83,30 +82,27 @@ export default function useAuth(method = 'jwt') {
     login: ({ email, password }) =>
       firebase.login({
         email: email,
-        password: password
+        password: password,
       }),
     loginWithGoogle: () =>
-      firebase.login({ provider: 'google', type: 'popup' }),
+      firebase.login({ provider: "google", type: "popup" }),
 
     loginWithFaceBook: () =>
-      firebase.login({ provider: 'facebook', type: 'popup' }),
+      firebase.login({ provider: "facebook", type: "popup" }),
 
     loginWithTwitter: () =>
-      firebase.login({ provider: 'twitter', type: 'popup' }),
+      firebase.login({ provider: "twitter", type: "popup" }),
 
-    register: ({ email, password, firstName, lastName }) =>
+    register: ({ email, password, userName }) =>
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
         .then((res) => {
-          firestore
-            .collection('users')
-            .doc(res.user.uid)
-            .set({
-              uid: res.user.uid,
-              email: email,
-              displayName: firstName + ' ' + lastName
-            });
+          firestore.collection("users").doc(res.user.uid).set({
+            uid: res.user.uid,
+            email: email,
+            userName: userName,
+          });
         }),
 
     logout: () => firebase.logout(),
@@ -114,7 +110,7 @@ export default function useAuth(method = 'jwt') {
     resetPassword: (email) => firebase.resetPassword(email),
 
     updateProfile: ({
-      displayName,
+      userName,
       photoURL,
       phoneNumber,
       country,
@@ -123,12 +119,12 @@ export default function useAuth(method = 'jwt') {
       address,
       zipCode,
       about,
-      isPublic
+      isPublic,
     }) =>
       firebase.updateProfile({}).then((res) => {
-        firestore.collection('users').doc(res.id).set(
+        firestore.collection("users").doc(res.id).set(
           {
-            displayName: displayName,
+            userName: userName,
             photoURL: photoURL,
             phoneNumber: phoneNumber,
             country: country,
@@ -137,10 +133,10 @@ export default function useAuth(method = 'jwt') {
             address: address,
             zipCode: zipCode,
             about: about,
-            isPublic: isPublic
+            isPublic: isPublic,
           },
           { merge: true }
         );
-      })
+      }),
   };
 }

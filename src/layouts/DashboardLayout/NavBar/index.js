@@ -152,7 +152,7 @@ function NavBar({ isOpenNav, onCloseNav }) {
           <MyAvatar />
           <Box sx={{ ml: 2 }}>
             <Typography variant="subtitle2" sx={{ color: "text.primary" }}>
-              {user.displayName}
+              {user.userName}
             </Typography>
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
               {user.displayRole}
@@ -197,7 +197,7 @@ function NavBar({ isOpenNav, onCloseNav }) {
             variant="subtitle1"
             sx={{ color: "grey.800" }}
           >
-            Hi, {user.displayName}
+            Hi, {user.userName}
           </Typography>
           <Typography variant="body2" sx={{ mb: 2, color: "grey.600" }}>
             需要帮助吗?

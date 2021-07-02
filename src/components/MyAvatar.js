@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import useAuth from 'src/hooks/useAuth';
-import { MAvatar } from 'src/theme';
-import createAvatar from 'src/utils/createAvatar';
+import React from "react";
+import PropTypes from "prop-types";
+import useAuth from "src/hooks/useAuth";
+import { MAvatar } from "src/theme";
+import createAvatar from "src/utils/createAvatar";
 
 // ----------------------------------------------------------------------
 
 MyAvatar.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 function MyAvatar({ className, ...other }) {
@@ -16,12 +16,12 @@ function MyAvatar({ className, ...other }) {
   return (
     <MAvatar
       src={user.photoURL}
-      alt={user.displayName}
-      color={user.photoURL ? 'default' : createAvatar(user.displayName).color}
+      alt={user.userName}
+      color={user.photoURL ? "default" : createAvatar(user.userName).color}
       className={className}
       {...other}
     >
-      {createAvatar(user.displayName).name}
+      {createAvatar(user.userName).name}
     </MAvatar>
   );
 }
