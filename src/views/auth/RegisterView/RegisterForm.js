@@ -35,6 +35,7 @@ function RegisterForm({ formik }) {
           fullWidth
           label="用户名"
           {...getFieldProps("userName")}
+          autoComplete="username"
           error={Boolean(touched.userName && errors.userName)}
           helperText={touched.userName && errors.userName}
         />
@@ -45,6 +46,7 @@ function RegisterForm({ formik }) {
           type="email"
           label="电子邮箱"
           {...getFieldProps("email")}
+          autoComplete="email"
           error={
             Boolean(touched.email && errors.email) ||
             emailError(errors.afterSubmit).error
@@ -60,6 +62,7 @@ function RegisterForm({ formik }) {
           type={showPassword ? "text" : "password"}
           label="密码"
           {...getFieldProps("password")}
+          autoComplete="new-password"
           InputProps={{
             endAdornment: (
               <InputAdornment>
