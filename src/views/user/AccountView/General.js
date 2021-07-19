@@ -114,7 +114,7 @@ function General({ className }) {
                       <TextField
                         disabled={user.email === "demo@minimals.cc"} // You can remove this
                         fullWidth
-                        label="姓名"
+                        label="用户名"
                         {...getFieldProps("userName")}
                       />
                     </Grid>

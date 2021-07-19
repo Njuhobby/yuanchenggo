@@ -1,47 +1,47 @@
-import faker from 'faker';
-import { sample } from 'lodash';
-import mock from 'src/utils/mock';
-import { paramCase } from 'change-case';
-import { getImgProduct } from 'src/utils/getImages';
+import faker from "faker";
+import { sample } from "lodash";
+import mock from "src/utils/mock";
+import { paramCase } from "change-case";
+import { getImgProduct } from "src/utils/getImages";
 
 // ----------------------------------------------------------------------
 
 const PRODUCT_NAME = [
-  'Nike Air Force 1 NDESTRUKT',
-  'Nike Space Hippie 04',
-  'Nike Air Zoom Pegasus 37 A.I.R. Chaz Bear',
-  'Nike Blazer Low 77 Vintage',
-  'Nike ZoomX SuperRep Surge',
-  'Zoom Freak 2',
-  'Nike Air Max Zephyr',
-  'Jordan Delta',
-  'Air Jordan XXXV PF',
-  'Nike Waffle Racer Crater',
-  'Kyrie 7 EP Sisterhood',
-  'Nike Air Zoom BB NXT',
-  'Nike Air Force 1 07 LX',
-  'Nike Air Force 1 Shadow SE',
-  'Nike Air Zoom Tempo NEXT%',
-  'Nike DBreak-Type',
-  'Nike Air Max Up',
-  'Nike Air Max 270 React ENG',
-  'NikeCourt Royale',
-  'Nike Air Zoom Pegasus 37 Premium',
-  'Nike Air Zoom SuperRep',
-  'NikeCourt Royale',
-  'Nike React Art3mis',
-  'Nike React Infinity Run Flyknit A.I.R. Chaz Bear'
+  "Nike Air Force 1 NDESTRUKT",
+  "Nike Space Hippie 04",
+  "Nike Air Zoom Pegasus 37 A.I.R. Chaz Bear",
+  "Nike Blazer Low 77 Vintage",
+  "Nike ZoomX SuperRep Surge",
+  "Zoom Freak 2",
+  "Nike Air Max Zephyr",
+  "Jordan Delta",
+  "Air Jordan XXXV PF",
+  "Nike Waffle Racer Crater",
+  "Kyrie 7 EP Sisterhood",
+  "Nike Air Zoom BB NXT",
+  "Nike Air Force 1 07 LX",
+  "Nike Air Force 1 Shadow SE",
+  "Nike Air Zoom Tempo NEXT%",
+  "Nike DBreak-Type",
+  "Nike Air Max Up",
+  "Nike Air Max 270 React ENG",
+  "NikeCourt Royale",
+  "Nike Air Zoom Pegasus 37 Premium",
+  "Nike Air Zoom SuperRep",
+  "NikeCourt Royale",
+  "Nike React Art3mis",
+  "Nike React Infinity Run Flyknit A.I.R. Chaz Bear",
 ];
 
 const PRODUCT_COLOR = [
-  '#00AB55',
-  '#000000',
-  '#FFFFFF',
-  '#FFC0CB',
-  '#FF4842',
-  '#1890FF',
-  '#94D82D',
-  '#FFC107'
+  "#00AB55",
+  "#000000",
+  "#FFFFFF",
+  "#FFC0CB",
+  "#FF4842",
+  "#1890FF",
+  "#94D82D",
+  "#FFC107",
 ];
 
 const PRODUCT_DESCRIPTION = `
@@ -53,18 +53,18 @@ const PRODUCT_DESCRIPTION = `
 `;
 
 const PRODUCT_SIZE = [
-  '6',
-  '7',
-  '8',
-  '8.5',
-  '9',
-  '9.5',
-  '10',
-  '10.5',
-  '11',
-  '11.5',
-  '12',
-  '13'
+  "6",
+  "7",
+  "8",
+  "8.5",
+  "9",
+  "9.5",
+  "10",
+  "10.5",
+  "11",
+  "11.5",
+  "12",
+  "13",
 ];
 
 let products = [...Array(24)].map((product, index) => {
@@ -75,7 +75,7 @@ let products = [...Array(24)].map((product, index) => {
     cover: {
       thumb: getImgProduct(128, setIndex),
       small: getImgProduct(720, setIndex),
-      medium: getImgProduct(960, setIndex)
+      medium: getImgProduct(960, setIndex),
     },
     images: [...Array(8)].map((image, index) => {
       const setIndex = index + 1;
@@ -83,7 +83,7 @@ let products = [...Array(24)].map((product, index) => {
         thumb: getImgProduct(128, setIndex),
         small: getImgProduct(600, setIndex),
         medium: getImgProduct(960, setIndex),
-        large: getImgProduct(1440, setIndex)
+        large: getImgProduct(1440, setIndex),
       };
     }),
     name: PRODUCT_NAME[index],
@@ -98,7 +98,7 @@ let products = [...Array(24)].map((product, index) => {
       return {
         name: `${index + 1} Star`,
         starCount: faker.random.number(),
-        reviewCount: faker.random.number()
+        reviewCount: faker.random.number(),
       };
     }),
     reviews: [...Array(8)].map((review, index) => {
@@ -110,7 +110,7 @@ let products = [...Array(24)].map((product, index) => {
         rating: faker.random.number({ min: 1, max: 5 }),
         isPurchased: faker.random.boolean(),
         helpful: faker.random.number({ min: 1, max: 500 }),
-        postedAt: faker.date.past()
+        postedAt: faker.date.past(),
       };
     }),
     colors:
@@ -121,41 +121,42 @@ let products = [...Array(24)].map((product, index) => {
       (setIndex === 23 && PRODUCT_COLOR.slice(4, 6)) ||
       (setIndex === 24 && PRODUCT_COLOR.slice(5, 6)) ||
       PRODUCT_COLOR,
-    status: sample(['sale', 'new', '', '']),
-    inventoryType: sample(['in_stock', 'out_of_stock', 'low_stock']),
+    status: sample(["sale", "new", "", ""]),
+    inventoryType: sample(["in_stock", "out_of_stock", "low_stock"]),
     sizes: PRODUCT_SIZE,
     available:
       setIndex % 3 === 0 ? faker.random.number({ min: 19, max: 100 }) : 2,
     description: PRODUCT_DESCRIPTION,
     sold: faker.random.number(),
     createdAt: faker.date.past(),
-    category: sample(['Accessories', 'Apparel', 'Shose']),
-    gender: sample(['Men', 'Women', 'Kids'])
+    category: sample(["Accessories", "Apparel", "Shose"]),
+    gender: sample(["Men", "Women", "Kids"]),
   };
 });
-
 // ----------------------------------------------------------------------
 
-mock.onGet('/api/products').reply(200, { products });
+export default function () {
+  mock.onGet("/api/products").reply(200, { products });
 
-// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
 
-mock.onGet('/api/products/product').reply((config) => {
-  try {
-    const { name } = config.params;
-    const product = products.find(
-      (_product) => paramCase(_product.name) === name
-    );
+  mock.onGet("/api/products/product").reply((config) => {
+    try {
+      const { name } = config.params;
+      const product = products.find(
+        (_product) => paramCase(_product.name) === name
+      );
 
-    if (!product) {
-      return [404, { message: 'product not found' }];
+      if (!product) {
+        return [404, { message: "product not found" }];
+      }
+
+      return [200, { product }];
+    } catch (error) {
+      console.error(error);
+      return [500, { message: "Internal server error" }];
     }
+  });
 
-    return [200, { product }];
-  } catch (error) {
-    console.error(error);
-    return [500, { message: 'Internal server error' }];
-  }
-});
-
-// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+}

@@ -18,6 +18,10 @@ export const codes = {
     code: "auth/user-not-found",
     text: "找不到使用这个电子邮箱的用户",
   },
+  userNameAlreadyUsed: {
+    code: "auth/userName-already-used",
+    text: "该用户名已经被注册，请使用另外一个用户名",
+  },
 
   // Password
   wrongPassword: {

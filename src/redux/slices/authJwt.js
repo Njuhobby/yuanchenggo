@@ -75,7 +75,7 @@ const setSession = (accessToken) => {
 
 export function login({ email, password }) {
   return async (dispatch) => {
-    const response = await axios.post("/api/account/login", {
+    const response = await axios.post("/users/login", {
       email,
       password,
     });
@@ -89,7 +89,7 @@ export function login({ email, password }) {
 
 export function register({ email, password, userName }) {
   return async (dispatch) => {
-    const response = await axios.post("/api/account/register", {
+    const response = await axios.post("/users/register", {
       email,
       password,
       userName,
@@ -122,7 +122,7 @@ export function getInitialize() {
       if (accessToken && isValidToken(accessToken)) {
         setSession(accessToken);
 
-        const response = await axios.get("/api/account/my-account");
+        const response = await axios.get("/users/my-account");
         dispatch(
           slice.actions.getInitialize({
             isAuthenticated: true,
