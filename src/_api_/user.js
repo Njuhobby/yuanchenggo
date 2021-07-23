@@ -38,7 +38,7 @@ export default function () {
       doubanLink: `https://www.twitter.com/caitlyn.kerluke`,
     };
 
-    return [200, { profile }];
+    return [200, { success: true, data: { profile } }];
   });
 
   // ----------------------------------------------------------------------
@@ -72,7 +72,7 @@ export default function () {
       };
     });
 
-    return [200, { users }];
+    return [200, { success: true, data: { users } }];
   });
 
   // ----------------------------------------------------------------------
@@ -102,7 +102,7 @@ export default function () {
       };
     });
 
-    return [200, { users }];
+    return [200, { success: true, data: { users } }];
   });
 
   // ----------------------------------------------------------------------
@@ -119,7 +119,7 @@ export default function () {
       };
     });
 
-    return [200, { followers }];
+    return [200, { success: true, data: { followers } }];
   });
 
   // ----------------------------------------------------------------------
@@ -146,7 +146,7 @@ export default function () {
       };
     });
 
-    return [200, { friends }];
+    return [200, { success: true, data: { friends } }];
   });
 
   // ----------------------------------------------------------------------
@@ -166,7 +166,7 @@ export default function () {
       };
     });
 
-    return [200, { gallery }];
+    return [200, { success: true, data: { gallery } }];
   });
 
   // ----------------------------------------------------------------------
@@ -182,7 +182,7 @@ export default function () {
       };
     });
 
-    return [200, { cards }];
+    return [200, { success: true, data: { cards } }];
   });
 
   // ----------------------------------------------------------------------
@@ -201,7 +201,7 @@ export default function () {
       };
     });
 
-    return [200, { addressBook }];
+    return [200, { success: true, data: { addressBook } }];
   });
 
   // ----------------------------------------------------------------------
@@ -215,7 +215,7 @@ export default function () {
       };
     });
 
-    return [200, { invoices }];
+    return [200, { success: true, data: { invoices } }];
   });
 
   // ----------------------------------------------------------------------
@@ -230,7 +230,7 @@ export default function () {
       applicationBlog: false,
     };
 
-    return [200, { notifications }];
+    return [200, { success: true, data: { notifications } }];
   });
 
   // ----------------------------------------------------------------------
@@ -377,6 +377,6 @@ export default function () {
     ];
 
     const orderedPosts = _.orderBy(posts, ["createdAt"], ["desc"]);
-    return [200, { posts: orderedPosts }];
+    return [200, { success: true, data: { posts: orderedPosts } }];
   });
 }

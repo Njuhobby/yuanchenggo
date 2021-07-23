@@ -694,7 +694,7 @@ export default function () {
           return results.push(contact);
         }
       });
-      return [200, { results }];
+      return [200, { success: true, data: { results } }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
@@ -727,7 +727,7 @@ export default function () {
           });
         }
       }
-      return [200, { participants }];
+      return [200, { success: true, data: { participants } }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
@@ -746,14 +746,14 @@ export default function () {
       const conversation = findConversationById(conversationKey);
 
       if (conversation) {
-        return [200, { conversation }];
+        return [200, { success: true, data: { conversation } }];
       } else {
         const contact = findContactByUsername(conversationKey);
         if (!contact) {
-          return [404, { message: "Unable to find the contact" }];
+          return [200, { success: false, msg: "Unable to find the contact" }];
         }
         const conversation = findConversationByOtherParticipantId(contact.id);
-        return [200, { conversation }];
+        return [200, { success: true, data: { conversation } }];
       }
     } catch (error) {
       console.error(error);
@@ -772,7 +772,7 @@ export default function () {
       if (conversation) {
         conversation.unreadCount = 0;
       }
-      return [200, true];
+      return [200, { success: true }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
@@ -791,7 +791,7 @@ export default function () {
       if (conversationId) {
         conversation = findConversationById(conversationId);
         if (!conversation) {
-          return [400, { message: "Invalid conversation id" }];
+          return [200, { success: false, msg: "Invalid conversation id" }];
         }
       }
 
@@ -845,7 +845,13 @@ export default function () {
         message,
       };
 
-      return [200, responseData];
+      return [
+        200,
+        {
+          success: true,
+          data: responseData,
+        },
+      ];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];

@@ -60,7 +60,7 @@ export default function () {
   mock.onGet("/api/notifications").reply(() => {
     notifications = orderBy(notifications, ["createdAt"], ["desc"]);
 
-    return [200, { notifications }];
+    return [200, { success: true, data: { notifications } }];
   });
 
   // ----------------------------------------------------------------------

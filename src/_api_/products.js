@@ -148,10 +148,10 @@ export default function () {
       );
 
       if (!product) {
-        return [404, { message: "product not found" }];
+        return [200, { success: false, msg: "product not found" }];
       }
 
-      return [200, { product }];
+      return [200, { success: true, data: { product } }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];

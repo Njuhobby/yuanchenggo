@@ -104,7 +104,7 @@ export default function () {
         start,
       };
       events = [...events, event];
-      return [200, { event }];
+      return [200, { success: true, data: event }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
@@ -124,7 +124,7 @@ export default function () {
         }
         return _event;
       });
-      return [200, { event }];
+      return [200, { success: true, data: event }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
@@ -137,7 +137,7 @@ export default function () {
     try {
       const { eventId } = JSON.parse(request.data);
       events = reject(events, { id: eventId });
-      return [200, { eventId }];
+      return [200, { success: true, data: eventId }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
