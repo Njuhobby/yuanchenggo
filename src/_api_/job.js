@@ -160,7 +160,7 @@ export default function () {
   mock.onGet("/api/jobs").reply(() => {
     jobs = orderBy(jobs, ["createdAt"], ["desc"]);
 
-    return [200, { success: true, data: { jobs } }];
+    return [200, { jobs: jobs }];
   });
   // ------------------------------------------------------------------
 }

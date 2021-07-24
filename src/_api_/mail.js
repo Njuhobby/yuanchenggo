@@ -171,7 +171,7 @@ export default function () {
         systemLabel,
         customLabel
       );
-      return [200, { success: true, data: { mails: filteredMails } }];
+      return [200, { mails: filteredMails }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
@@ -185,9 +185,9 @@ export default function () {
       const { mailId } = config.params;
       const mail = mails.find((_mail) => _mail.id === mailId);
       if (!mail) {
-        return [200, { success: false, msg: "Mail not found" }];
+        return [404, { message: "Mail not found" }];
       }
-      return [200, { success: true, data: { mail } }];
+      return [200, { mail }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];

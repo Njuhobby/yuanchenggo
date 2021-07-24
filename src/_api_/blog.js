@@ -270,16 +270,7 @@ export default function () {
 
       const results = sortPosts.slice(0, loadMore);
 
-      return [
-        200,
-        {
-          success: true,
-          data: {
-            results,
-            maxLength,
-          },
-        },
-      ];
+      return [200, { results, maxLength }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
@@ -294,10 +285,10 @@ export default function () {
       const post = posts.find((_post) => paramCase(_post.title) === title);
 
       if (!post) {
-        return [200, { success: false, msg: "Post not found" }];
+        return [404, { message: "Post not found" }];
       }
 
-      return [200, { success: true, data: { post } }];
+      return [200, { post }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
@@ -315,10 +306,10 @@ export default function () {
         .slice(posts.length - 5, posts.length);
 
       if (!recentPosts) {
-        return [200, { success: false, msg: "Post not found" }];
+        return [404, { message: "Post not found" }];
       }
 
-      return [200, { success: true, data: { recentPosts } }];
+      return [200, { recentPosts }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
@@ -343,7 +334,7 @@ export default function () {
         }
       });
 
-      return [200, { success: true, data: { results } }];
+      return [200, { results }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];

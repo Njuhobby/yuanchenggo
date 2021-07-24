@@ -40,27 +40,18 @@ export default function () {
       const user = users.find((_user) => _user.email === email);
 
       if (!user) {
-        return [200, { success: false, msg: codes.userNotFound.code }];
+        return [400, { message: codes.userNotFound.code }];
       }
 
       if (user.password !== password) {
-        return [200, { success: false, msg: codes.wrongPassword.code }];
+        return [400, { message: codes.wrongPassword.code }];
       }
 
       const accessToken = jwt.sign({ userId: user.id }, JWT_SECRET, {
         expiresIn: JWT_EXPIRES_IN,
       });
 
-      return [
-        200,
-        {
-          success: true,
-          data: {
-            token: accessToken,
-            user,
-          },
-        },
-      ];
+      return [200, { accessToken, user }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
@@ -77,7 +68,7 @@ export default function () {
       let user = users.find((_user) => _user.email === email);
 
       if (user) {
-        return [200, { success: true, msg: codes.emailAlreadyinUse.code }];
+        return [400, { message: codes.emailAlreadyinUse.code }];
       }
 
       user = {
@@ -101,7 +92,7 @@ export default function () {
         expiresIn: JWT_EXPIRES_IN,
       });
 
-      return [200, { success: true, data: { token: accessToken, user } }];
+      return [200, { accessToken, user }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
@@ -115,7 +106,7 @@ export default function () {
       const { Authorization } = config.headers;
 
       if (!Authorization) {
-        return [200, { success: false, msg: "Authorization token missing" }];
+        return [401, { message: "Authorization token missing" }];
       }
 
       const accessToken = Authorization.split(" ")[1];
@@ -123,10 +114,10 @@ export default function () {
       const user = users.find((_user) => _user.id === userId);
 
       if (!user) {
-        return [200, { success: false, msg: "Invalid authorization token" }];
+        return [401, { message: "Invalid authorization token" }];
       }
 
-      return [200, { success: true, data: { user } }];
+      return [200, { user }];
     } catch (error) {
       console.error(error);
       return [500, { message: "Internal server error" }];
