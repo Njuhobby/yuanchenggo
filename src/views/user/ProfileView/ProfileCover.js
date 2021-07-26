@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import LazySize from "src/components/LazySize";
 import MyAvatar from "src/components/MyAvatar";
 import { makeStyles } from "@material-ui/core/styles";
+import { getProfileCover } from "src/utils/getImages";
 
 // ----------------------------------------------------------------------
 
@@ -47,6 +48,8 @@ ProfileCover.propTypes = {
 function ProfileCover({ myProfile, className }) {
   const classes = useStyles();
   const { cover } = myProfile;
+  const smallCoverPath = getProfileCover(720, cover);
+  const mediumCoverPath = getProfileCover(1200, cover);
 
   return (
     <div className={clsx(classes.root, className)}>
@@ -65,7 +68,7 @@ function ProfileCover({ myProfile, className }) {
       <LazySize
         alt="profile cover"
         src={cover.small}
-        size={`${cover.small} 600w, ${cover.medium} 1200w`}
+        size={`${smallCoverPath} 600w, ${mediumCoverPath} 1200w`}
         dataSizes="(max-width: 600px) 600px,
             1200px"
         sx={{ zIndex: 8, height: "100%", position: "absolute" }}

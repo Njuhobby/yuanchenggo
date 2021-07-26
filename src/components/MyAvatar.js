@@ -15,9 +15,9 @@ function MyAvatar({ className, ...other }) {
 
   return (
     <MAvatar
-      src={user.photoURL}
+      src={user.avatarUrl}
       alt={user.userName}
-      color={user.photoURL ? "default" : createAvatar(user.userName).color}
+      color={user.avatarUrl ? "default" : createAvatar(user.userName).color}
       className={className}
       {...other}
     >

@@ -1,31 +1,18 @@
 import faker from "faker";
 import { sample } from "lodash";
 import mock from "src/utils/mock";
-import {
-  getImgCover,
-  getImgFeed,
-  getImgAvatar,
-  getProfileCover,
-} from "src/utils/getImages";
+import { getImgCover, getImgFeed, getImgAvatar } from "src/utils/getImages";
 import _ from "lodash";
-
-// ----------------------------------------------------------------------
-
-const createId = (index) => `fc68bad5-d430-4033-b8f8-4bc069dc0ba0-${index}`;
-
-// ----------------------------------------------------------------------
 
 export default function () {
   mock.onGet("/api/user/profile").reply(() => {
     const profile = {
-      id: createId(1),
-      cover: {
-        small: getProfileCover(720, 1),
-        medium: getProfileCover(1200, 1),
-      },
+      id: 1,
+      cover: 1,
+      avatarUrl: "/static/images/avatars/avatar_default.jpg",
       position: "UI Designer",
-      follower: faker.random.number(),
-      following: faker.random.number(),
+      follower: 1200,
+      following: 526,
       quote:
         "躺平而不内卷的普通苏州IT人，第一次来到远程狗，第一次接触远程工作，希望能在这里找到志同道合的小伙伴，一起工作而不上班",
       country: faker.address.country(),
@@ -47,12 +34,9 @@ export default function () {
     const users = [...Array(24)].map((user, index) => {
       const setIndex = index + 1;
       return {
-        id: createId(setIndex),
+        id: setIndex,
         avatarUrl: getImgAvatar(setIndex),
-        cover: {
-          small: getImgCover(600, setIndex),
-          medium: getImgCover(960, setIndex),
-        },
+        cover: 1,
         name: faker.name.findName(),
         follower: faker.random.number(),
         following: faker.random.number(),
@@ -81,7 +65,7 @@ export default function () {
     const users = [...Array(24)].map((user, index) => {
       const setIndex = index + 1;
       return {
-        id: createId(setIndex),
+        id: setIndex,
         avatarUrl: getImgAvatar(setIndex),
         name: faker.name.findName(),
         company: faker.company.companyName(),
@@ -111,7 +95,7 @@ export default function () {
     const followers = [...Array(18)].map((item, index) => {
       const setIndex = index + 2;
       return {
-        id: createId(setIndex),
+        id: setIndex,
         avatarUrl: getImgAvatar(setIndex),
         name: faker.name.findName(),
         country: faker.address.country(),
@@ -128,7 +112,7 @@ export default function () {
     const friends = [...Array(18)].map((item, index) => {
       const setIndex = index + 2;
       return {
-        id: createId(setIndex),
+        id: setIndex,
         avatarUrl: getImgAvatar(setIndex),
         name: faker.name.findName(),
         role: sample([
@@ -155,7 +139,7 @@ export default function () {
     const gallery = [...Array(18)].map((image, index) => {
       const setIndex = index + 2;
       return {
-        id: createId(setIndex),
+        id: setIndex,
         title: faker.name.title(),
         postAt: faker.date.past(),
         imageUrl: {
@@ -240,7 +224,7 @@ export default function () {
       {
         id: faker.random.uuid(),
         author: {
-          id: createId(1),
+          id: 1,
           avatarUrl: getImgAvatar(1),
           name: "Caitlyn Kerluke",
         },
@@ -262,7 +246,7 @@ export default function () {
           {
             id: faker.random.uuid(),
             author: {
-              id: createId(2),
+              id: 2,
               avatarUrl: getImgAvatar(sample([2, 3, 4, 5, 6])),
               name: "杨旭游记",
             },
@@ -272,7 +256,7 @@ export default function () {
           {
             id: faker.random.uuid(),
             author: {
-              id: createId(3),
+              id: 3,
               avatarUrl: getImgAvatar(sample([7, 8, 9, 10, 11])),
               name: "Craig Tomas",
             },
@@ -285,7 +269,7 @@ export default function () {
       {
         id: faker.random.uuid(),
         author: {
-          id: createId(1),
+          id: 1,
           avatarUrl: getImgAvatar(1),
           name: "Caitlyn Kerluke",
         },
@@ -311,7 +295,7 @@ export default function () {
           {
             id: faker.random.uuid(),
             author: {
-              id: createId(2),
+              id: 2,
               avatarUrl: getImgAvatar(sample([2, 3, 4, 5, 6])),
               name: "朱亚伟",
             },
@@ -321,7 +305,7 @@ export default function () {
           {
             id: faker.random.uuid(),
             author: {
-              id: createId(3),
+              id: 3,
               avatarUrl: getImgAvatar(sample([7, 8, 9, 10, 11])),
               name: "彭建霖",
             },
@@ -333,7 +317,7 @@ export default function () {
       {
         id: faker.random.uuid(),
         author: {
-          id: createId(1),
+          id: 1,
           avatarUrl: getImgAvatar(1),
           name: "Caitlyn Kerluke",
         },
@@ -354,7 +338,7 @@ export default function () {
           {
             id: faker.random.uuid(),
             author: {
-              id: createId(2),
+              id: 2,
               avatarUrl: getImgAvatar(sample([2, 3, 4, 5, 6])),
               name: "远程鸭亲友会",
             },
@@ -364,7 +348,7 @@ export default function () {
           {
             id: faker.random.uuid(),
             author: {
-              id: createId(3),
+              id: 3,
               avatarUrl: getImgAvatar(sample([7, 8, 9, 10, 11])),
               name: "OHO2",
             },
