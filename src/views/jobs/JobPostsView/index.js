@@ -16,7 +16,9 @@ import fireIcon from "@iconify-icons/emojione/fire";
 //----------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    minWidth: 900,
+  },
   jobPostCardWrap: {
     display: "flex",
     justifyContent: "flex-end",

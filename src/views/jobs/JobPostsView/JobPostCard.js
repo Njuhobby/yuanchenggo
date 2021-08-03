@@ -65,8 +65,8 @@ function JobPostCard({ job, className, height, avatarWidth }) {
         sx={{ top: height / 2, width: avatarWidth, height: avatarWidth }}
       />
       <Grid container sx={{ width: "100%" }}>
-        <Grid item xs={8} sx={{ display: "flex" }}>
-          <Grid item xs={8}>
+        <Grid item xs={10} sx={{ display: "flex" }}>
+          <Grid item xs={5}>
             {job.company.isStar ? (
               <Typography variant="body2" sx={{ mt: "15px" }}>
                 {job.company.name}
@@ -85,6 +85,18 @@ function JobPostCard({ job, className, height, avatarWidth }) {
             </Typography>
             <Typography variant="body2" sx={{ mt: "10px" }}>
               {job.location} / {job.type}
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography
+              variant="h6"
+              sx={{
+                position: "absolute",
+                top: height / 2,
+                transform: "translate(0, -50%)",
+              }}
+            >
+              {job.salary}
             </Typography>
           </Grid>
           <Grid item xs={2}>
@@ -118,7 +130,7 @@ function JobPostCard({ job, className, height, avatarWidth }) {
         </Grid>
         <Grid
           item
-          xs={4}
+          xs={2}
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           {differenceInDays(new Date(), Date.parse(job.createdAt)) <= 3 ? (
