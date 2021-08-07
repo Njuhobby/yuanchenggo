@@ -37,6 +37,13 @@ const authPersistConfig = {
   whitelist: ["isAuthenticated"],
 };
 
+const jobPersistConfig = {
+  key: "job",
+  storage: storage,
+  keyPrefix: "redux-",
+  whitelist: ["job"],
+};
+
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
   firestore: firestoreReducer,
@@ -47,7 +54,7 @@ const rootReducer = combineReducers({
   settings: settingsReducer,
   calendar: calendarReducer,
   notifications: notificationsReducer,
-  job: jobReducer,
+  job: persistReducer(jobPersistConfig, jobReducer),
   product: persistReducer(productPersistConfig, productReducer),
   authJwt: persistReducer(authPersistConfig, authJwtReducer),
 });
