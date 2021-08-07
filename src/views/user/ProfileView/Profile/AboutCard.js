@@ -6,13 +6,7 @@ import pinFill from "@iconify-icons/eva/pin-fill";
 import emailFill from "@iconify-icons/eva/email-fill";
 import roundBusinessCenter from "@iconify-icons/ic/round-business-center";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Link,
-  Card,
-  Typography,
-  CardHeader,
-  CardContent,
-} from "@material-ui/core";
+import { Card, Typography, CardContent } from "@material-ui/core";
 
 // ----------------------------------------------------------------------
 

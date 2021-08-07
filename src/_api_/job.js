@@ -2,12 +2,13 @@ import faker from "faker";
 import mock from "src/utils/mock";
 import { orderBy } from "lodash";
 import { getCompanyAvatar } from "src/utils/getImages";
+import _ from "lodash";
 
 // -------------------------------------------
 
 let jobs = [
   {
-    id: faker.random.uuid(),
+    id: 1,
     title: "全栈高级工程师",
     company: {
       id: faker.random.uuid(),
@@ -29,7 +30,7 @@ let jobs = [
     postContent: "",
   },
   {
-    id: faker.random.uuid(),
+    id: 2,
     title: "资深React前后端工程师",
     company: {
       id: faker.random.uuid(),
@@ -50,7 +51,7 @@ let jobs = [
     postContent: "",
   },
   {
-    id: faker.random.uuid(),
+    id: 3,
     title: "创业合伙人",
     company: {
       id: faker.random.uuid(),
@@ -71,7 +72,7 @@ let jobs = [
     postContent: "",
   },
   {
-    id: faker.random.uuid(),
+    id: 4,
     title: "Senior Front End Engineer",
     company: {
       id: faker.random.uuid(),
@@ -93,7 +94,7 @@ let jobs = [
       "<p><strong>职位详情</strong></p><p><br></p><p>我们是一个出海APP团队，全球用户过百万，团队成员有着丰富的全球移动互联网产品和运营经验。 团队以远程办公为主。</p><p><br></p><p>工作职责：</p><p>1. 研究各种竞品，分析产品细节，给出产品功能的改善建议</p><p>2. 收集整理海外用户的建议和反馈，为产品运营和开发提供参考。</p><p>3. 负责产品问题的分析和排查</p><p><br></p><p>岗位要求：</p><p>1. 有较多可自由支配时间的或在校学生，可以在家或在学校远程办公。</p><p>2. 英语4级，或同等英语读写能力。</p><p>3. 吃苦耐劳，做事情有耐心，认真负责</p><p>4. 喜欢手机APP，踏实细心，有良好的沟通能力和服务意识</p><p>5. 对移动互联网的工作充满热情，能及时响应同事和客户的需求</p>",
   },
   {
-    id: faker.random.uuid(),
+    id: 5,
     title: "UI设计总监",
     company: {
       id: faker.random.uuid(),
@@ -114,7 +115,7 @@ let jobs = [
     postContent: "",
   },
   {
-    id: faker.random.uuid(),
+    id: 6,
     title: "人力资源总监",
     company: {
       id: faker.random.uuid(),
@@ -135,7 +136,7 @@ let jobs = [
     postContent: "",
   },
   {
-    id: faker.random.uuid(),
+    id: 7,
     title: "QA小组总负责人",
     company: {
       id: faker.random.uuid(),
@@ -165,5 +166,20 @@ export default function () {
 
     return [200, { jobs: jobs }];
   });
-  // ------------------------------------------------------------------
+
+  mock.onGet("/api/jobs/jobDetail").reply((config) => {
+    const found = _.filter(jobs, function (o) {
+      return o.id === parseInt(config.params.id);
+    });
+
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        if (found.length === 1) {
+          resolve([200, { job: found[0] }]);
+        } else {
+          resolve([400, { job: null }]);
+        }
+      }, 3000);
+    });
+  });
 }

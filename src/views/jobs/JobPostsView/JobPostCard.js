@@ -10,10 +10,13 @@ import glowingStar from "@iconify-icons/emojione/glowing-star";
 import heartOutlined from "@iconify-icons/ant-design/heart-outlined";
 import heartFilled from "@iconify-icons/ant-design/heart-filled";
 import { MIconButton } from "src/theme";
+import { useHistory } from "react-router-dom";
+import { PATH_APP } from "src/routes/paths";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
+    cursor: "pointer",
   },
   companyAvatar: {
     position: "absolute",
@@ -52,11 +55,15 @@ JobPostCard.propTypes = {
 function JobPostCard({ job, className, height, avatarWidth }) {
   const classes = useStyles();
   const theme = useTheme();
+  const history = useHistory();
 
   return (
     <Card
       className={clsx(classes.root, className)}
       sx={{ height: height, paddingLeft: avatarWidth / 8 }}
+      onClick={() =>
+        history.push(PATH_APP.jobs.jobDetail.replace(":id", job.id))
+      }
     >
       <Avatar
         alt={job.company.name}

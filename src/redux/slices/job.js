@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 //---------------------------------------------------
 
 const initialState = {
+  isLoading: false,
   jobs: [],
   job: {},
 };
@@ -41,7 +42,11 @@ const slice = createSlice({
 export default slice.reducer;
 
 // Actions
-// No actions need to be exported for now
+export function startLoading() {
+  return (dispatch) => {
+    dispatch(slice.actions.startLoading());
+  };
+}
 
 export function getJobPosts() {
   return async (dispatch) => {
@@ -59,10 +64,10 @@ export function getJobPost(id) {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get("/api/jobs/jobDetail/", {
+      const response = await axios.get("/api/jobs/jobDetail", {
         params: { id },
       });
-      dispatch(slice.actions.getJobPost(response.data.jobDetail));
+      dispatch(slice.actions.getJobPost(response.data.job));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }

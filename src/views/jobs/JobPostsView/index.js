@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 function JobPostsView() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { jobs } = useSelector((state) => state.job);
+  const { jobs, isLoading } = useSelector((state) => state.job);
   const jobsPostedThisWeek = [];
   const jobsPostedThisMonth = [];
   const jobsPostedEarlier = [];

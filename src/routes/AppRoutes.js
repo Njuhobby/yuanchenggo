@@ -58,6 +58,11 @@ const AppRoutes = {
       path: PATH_APP.jobs.list,
       component: lazy(() => import("src/views/jobs/JobPostsView")),
     },
+    {
+      exact: true,
+      path: PATH_APP.jobs.jobDetail,
+      component: lazy(() => import("src/views/jobs/JobPostDetailView")),
+    },
 
     // COMMUNITY
     // ----------------------------------------------------------------------

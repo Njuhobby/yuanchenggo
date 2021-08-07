@@ -123,7 +123,7 @@
     "@iconify-icons/noto": "^1.1.2",
     "@iconify-icons/ri": "^1.1.0",
     "@iconify-icons/vscode-icons": "^1.1.4",
-    "@iconify/react": "^1.1.4",
+    "@iconify/react": "^3.0.0-beta.1",
     "@types/autosuggest-highlight": "^3.1.1",
     "@types/react-copy-to-clipboard": "^5.0.0",
     "@types/react-scroll": "^1.8.2",
