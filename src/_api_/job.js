@@ -16,10 +16,10 @@ let jobs = [
       avatar: getCompanyAvatar("company_avatar_1.jpg"),
       isStar: true,
       websiteUrl: "",
-      country: "",
-      city: "",
+      country: "中国",
+      city: "上海",
       province: "",
-      numberOfActivePosts: 2,
+      numberOfTotalPosts: 2,
     },
     saved: true,
     salary: "12k-15k/月",
@@ -38,10 +38,10 @@ let jobs = [
       avatar: getCompanyAvatar("company_avatar_1.jpg"),
       isStar: true,
       websiteUrl: "",
-      country: "",
-      city: "",
+      country: "中国",
+      city: "北京",
       province: "",
-      numberOfActivePosts: 2,
+      numberOfTotalPosts: 2,
     },
     salary: "12k-40k/月",
     createdAt: new Date("2021-6-28 18:10:00"),
@@ -59,10 +59,10 @@ let jobs = [
       avatar: getCompanyAvatar("company_avatar_2.jpg"),
       isStar: false,
       websiteUrl: "",
-      country: "",
-      city: "",
+      country: "中国",
+      city: "北京",
       province: "",
-      numberOfActivePosts: 2,
+      numberOfTotalPosts: 2,
     },
     salary: "2k-10k/月",
     createdAt: new Date("2021-6-4 18:00:00"),
@@ -80,10 +80,10 @@ let jobs = [
       avatar: getCompanyAvatar("company_avatar_3.jpg"),
       isStar: false,
       websiteUrl: "",
-      country: "",
-      city: "",
+      country: "中国",
+      city: "苏州",
       province: "",
-      numberOfActivePosts: 2,
+      numberOfTotalPosts: 2,
     },
     salary: "2k-5k/月",
     createdAt: new Date("2021-4-1 18:00:00"),
@@ -102,10 +102,10 @@ let jobs = [
       avatar: getCompanyAvatar("company_avatar_4.jpg"),
       isStar: false,
       websiteUrl: "",
-      country: "",
-      city: "",
+      country: "中国",
+      city: "广州",
       province: "",
-      numberOfActivePosts: 2,
+      numberOfTotalPosts: 2,
     },
     salary: "2k-10k/月",
     createdAt: new Date("2021-6-4 18:00:00"),
@@ -123,10 +123,10 @@ let jobs = [
       avatar: getCompanyAvatar("company_avatar_5.jpg"),
       isStar: false,
       websiteUrl: "",
-      country: "",
-      city: "",
+      country: "中国",
+      city: "深圳",
       province: "",
-      numberOfActivePosts: 2,
+      numberOfTotalPosts: 2,
     },
     salary: "面议",
     createdAt: new Date("2021-6-10 18:00:00"),
@@ -144,10 +144,10 @@ let jobs = [
       avatar: getCompanyAvatar("company_avatar_6.jpg"),
       isStar: true,
       websiteUrl: "",
-      country: "",
-      city: "",
+      country: "中国",
+      city: "深圳",
       province: "",
-      numberOfActivePosts: 2,
+      numberOfTotalPosts: 2,
     },
     salary: "面议",
     createdAt: new Date("2021-3-1 18:00:00"),
@@ -172,14 +172,7 @@ export default function () {
       return o.id === parseInt(config.params.id);
     });
 
-    return new Promise(function (resolve, reject) {
-      setTimeout(function () {
-        if (found.length === 1) {
-          resolve([200, { job: found[0] }]);
-        } else {
-          resolve([400, { job: null }]);
-        }
-      }, 3000);
-    });
+    if (found.length === 1) return [200, { job: found[0] }];
+    else return [400, { job: null }];
   });
 }
