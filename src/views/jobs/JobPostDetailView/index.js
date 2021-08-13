@@ -19,15 +19,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { getJobPost } from "src/redux/slices/job";
 import { useParams } from "react-router-dom";
 import pinFill from "@iconify-icons/eva/pin-fill";
+import homeFill from "@iconify-icons/eva/home-fill";
 import glowingStar from "@iconify-icons/emojione/glowing-star";
 import chevronCircleLeft from "@iconify/icons-fa-solid/chevron-circle-left";
 import sadButRelievedFace from "@iconify/icons-openmoji/sad-but-relieved-face";
 import parseHtmlToReactOptions from "src/utils/parseHtmlToReactOptions";
 import parse from "html-react-parser";
 import JobPostCard from "../JobPostsView/JobPostCard";
+import { PATH_APP } from "src/routes/paths";
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    "& p a:hover": {
+      textDecoration: "none",
+    },
+  },
   section: {
     display: "flex",
     justifyContent: "space-between",
@@ -138,10 +144,12 @@ function JobPostDetailView(props) {
           sx={{ marginBottom: 6 }}
         >
           <Typography variant="body2">
-            <InlineIcon icon={chevronCircleLeft} /> 返回所有职位
+            <InlineIcon icon={chevronCircleLeft} />
+            <Link href={PATH_APP.jobs.list}> 返回所有职位</Link>
           </Typography>
+
           <Typography variant="body2">
-            查看该公司其他职位{" "}
+            <Link href={PATH_APP.jobs.list}>查看该公司其他职位 </Link>
             <InlineIcon icon={chevronCircleLeft} rotate="180deg" />
           </Typography>
         </Box>
@@ -193,7 +201,7 @@ function JobPostDetailView(props) {
               <Box className={classes.section} sx={{ marginBottom: 2 }}>
                 <Typography variant="h6">相关职位</Typography>
                 <Typography variant="body2" className={classes.arrowsSection}>
-                  更多{job.jobCategory}职位{" "}
+                  <Link href="#">更多{job.jobCategory}职位 </Link>
                   <InlineIcon icon={chevronCircleLeft} rotate="180deg" />
                 </Typography>
               </Box>
@@ -246,7 +254,7 @@ function JobPostDetailView(props) {
                   </Typography>
                 </div>
                 <div>
-                  <Icon icon="eva:home-fill" className={classes.icon} />
+                  <Icon icon={homeFill} className={classes.icon} />
                   <Link
                     href={job.company.websiteUrl}
                     color="inherit"
