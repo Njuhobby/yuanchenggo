@@ -35,7 +35,7 @@ const navConfig = [
     subheader: "",
     items: [
       {
-        title: "控制台",
+        title: "信息中心",
         icon: ICONS.dashboard,
         href: PATH_APP.general.dashboard,
       },

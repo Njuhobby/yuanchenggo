@@ -5,16 +5,15 @@ import ActionBar from "./ActionBar";
 import { Icon, InlineIcon } from "@iconify/react";
 import CommentInput from "./CommentInput";
 import { fDate } from "src/utils/formatTime";
-import LazySize from "src/components/LazySize";
 import MyAvatar from "src/components/MyAvatar";
 import React, { useState, useRef } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import moreVerticalFill from "@iconify-icons/eva/more-vertical-fill";
 import roundPushpin from "@iconify-icons/noto/round-pushpin";
 import { makeStyles } from "@material-ui/core/styles";
-import parse, { domToReact } from "html-react-parser";
+import parse from "html-react-parser";
+import parseHtmlToReactOptions from "src/utils/parseHtmlToReactOptions";
 import {
-  Box,
   Link,
   Card,
   Typography,
@@ -75,46 +74,6 @@ function PostCard({ post, className }) {
     commentInputRef.current.focus();
   };
 
-  const parsePostOptions = {
-    replace: ({ name, attribs, children }) => {
-      if (!attribs) {
-        return;
-      }
-
-      if (name === "p") {
-        return (
-          <Typography variant="body1">
-            {domToReact(children, parsePostOptions)}
-          </Typography>
-        );
-      }
-
-      if (name === "img") {
-        return (
-          <Box
-            sx={{
-              mt: 3,
-              position: "relative",
-              pt: "calc(100% / 16 * 9)",
-            }}
-          >
-            <LazySize
-              alt="post media"
-              src={attribs.src}
-              sx={{
-                top: 0,
-                width: "100%",
-                height: "100%",
-                borderRadius: 1,
-                position: "absolute",
-              }}
-            />
-          </Box>
-        );
-      }
-    },
-  };
-
   return (
     <Card className={clsx(classes.root, className)}>
       <CardHeader
@@ -150,7 +109,7 @@ function PostCard({ post, className }) {
       />
 
       <CardContent>
-        {parse(post.message, parsePostOptions)}
+        {parse(post.message, parseHtmlToReactOptions)}
 
         <ActionBar
           post={post}

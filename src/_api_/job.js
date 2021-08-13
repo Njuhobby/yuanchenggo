@@ -27,7 +27,8 @@ let jobs = [
     location: "南京及周边",
     type: "全职",
     jobCategory: "全栈软件开发",
-    postContent: "",
+    postContent:
+      "<p><strong>职位详情</strong></p><p><br></p><p>我们是一个出海APP团队，全球用户过百万，团队成员有着丰富的全球移动互联网产品和运营经验。 团队以远程办公为主。</p><p><br></p><p>工作职责：</p><p>1. 研究各种竞品，分析产品细节，给出产品功能的改善建议</p><p>2. 收集整理海外用户的建议和反馈，为产品运营和开发提供参考。</p><p>3. 负责产品问题的分析和排查</p><p><br></p><p>岗位要求：</p><p>1. 有较多可自由支配时间的或在校学生，可以在家或在学校远程办公。</p><p>2. 英语4级，或同等英语读写能力。</p><p>3. 吃苦耐劳，做事情有耐心，认真负责</p><p>4. 喜欢手机APP，踏实细心，有良好的沟通能力和服务意识</p><p>5. 对移动互联网的工作充满热情，能及时响应同事和客户的需求</p>",
   },
   {
     id: 2,
@@ -48,7 +49,8 @@ let jobs = [
     location: "北京及周边",
     type: "兼职",
     jobCategory: "全栈软件开发",
-    postContent: "",
+    postContent:
+      "<p><strong>Sound like you?</strong></p><ul><li>You have 4+ years of experience maintaining complicated web applications</li><li>You're curious to learn and demonstrate the ability to do so very quickly</li><li>You communicate with clarity and precision, whether with teammates or users</li><li>You thrive in a collaborative environment involving different stakeholders and subject-matter experts</li><li>You are self-motivated, possess a strong work ethic, and work well independently</li><li>You identify with Slab's mission and values</li></ul><p><br></p><p><strong>What we value</strong></p><ul><li><strong>Stay lean</strong> - We strive for the greatest possible impact with the fewest number of employees. We empower our teammates with the most leveraged tools and efficient processes.</li><li><strong>Default to open</strong> - We encourage and nurture open exchanges of knowledge and ideas — while acting with respect and regard for each other.</li><li><strong>Think rigorously</strong> - We act and execute after careful thought and examination of known information, while acknowledging the risks we accept in its absence.</li><li><strong>Say no</strong> - We aim to deliver exceptionally high value in a small set of focus areas. We willingly abstain from good ideas to give only the most promising paths the attention they deserve.</li><li><strong>The best prevails</strong> - Whether an idea or an individual, the best will rise to the top at Slab. Ideas we pursue can come from anywhere, and individuals gain responsibilities due to outperformance.</li><li><strong>Global optimization</strong> - We believe that our mission — to make the workplace a source of learning and purpose — is the ultimate priority, above any single project, team, or individual.</li></ul><p><br></p><p><strong>Technologies we use</strong></p><ul><li>TypeScript + React</li><li>GraphQL + Apollo + Absinthe</li><li>Phoenix + Elixir</li><li>Postgres</li><li>Docker + Kubernetes</li><li>Google Cloud Platform</li></ul><p><br></p><p>We are looking for either depth in one part of the stack or breadth across a wide portion.</p><p><br></p><p><strong>Benefits</strong></p><ul><li>Flexible work arrangements</li><li>Medical, dental, and vision insurance</li><li>Generous equity offer</li><li>7-year option exercise window</li><li>$5k desk setup of your choice</li></ul><p><br></p>",
   },
   {
     id: 3,
@@ -69,7 +71,8 @@ let jobs = [
     location: "全国范围",
     type: "全职兼职皆可",
     jobCategory: "高级管理",
-    postContent: "",
+    postContent:
+      "<p><strong>职位详情</strong></p><p><br></p><p>我们是一个出海APP团队，全球用户过百万，团队成员有着丰富的全球移动互联网产品和运营经验。 团队以远程办公为主。</p><p><br></p><p>工作职责：</p><p>1. 研究各种竞品，分析产品细节，给出产品功能的改善建议</p><p>2. 收集整理海外用户的建议和反馈，为产品运营和开发提供参考。</p><p>3. 负责产品问题的分析和排查</p><p><br></p><p>岗位要求：</p><p>1. 有较多可自由支配时间的或在校学生，可以在家或在学校远程办公。</p><p>2. 英语4级，或同等英语读写能力。</p><p>3. 吃苦耐劳，做事情有耐心，认真负责</p><p>4. 喜欢手机APP，踏实细心，有良好的沟通能力和服务意识</p><p>5. 对移动互联网的工作充满热情，能及时响应同事和客户的需求</p>",
   },
   {
     id: 4,
@@ -91,7 +94,7 @@ let jobs = [
     type: "兼职",
     jobCategory: "前端软件开发",
     postContent:
-      "<p><strong>职位详情</strong></p><p><br></p><p>我们是一个出海APP团队，全球用户过百万，团队成员有着丰富的全球移动互联网产品和运营经验。 团队以远程办公为主。</p><p><br></p><p>工作职责：</p><p>1. 研究各种竞品，分析产品细节，给出产品功能的改善建议</p><p>2. 收集整理海外用户的建议和反馈，为产品运营和开发提供参考。</p><p>3. 负责产品问题的分析和排查</p><p><br></p><p>岗位要求：</p><p>1. 有较多可自由支配时间的或在校学生，可以在家或在学校远程办公。</p><p>2. 英语4级，或同等英语读写能力。</p><p>3. 吃苦耐劳，做事情有耐心，认真负责</p><p>4. 喜欢手机APP，踏实细心，有良好的沟通能力和服务意识</p><p>5. 对移动互联网的工作充满热情，能及时响应同事和客户的需求</p>",
+      "<p><strong>Sound like you?</strong></p><ul><li>You have 4+ years of experience maintaining complicated web applications</li><li>You're curious to learn and demonstrate the ability to do so very quickly</li><li>You communicate with clarity and precision, whether with teammates or users</li><li>You thrive in a collaborative environment involving different stakeholders and subject-matter experts</li><li>You are self-motivated, possess a strong work ethic, and work well independently</li><li>You identify with Slab's mission and values</li></ul><p><br></p><p><strong>What we value</strong></p><ul><li><strong>Stay lean</strong> - We strive for the greatest possible impact with the fewest number of employees. We empower our teammates with the most leveraged tools and efficient processes.</li><li><strong>Default to open</strong> - We encourage and nurture open exchanges of knowledge and ideas — while acting with respect and regard for each other.</li><li><strong>Think rigorously</strong> - We act and execute after careful thought and examination of known information, while acknowledging the risks we accept in its absence.</li><li><strong>Say no</strong> - We aim to deliver exceptionally high value in a small set of focus areas. We willingly abstain from good ideas to give only the most promising paths the attention they deserve.</li><li><strong>The best prevails</strong> - Whether an idea or an individual, the best will rise to the top at Slab. Ideas we pursue can come from anywhere, and individuals gain responsibilities due to outperformance.</li><li><strong>Global optimization</strong> - We believe that our mission — to make the workplace a source of learning and purpose — is the ultimate priority, above any single project, team, or individual.</li></ul><p><br></p><p><strong>Technologies we use</strong></p><ul><li>TypeScript + React</li><li>GraphQL + Apollo + Absinthe</li><li>Phoenix + Elixir</li><li>Postgres</li><li>Docker + Kubernetes</li><li>Google Cloud Platform</li></ul><p><br></p><p>We are looking for either depth in one part of the stack or breadth across a wide portion.</p><p><br></p><p><strong>Benefits</strong></p><ul><li>Flexible work arrangements</li><li>Medical, dental, and vision insurance</li><li>Generous equity offer</li><li>7-year option exercise window</li><li>$5k desk setup of your choice</li></ul><p><br></p>",
   },
   {
     id: 5,
@@ -172,7 +175,10 @@ export default function () {
       return o.id === parseInt(config.params.id);
     });
 
-    if (found.length === 1) return [200, { job: found[0] }];
-    else return [400, { job: null }];
+    if (found.length === 1) {
+      const foundJob = found[0];
+      foundJob.relatedJobs = _.cloneDeep(jobs).slice(1, 4);
+      return [200, { job: foundJob }];
+    } else return [400, { job: null }];
   });
 }
