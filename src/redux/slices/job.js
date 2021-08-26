@@ -4,7 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 //---------------------------------------------------
 
 const initialState = {
-  isLoading: false,
+  loadingJobs: false,
+  loadingJob: false,
   jobs: [],
   job: {},
 };
@@ -13,26 +14,31 @@ const slice = createSlice({
   name: "job",
   initialState,
   reducers: {
-    // START LOADING
-    startLoading(state) {
-      state.isLoading = true;
+    startLoadingJobs(state) {
+      state.loadingJobs = true;
     },
 
-    // HAS ERROR
-    hasError(state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
+    startLoadingJob(state) {
+      state.loadingJob = true;
     },
 
-    // GET JOB POSTS
+    errorLoadingJobs(state, action) {
+      state.loadingJobs = false;
+      state.loadingJobsError = action.payload;
+    },
+
+    errorLoadingJob(state, action) {
+      state.loadingJob = false;
+      state.loadingJobError = action.payload;
+    },
+
     getJobPosts(state, action) {
-      state.isLoading = false;
+      state.loadingJobs = false;
       state.jobs = action.payload;
     },
 
-    // GET JOB POST
     getJobPost(state, action) {
-      state.isLoading = false;
+      state.loadingJob = false;
       state.job = action.payload;
     },
   },
@@ -41,35 +47,28 @@ const slice = createSlice({
 // Reducer
 export default slice.reducer;
 
-// Actions
-export function startLoading() {
-  return (dispatch) => {
-    dispatch(slice.actions.startLoading());
-  };
-}
-
 export function getJobPosts() {
   return async (dispatch) => {
-    dispatch(slice.actions.startLoading());
+    dispatch(slice.actions.startLoadingJobs());
     try {
       const response = await axios.get("/api/jobs");
       dispatch(slice.actions.getJobPosts(response.data.jobs));
     } catch (error) {
-      dispatch(slice.actions.hasError(error));
+      dispatch(slice.actions.errorLoadingJobs(error));
     }
   };
 }
 
 export function getJobPost(id) {
   return async (dispatch) => {
-    dispatch(slice.actions.startLoading());
+    dispatch(slice.actions.startLoadingJob());
     try {
       const response = await axios.get("/api/jobs/jobDetail", {
         params: { id },
       });
       dispatch(slice.actions.getJobPost(response.data.job));
     } catch (error) {
-      dispatch(slice.actions.hasError(error));
+      dispatch(slice.actions.errorLoadingJob(error));
     }
   };
 }

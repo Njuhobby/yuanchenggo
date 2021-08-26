@@ -126,18 +126,18 @@ function JobPostDetailView(props) {
   const { id } = useParams();
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { job, isLoading } = useSelector((state) => state.job);
+  const { job } = useSelector((state) => state.job);
 
-  const hide = !job.id || job.id !== parseInt(id) || isLoading;
+  const hide = !job.id || job.id !== parseInt(id);
 
   useEffect(() => {
-    if (!job.id || job.id !== parseInt(id)) {
+    if (hide) {
       dispatch(getJobPost(id));
     }
   });
 
   return (
-    <Page title="" className={classes.root}>
+    <Page title="职位详情" className={classes.root}>
       <Container maxWidth="lg">
         <Box
           className={clsx(classes.arrowsSection, classes.section)}

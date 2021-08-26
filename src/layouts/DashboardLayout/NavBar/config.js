@@ -70,14 +70,14 @@ const navConfig = [
     subheader: "工作信息",
     items: [
       {
-        title: "求职列表",
+        title: "职位列表",
         icon: ICONS.elements,
         href: PATH_APP.jobs.list,
       },
       {
         title: "金主们",
         icon: ICONS.elements,
-        href: PATH_APP.jobs.companies,
+        href: PATH_APP.companies,
       },
     ],
   },

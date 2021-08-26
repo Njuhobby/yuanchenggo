@@ -50,11 +50,6 @@ const AppRoutes = {
     //---------------------------------------------------------------------
     {
       exact: true,
-      path: PATH_APP.jobs.companies,
-      component: lazy(() => import("src/views/jobs/CompaniesView")),
-    },
-    {
-      exact: true,
       path: PATH_APP.jobs.list,
       component: lazy(() => import("src/views/jobs/JobPostsView")),
     },

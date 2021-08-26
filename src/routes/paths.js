@@ -51,8 +51,10 @@ export const PATH_APP = {
     root: path(ROOTS.app, "/jobs"),
     list: path(ROOTS.app, "/jobs/list"),
     jobDetail: path(ROOTS.app, "/jobs/jobDetail/:id"),
-    companies: path(ROOTS.app, "/jobs/companies"),
     companyDetail: path(ROOTS.app, "jobs/companyDetail/:id"),
+  },
+  companies: {
+    root: path(ROOTS.app, "/companies"),
   },
   account: {
     root: path(ROOTS.app, "/account"),
